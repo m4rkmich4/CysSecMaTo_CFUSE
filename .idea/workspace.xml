@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4ade03cb-c2c7-4f54-9826-e79936682090" name="Changes" comment="initial commit" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "m4rkmich4"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/m4rkmich4/CySecMaTo_CFUSE.git",
+    "accountId": "f111faa6-cc85-4688-929e-ca28b732e48c"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2vLyO521iGFkj46yuNjhdauJTLI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.app.executor": "Run",
+    "Python.main_window.executor": "Run",
+    "Python.neo4j_test.executor": "Run",
+    "Python.prompts_dspy.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.test_validate_catalog.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "last_opened_file_path": "/Users/michaelmark/PycharmProjects/CySecMaTo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/files" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/source" />
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.26830.99" />
+        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ade03cb-c2c7-4f54-9826-e79936682090" name="Changes" comment="" />
+      <created>1743938614028</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743938614028</updated>
+      <workItem from="1743938615031" duration="8708000" />
+      <workItem from="1743955272410" duration="2028000" />
+      <workItem from="1743957840736" duration="1618000" />
+      <workItem from="1744190830641" duration="796000" />
+      <workItem from="1744191827716" duration="75000" />
+      <workItem from="1744192150274" duration="14000" />
+      <workItem from="1744205737506" duration="1289000" />
+      <workItem from="1744441810926" duration="4794000" />
+      <workItem from="1744611705985" duration="11734000" />
+      <workItem from="1744623899746" duration="11000" />
+      <workItem from="1744631543611" duration="678000" />
+      <workItem from="1744703253260" duration="604000" />
+      <workItem from="1744785646248" duration="891000" />
+      <workItem from="1744786546110" duration="9653000" />
+      <workItem from="1744874783457" duration="14938000" />
+      <workItem from="1745217197524" duration="3039000" />
+      <workItem from="1745305975282" duration="5440000" />
+      <workItem from="1745311535437" duration="21994000" />
+      <workItem from="1745345710641" duration="33000" />
+      <workItem from="1745431503340" duration="197000" />
+      <workItem from="1745478117321" duration="7163000" />
+      <workItem from="1745495094503" duration="4157000" />
+      <workItem from="1745655156399" duration="18191000" />
+      <workItem from="1745733127025" duration="16389000" />
+      <workItem from="1745841172164" duration="1271000" />
+      <workItem from="1745916308851" duration="20000" />
+      <workItem from="1745916336953" duration="11694000" />
+      <workItem from="1746446052598" duration="646000" />
+      <workItem from="1746518386608" duration="8999000" />
+      <workItem from="1746625153684" duration="1036000" />
+      <workItem from="1746773242283" duration="19617000" />
+      <workItem from="1746807499829" duration="853000" />
+      <workItem from="1746856282895" duration="11727000" />
+      <workItem from="1746891652291" duration="8142000" />
+      <workItem from="1746939385126" duration="6777000" />
+      <workItem from="1746946661692" duration="150000" />
+      <workItem from="1746946815094" duration="6957000" />
+      <workItem from="1747026711941" duration="7595000" />
+      <workItem from="1747037648610" duration="1618000" />
+      <workItem from="1747118298122" duration="3115000" />
+      <workItem from="1747292925413" duration="2410000" />
+      <workItem from="1747380778057" duration="3047000" />
+      <workItem from="1748770832281" duration="769000" />
+      <workItem from="1749794258050" duration="16000" />
+      <workItem from="1749794282073" duration="4851000" />
+      <workItem from="1751283659358" duration="1317000" />
+      <workItem from="1751373241354" duration="633000" />
+      <workItem from="1751524600194" duration="14006000" />
+      <workItem from="1754504079672" duration="323000" />
+      <workItem from="1754547533562" duration="3678000" />
+      <workItem from="1754634197791" duration="7611000" />
+      <workItem from="1756455011383" duration="6036000" />
+      <workItem from="1756625618911" duration="1980000" />
+      <workItem from="1757402740077" duration="2713000" />
+      <workItem from="1757746036468" duration="3859000" />
+      <workItem from="1760167227065" duration="99000" />
+      <workItem from="1760167437196" duration="3052000" />
+      <workItem from="1760253983102" duration="1368000" />
+      <workItem from="1760255757968" duration="823000" />
+      <workItem from="1760771370263" duration="16003000" />
+      <workItem from="1760859464713" duration="4488000" />
+      <workItem from="1761988736058" duration="8154000" />
+      <workItem from="1762242641876" duration="1217000" />
+      <workItem from="1762589129991" duration="4229000" />
+      <workItem from="1763194667047" duration="6427000" />
+      <workItem from="1763279921273" duration="7580000" />
+      <workItem from="1763462362664" duration="1150000" />
+      <workItem from="1763797030331" duration="4047000" />
+      <workItem from="1763801103274" duration="391000" />
+      <workItem from="1763801592625" duration="51000" />
+      <workItem from="1763801645900" duration="1959000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1763800805373</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763800805373</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1763800808925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763800808925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CySecMaTo$app.coverage" NAME="app Coverage Results" MODIFIED="1761992999103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CySecMaTo$main_window.coverage" NAME="main_window Coverage Results" MODIFIED="1745672734973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
+    <SUITE FILE_PATH="coverage/CySecMaTo$neo4j_test.coverage" NAME="neo4j_test Coverage Results" MODIFIED="1744789669602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/CySecMaTo$test_validate_catalog.coverage" NAME="test_validate_catalog Coverage Results" MODIFIED="1744791565955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/CySecMaTo$prompts_dspy.coverage" NAME="prompts_dspy Coverage Results" MODIFIED="1744205756247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
+    <SUITE FILE_PATH="coverage/CySecMaTo$test.coverage" NAME="test Coverage Results" MODIFIED="1745496976617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+  </component>
+</project>

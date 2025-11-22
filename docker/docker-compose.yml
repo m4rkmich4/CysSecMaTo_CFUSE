@@ -1,0 +1,16 @@
+services:
+  neo4j:
+    image: neo4j:enterprise
+    container_name: C-FUSE
+    ports:
+      - "7474:7474"   # HTTP Web Interface
+      - "7687:7687"   # Bolt Protocol
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_AUTH: "neo4j/CfUsE_2025"
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*,gds.*"
+      NEO4J_dbms_security_procedures_allowlist: "apoc.*,gds.*"
+    volumes:
+      - ./neo4j/data:/data
+    restart: unless-stopped

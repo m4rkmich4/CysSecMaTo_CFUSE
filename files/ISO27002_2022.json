@@ -1,0 +1,569 @@
+{
+  "catalog": {
+    "uuid": "3c1a2b4f-5678-90ab-cdef-1234567890ab",
+    "metadata": {
+      "title": "ISO/IEC 27002 Draft Control Catalog – Multidomain v0.1",
+      "published": "2025-04-22T09:00:00Z",
+      "last-modified": "2025-04-22T09:00:00Z",
+      "version": "0.1",
+      "oscal-version": "1.0.0",
+      "parties": [
+        {
+          "uuid": "b1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+          "type": "person",
+          "name": "Michael",
+          "email-addresses": ["michael@example.com"],
+          "remarks": "Catalog author"
+        }
+      ],
+      "roles": [
+        {
+          "id": "creator",
+          "title": "Creator",
+          "description": "Originator of this draft catalog"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "creator",
+          "party-uuids": ["b1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e"]
+        }
+      ]
+    },
+    "groups": [
+      {
+        "id": "OR",
+        "class": "family",
+        "title": "Organizational Controls",
+        "controls": [
+          {
+            "id": "ISO_IEC_27002-5.1",
+            "class": "stand_alone",
+            "title": "Information Security Policy and Related Guidelines",
+            "props": [
+              { "name": "chapter", "value": "Organizational Controls" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.1" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Define, approve, publish and communicate an organization‑wide information security policy and related guidelines, and review them periodically or upon significant changes."
+              },
+              {
+                "name": "guidance",
+                "prose": "Ensure policy addresses business strategy, legal/regulatory requirements, and evolving threats; include definitions, objectives, principles, roles and responsibilities, and exception management."
+              }
+            ]
+          },
+          {
+            "id": "ISO_IEC_27002-5.9",
+            "class": "stand_alone",
+            "title": "Inventory of Information and Associated Assets",
+            "props": [
+              { "name": "chapter", "value": "Organizational Controls" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.9" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Establish and maintain an accurate inventory of information and related assets, including asset owners."
+              },
+              {
+                "name": "guidance",
+                "prose": "Maintain consistency with other inventories, conduct regular reviews or use automated updates, and classify each asset according to information classification scheme."
+              }
+            ]
+          },
+          {
+            "id": "ISO_IEC_27002-5.10",
+            "class": "stand_alone",
+            "title": "Acceptable Use of Assets",
+            "props": [
+              { "name": "chapter", "value": "Organizational Controls" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.10" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Define, document and enforce rules for the acceptable use of information and related assets."
+              },
+              {
+                "name": "guidance",
+                "prose": "Ensure all personnel and external users acknowledge and adhere to usage rules; tailor rules to risk and role."
+              }
+            ]
+          },
+          {
+            "id": "ISO_IEC_27002-5.12",
+            "class": "stand_alone",
+            "title": "Information Classification",
+            "props": [
+              { "name": "chapter", "value": "Organizational Controls" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.12" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Implement a classification scheme for information reflecting confidentiality, integrity and availability requirements."
+              },
+              {
+                "name": "guidance",
+                "prose": "Define classification levels, review periodically, and integrate classification into all handling procedures."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "AC",
+        "class": "family",
+        "title": "Access Control",
+        "controls": [
+          {
+            "id": "AC_ACC_1",
+            "class": "parent",
+            "title": "Identification and Authentication Management",
+            "props": [
+              { "name": "chapter", "value": "Access Control" },
+              { "name": "cybersecurity category", "value": "Technical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" }
+            ],
+            "controls": [
+              {
+                "id": "AC_ACC_1_1",
+                "class": "child",
+                "title": "User Registration and Deregistration",
+                "props": [
+                  { "name": "chapter", "value": "Access Control" },
+                  { "name": "cybersecurity category", "value": "Technical" },
+                  { "name": "version", "value": "2022-11" },
+                  { "name": "cybersecurity_property_confidentiality", "value": "" },
+                  { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                  { "name": "cybersecurity_property_availability", "value": "" },
+                  { "name": "lifecycle_status", "value": "Draft" },
+                  { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.16" }
+                ],
+                "parts": [
+                  {
+                    "name": "description",
+                    "prose": "Require passwords to meet the defined complexity guidelines: at least the minimum length, a mix of character types, no use of dictionary words, and enforcement of history constraints."
+                  },
+                  {
+                    "name": "guidance",
+                    "prose": "Implement formal registration/deregistration processes and maintain an access log."
+                  }
+                ]
+              },
+              {
+                "id": "AC_ACC_1_2",
+                "class": "child",
+                "title": "Authentication Information Management",
+                "props": [
+                  { "name": "chapter", "value": "Access Control" },
+                  { "name": "cybersecurity category", "value": "Technical" },
+                  { "name": "version", "value": "2022-11" },
+                  { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+                  { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                  { "name": "cybersecurity_property_availability", "value": "" },
+                  { "name": "lifecycle_status", "value": "Draft" },
+                  { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.17" }
+                ],
+                "parts": [
+                  {
+                    "name": "description",
+                    "prose": "Manage authentication information (e.g., passwords, tokens) securely throughout its lifecycle."
+                  },
+                  {
+                    "name": "guidance",
+                    "prose": "Enforce strong password policies, secure storage of tokens and regular credential changes."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "AC_ACC_2",
+            "class": "stand_alone",
+            "title": "Access Control Policy",
+            "props": [
+              { "name": "chapter", "value": "Access Control" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.15" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Develop and maintain an access control policy that defines user access principles and requirements."
+              },
+              {
+                "name": "guidance",
+                    "prose": "Ensure policy covers least privilege, segregation of duties, and periodic access reviews."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PS",
+        "class": "family",
+        "title": "Physical and Environmental Security",
+        "controls": [
+          {
+            "id": "PS_SEC_1",
+            "class": "stand_alone",
+            "title": "Physical Security Perimeter",
+            "props": [
+              { "name": "chapter", "value": "Facility Security" },
+              { "name": "cybersecurity category", "value": "Physical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:7.1" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Define and secure physical perimeters to protect facilities, equipment and assets from unauthorized access."
+              },
+              {
+                "name": "guidance",
+                "prose": "Use walls, barriers, entry points and surveillance to control and monitor access."
+              }
+            ]
+          },
+          {
+            "id": "PS_SEC_2",
+            "class": "stand_alone",
+            "title": "Physical Entry Controls",
+            "props": [
+              { "name": "chapter", "value": "Facility Security" },
+              { "name": "cybersecurity category", "value": "Physical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:7.2" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Control and monitor physical entry to secure areas using entry controls (e.g., swipe cards, biometrics)."
+              },
+              {
+                "name": "guidance",
+                "prose": "Log entry attempts, review logs periodically and revoke access promptly when no longer required."
+              }
+            ]
+          },
+          {
+            "id": "PS_SEC_3",
+            "class": "stand_alone",
+            "title": "Workstation Security",
+            "props": [
+              { "name": "chapter", "value": "Workstation Security" },
+              { "name": "cybersecurity category", "value": "Physical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:7.7" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Implement clear‑desk and screen locking policies to prevent unauthorized access to information at workstations."
+              },
+              {
+                "name": "guidance",
+                "prose": "Enforce automatic screen locks after short inactivity and require secure storage of sensitive documents."
+              }
+            ]
+          },
+          {
+            "id": "PS_SEC_4",
+            "class": "stand_alone",
+            "title": "Secure Disposal of Equipment",
+            "props": [
+              { "name": "chapter", "value": "Equipment Disposal" },
+              { "name": "cybersecurity category", "value": "Physical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:7.14" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Ensure secure disposal or reuse of equipment to prevent data leakage."
+              },
+              {
+                "name": "guidance",
+                "prose": "Follow recognized standards (e.g., NIST SP 800‑88) and retain destruction certificates."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PE",
+        "class": "family",
+        "title": "Personnel Security",
+        "controls": [
+          {
+            "id": "PE_SEC_1",
+            "class": "stand_alone",
+            "title": "Security Awareness, Education and Training",
+            "props": [
+              { "name": "chapter", "value": "Personnel Security" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:6.3" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Provide regular security awareness training and education to all employees and contractors."
+              },
+              {
+                "name": "guidance",
+                "prose": "Include phishing simulations, role‑based training and policy refreshers."
+              }
+            ]
+          },
+          {
+            "id": "PE_SEC_2",
+            "class": "stand_alone",
+            "title": "Remote Work Security",
+            "props": [
+              { "name": "chapter", "value": "Personnel Security" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:6.7" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Establish policies and controls to secure teleworking and mobile devices."
+              },
+              {
+                "name": "guidance",
+                "prose": "Enforce VPN, device hardening and secure configuration for remote connections."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "IM",
+        "class": "family",
+        "title": "Information Security Incident Management",
+        "controls": [
+          {
+            "id": "IM_INC_1",
+            "class": "stand_alone",
+            "title": "Incident Management Planning",
+            "props": [
+              { "name": "chapter", "value": "Incident Management" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.24" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Establish and maintain processes for planning and preparing to handle information security incidents."
+              },
+              {
+                "name": "guidance",
+                "prose": "Define roles, communication channels, and escalation paths before incidents occur."
+              }
+            ]
+          },
+          {
+            "id": "IM_INC_2",
+            "class": "stand_alone",
+            "title": "Incident Response and Improvement",
+            "props": [
+              { "name": "chapter", "value": "Incident Management" },
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:5.26" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Respond to detected incidents promptly and perform post‑incident analysis to drive continuous improvement."
+              },
+              {
+                "name": "guidance",
+                "prose": "Contain, eradicate and recover from incidents, then document lessons learned and update controls."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "TC",
+        "class": "family",
+        "title": "Technical Controls",
+        "controls": [
+          {
+            "id": "TC_TECH_1",
+            "class": "stand_alone",
+            "title": "Endpoint Device Security",
+            "props": [
+              { "name": "chapter", "value": "Technical Controls" },
+              { "name": "cybersecurity category", "value": "Technical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "" },
+              { "name": "cybersecurity_property_availability", "value": "TRUE" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:8.1" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Secure user endpoint devices through hardening, patch management and configuration controls."
+              },
+              {
+                "name": "guidance",
+                "prose": "Enforce disk encryption, firewall and antivirus on all endpoints."
+              }
+            ]
+          },
+          {
+            "id": "TC_TECH_2",
+            "class": "stand_alone",
+            "title": "Malware Protection",
+            "props": [
+              { "name": "chapter", "value": "Technical Controls" },
+              { "name": "cybersecurity category", "value": "Technical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:8.7" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Deploy anti‑malware solutions to detect and prevent malicious software."
+              },
+              {
+                "name": "guidance",
+                "prose": "Keep signatures and heuristics up to date and perform regular scans."
+              }
+            ]
+          },
+          {
+            "id": "TC_TECH_3",
+            "class": "stand_alone",
+            "title": "Technical Vulnerability Management",
+            "props": [
+              { "name": "chapter", "value": "Technical Controls" },
+              { "name": "cybersecurity category", "value": "Technical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:8.8" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Identify, assess and remediate technical vulnerabilities in a timely manner."
+              },
+              {
+                "name": "guidance",
+                "prose": "Maintain asset inventory, subscribe to vulnerability feeds and apply patches promptly."
+              }
+            ]
+          },
+          {
+            "id": "TC_TECH_4",
+            "class": "stand_alone",
+            "title": "Use of Cryptography",
+            "props": [
+              { "name": "chapter", "value": "Technical Controls" },
+              { "name": "cybersecurity category", "value": "Technical" },
+              { "name": "version", "value": "2022-11" },
+              { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "lifecycle_status", "value": "Draft" },
+              { "name": "old_instruction_reference", "value": "ISO/IEC 27002:8.24" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Apply cryptographic controls to protect confidentiality and integrity of information."
+              },
+              {
+                "name": "guidance",
+                "prose": "Select algorithms and key lengths based on current standards and manage keys securely."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

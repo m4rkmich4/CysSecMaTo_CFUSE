@@ -1,0 +1,316 @@
+{
+  "catalog": {
+    "uuid": "f7d8a2b1-e4c3-4d5e-b8f9-1a2b3c4d5e6f",
+    "metadata": {
+      "title": "Acme Innovations Security Control Catalog (AISCC) - Property-Based Hierarchy v1.0",
+      "published": "2025-04-15T11:18:00Z",
+      "last-modified": "2025-04-15T11:18:00Z",
+      "version": "1.0",
+      "oscal-version": "1.0.4",
+      "links": [
+        {
+          "href": "https://internal.acme.example.com/security/policy/v1",
+          "rel": "reference"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "TESTTESTTESTTEST",
+          "type": "organization",
+          "name": "Acme Innovations GmbH",
+          "email-addresses": ["security-office@acme-innovations.example.com"],
+          "remarks": "Fiktive Firma für Demozwecke"
+        },
+        {
+          "uuid": "9a34823d-06aa-4ed6-962f-d5b1a429bee2",
+          "type": "person",
+          "name": "Petra Platzhalter",
+          "email-addresses": ["p.platzhalter@acme-innovations.example.com"]
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "creator",
+          "party-uuids": ["person-uuid-petra-8765"]
+        },
+        {
+          "role-id": "contact",
+          "party-uuids": ["org-uuid-acme-4321"]
+        }
+      ]
+    },
+    "groups": [
+      {
+        "id": "AC",
+        "class": "family",
+        "title": "Access Control",
+        "controls": [
+          {
+            "id": "AC_AISCC_1",
+            "class": "parent",
+            "title": "User Identification and Authentication",
+            "props": [
+
+              { "name": "cybersecurity category", "value": "Technical" },
+              { "name": "version", "value": "1.0" },
+              { "name": "old_instruction_reference", "value": "SEC_POL_3.1" }
+            ],
+            "controls": [
+              {
+                "id": "AC_AISCC_1_1",
+                "class": "child",
+                "title": "Password Complexity",
+                "props": [
+                  { "name": "cybersecurity category", "value": "Technical" },
+                  { "name": "criticality", "value": "Baseline" },
+                  { "name": "version", "value": "1.2" },
+                  { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+                  { "name": "cybersecurity_property_integrity", "value": "" },
+                  { "name": "cybersecurity_property_availability", "value": "" },
+                  { "name": "environment", "value": "Enterprise" },
+                  { "name": "lifecycle_status", "value": "Stable" }
+                ],
+                "parts": [
+                  { "name": "description", "prose": "Passwords must meet defined complexity requirements (minimum length, character types mix, no dictionary words, history constraints)." },
+                  { "name": "guidance", "prose": "Refer to Acme Password Policy v2.1 for specific parameters." }
+                ]
+              },
+              {
+                "id": "AC_AISCC_1_2",
+                "class": "child",
+                "title": "Multi-Factor Authentication (MFA)",
+                "props": [
+                   { "name": "cybersecurity category", "value": "Technical" },
+                   { "name": "criticality", "value": "Advanced" },
+                   { "name": "version", "value": "1.0" },
+                   { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+                   { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                   { "name": "cybersecurity_property_availability", "value": "" },
+                   { "name": "environment", "value": "Enterprise" },
+                   { "name": "lifecycle_status", "value": "Stable" }
+                ],
+                "parts": [
+                  { "name": "description", "prose": "MFA must be enforced for accessing systems classified as critical or containing sensitive data, and for all forms of remote network access." },
+                  { "name": "guidance", "prose": "Utilize only corporate-approved MFA solutions (e.g., authenticator app, hardware token). SMS-based MFA should be avoided for critical systems." }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "AC_AISCC_2",
+            "class": "stand_alone",
+            "title": "Access Enforcement (Least Privilege)",
+            "props": [
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "criticality", "value": "Baseline" },
+              { "name": "version", "value": "1.0" },
+               { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "environment", "value": "Enterprise" },
+              { "name": "lifecycle_status", "value": "Stable" },
+              { "name": "old_instruction_reference", "value": "SEC_POL_3.5" }
+            ],
+            "parts": [
+              { "name": "description", "prose": "Access rights to information systems and resources shall be granted based on the principle of least privilege, aligned with job roles and responsibilities (need-to-know/need-to-do)." },
+              { "name": "guidance", "prose": "Implement Role-Based Access Control (RBAC) where feasible. Access rights must be reviewed periodically (at least annually or upon role change) by asset owners or managers." }
+            ]
+          },
+          {
+            "id": "AC_AISCC_3",
+            "class": "stand_alone",
+            "title": "Privileged Access Management (PAM)",
+             "props": [
+               { "name": "cybersecurity category", "value": "Technical" },
+               { "name": "criticality", "value": "Advanced" },
+               { "name": "version", "value": "1.1" },
+               { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+               { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+               { "name": "cybersecurity_property_availability", "value": "" },
+               { "name": "environment", "value": "Enterprise" },
+               { "name": "lifecycle_status", "value": "Stable" },
+               { "name": "old_instruction_reference", "value": "SEC_POL_3.8" }
+            ],
+            "parts": [
+              { "name": "description", "prose": "Privileged accounts (e.g., administrator, root) must be strictly controlled, inventoried, monitored, and managed. Their use should be limited and logged." },
+              { "name": "guidance", "prose": "Implement dedicated PAM solutions for critical systems to manage credential vaulting, session monitoring, and just-in-time access. Avoid using shared privileged accounts where possible." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PS",
+        "class": "family",
+        "title": "Physical and Environmental Security",
+        "controls": [
+           {
+             "id": "PS_AISCC_1",
+             "class": "stand_alone",
+             "title": "Visitor Access Management",
+             "props": [
+
+               { "name": "chapter", "value": "Facility Access Control" },
+               { "name": "cybersecurity category", "value": "Physical" },
+               { "name": "criticality", "value": "Baseline" },
+               { "name": "version", "value": "1.0" },
+               { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+               { "name": "cybersecurity_property_integrity", "value": "" },
+               { "name": "cybersecurity_property_availability", "value": "" },
+               { "name": "environment", "value": "Facility" },
+               { "name": "lifecycle_status", "value": "Stable" },
+               { "name": "old_instruction_reference", "value": "BLDG_SEC_5.1" }
+             ],
+             "parts": [
+               { "name": "description", "prose": "Visitors must be registered upon arrival, verified, provided with temporary identification badges, escorted within non-public areas, and deregistered upon departure." },
+               { "name": "guidance", "prose": "Maintain visitor logs detailing name, company, host, date/time in/out for audit purposes (retention period according to local regulations)." }
+              ]
+            },
+            {
+              "id": "PS_AISCC_2",
+              "class": "stand_alone",
+              "title": "Secure Area Access",
+              "props": [
+
+                { "name": "chapter", "value": "Facility Access Control" },
+
+                { "name": "cybersecurity category", "value": "Physical" },
+                { "name": "criticality", "value": "Advanced" },
+                { "name": "version", "value": "1.1" },
+                { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+                { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                { "name": "cybersecurity_property_availability", "value": "TRUE" },
+                { "name": "environment", "value": "Facility" },
+                { "name": "lifecycle_status", "value": "Stable" },
+                { "name": "old_instruction_reference", "value": "BLDG_SEC_8.3" }
+              ],
+              "parts": [
+                { "name": "description", "prose": "Access to physically secured areas (e.g., data centers, server rooms, network closets, R&D labs) must be restricted to specifically authorized personnel using appropriate physical access control mechanisms." },
+                { "name": "guidance", "prose": "Multi-factor authentication (e.g., badge + PIN/biometric) should be used for highly sensitive areas. Access logs must be maintained and reviewed for anomalies." }
+               ]
+            },
+            {
+              "id": "PS_AISCC_3",
+              "class": "stand_alone",
+              "title": "Media Sanitization",
+              "props": [
+                 { "name": "chapter", "value": "Equipment Security" },
+                 { "name": "subchapter", "value": "Secure Disposal or Re-use of Equipment" },
+                 { "name": "cybersecurity category", "value": "Physical" },
+                 { "name": "criticality", "value": "Advanced" },
+                 { "name": "version", "value": "1.0" },
+                 { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+                 { "name": "cybersecurity_property_integrity", "value": "" },
+                 { "name": "cybersecurity_property_availability", "value": "" },
+                 { "name": "environment", "value": "Enterprise" },
+                 { "name": "lifecycle_status", "value": "Stable" },
+                 { "name": "old_instruction_reference", "value": "DISP_PROC_2.1" }
+                ],
+                "parts": [
+                  { "name": "description", "prose": "All storage media (e.g., Hard Disk Drives, Solid State Drives, USB drives, backup tapes, mobile devices) containing sensitive, confidential, or proprietary information must be securely sanitized (wiped) or physically destroyed according to approved standards and data classification before disposal, re-use, or transfer." },
+                  { "name": "guidance", "prose": "Follow recognized standards like NIST SP 800-88 Rev. 1. Maintain certificates or records of sanitization or destruction for audit purposes." }
+                 ]
+             },
+             {
+                "id": "PS_AISCC_4",
+                "class": "stand_alone",
+                "title": "Equipment Maintenance",
+                "props": [
+                  { "name": "chapter", "value": "Equipment Security" },
+                  { "name": "cybersecurity category", "value": "Physical" },
+                  { "name": "criticality", "value": "Baseline" },
+                  { "name": "version", "value": "1.0" },
+                  { "name": "cybersecurity_property_confidentiality", "value": "" },
+                  { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                  { "name": "cybersecurity_property_availability", "value": "TRUE" },
+                  { "name": "environment", "value": "Facility" },
+                  { "name": "lifecycle_status", "value": "Stable" },
+                  { "name": "old_instruction_reference", "value": "OPS_MAN_12.1" }
+                 ],
+                 "parts": [
+                   { "name": "description", "prose": "IT and infrastructure equipment shall be maintained in accordance with manufacturer specifications and organizational maintenance schedules to ensure continued availability, integrity, and security." },
+                   { "name": "guidance", "prose": "Ensure that maintenance personnel (internal or third-party) are properly vetted and supervised, especially when working on critical systems or within secure areas. Maintenance activities should be logged." }
+                  ]
+              }
+        ]
+      },
+      {
+         "id": "IM",
+         "class": "family",
+         "title": "Information Security Incident Management",
+         "controls": [
+           {
+            "id": "IM_AISCC_1",
+            "class": "parent",
+            "title": "Incident Handling Process",
+             "props": [
+               { "name": "cybersecurity category", "value": "Organizational" },
+               { "name": "version", "value": "1.0" },
+               { "name": "old_instruction_reference", "value": "INC_PLAN_1.0" }
+             ],
+             "controls": [
+               {
+                "id": "IM_AISCC_1_1",
+                "class": "child",
+                "title": "Incident Reporting",
+                "props": [
+                  { "name": "cybersecurity category", "value": "Organizational" },
+                  { "name": "criticality", "value": "Baseline" },
+                  { "name": "version", "value": "1.0" },
+                  { "name": "cybersecurity_property_confidentiality", "value": "" },
+                  { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                  { "name": "cybersecurity_property_availability", "value": "TRUE" },
+                  { "name": "environment", "value": "Enterprise" },
+                  { "name": "lifecycle_status", "value": "Stable" }
+                 ],
+                 "parts": [
+                   { "name": "description", "prose": "Information security events, weaknesses, or suspected incidents must be reported by personnel as quickly as possible through established and clearly communicated channels." },
+                   { "name": "guidance", "prose": "Establish multiple reporting channels (e.g., dedicated security hotline, email alias, service desk ticketing system). Provide security awareness training on recognizing and reporting incidents." }
+                  ]
+               },
+               {
+                 "id": "IM_AISCC_1_2",
+                 "class": "child",
+                 "title": "Incident Response and Recovery",
+                 "props": [
+                   { "name": "cybersecurity category", "value": "Organizational" },
+                   { "name": "criticality", "value": "Advanced" },
+                   { "name": "version", "value": "1.1" },
+                   { "name": "cybersecurity_property_confidentiality", "value": "TRUE" },
+                   { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+                   { "name": "cybersecurity_property_availability", "value": "TRUE" },
+                   { "name": "environment", "value": "Enterprise" },
+                   { "name": "lifecycle_status", "value": "Stable" }
+                  ],
+                  "parts": [
+                    { "name": "description", "prose": "A formal, documented incident response plan must be followed upon detection of an incident. The plan shall cover phases including identification, containment, eradication, recovery, and post-incident analysis." },
+                    { "name": "guidance", "prose": "The plan must define roles, responsibilities, communication pathways (internal and external), and escalation procedures. The plan should be tested regularly (e.g., via tabletop exercises or simulations)." }
+                   ]
+               }
+             ]
+           },
+           {
+            "id": "IM_AISCC_2",
+            "class": "stand_alone",
+            "title": "Post-Incident Review (Lessons Learned)",
+             "props": [
+              { "name": "cybersecurity category", "value": "Organizational" },
+              { "name": "criticality", "value": "Baseline" },
+              { "name": "version", "value": "1.0" },
+              { "name": "cybersecurity_property_confidentiality", "value": "" },
+              { "name": "cybersecurity_property_integrity", "value": "TRUE" },
+              { "name": "cybersecurity_property_availability", "value": "" },
+              { "name": "environment", "value": "Enterprise" },
+              { "name": "lifecycle_status", "value": "Stable" },
+              { "name": "old_instruction_reference", "value": "INC_PLAN_5.1" }
+             ],
+             "parts": [
+               { "name": "description", "prose": "Following the resolution of significant information security incidents, a post-incident review (lessons learned session) must be conducted to identify root causes, evaluate the effectiveness of the response actions, and identify areas for improvement in controls or procedures." },
+               { "name": "guidance", "prose": "Document findings, recommendations, and corrective actions from the review. Track implementation of improvements to prevent recurrence." }
+              ]
+           }
+         ]
+      }
+    ]
+  }
+}
+

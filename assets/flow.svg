@@ -1,0 +1,98 @@
+<svg width="840" height="260" viewBox="0 0 840 260" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Hintergrund transparent -->
+  <!-- <rect x="0" y="0" width="840" height="260" fill="#ffffff"/> -->
+  <!-- stattdessen: -->
+  <rect x="0" y="0" width="840" height="260" fill="none"/>
+
+  <!-- Schritt 1: Embedding-Speicherung -->
+  <rect x="0" y="40" width="240" height="160" rx="10" ry="10"
+        fill="#f5f5f5" stroke="#444444" stroke-width="1.2"/>
+  <text x="120" y="70" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="16" font-weight="bold" fill="#222222">
+    1. Embedding-Speicherung
+  </text>
+
+  <text x="20" y="95" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Textelemente (z. B. Controls, Parts)
+  </text>
+  <text x="20" y="112" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Umwandlung in Vektoren (Embeddings)
+  </text>
+  <text x="20" y="129" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Speicherung direkt im Graph:
+  </text>
+  <text x="35" y="146" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    Part (name = "description")
+  </text>
+  <text x="35" y="162" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    └─ Property: embedding_vector
+  </text>
+  <text x="20" y="182" font-family="Arial, sans-serif" font-size="11" fill="#666666">
+    (z. B. Neo4j-Knoten mit Embedding-Property)
+  </text>
+
+  <!-- Pfeil 1 -> 2 -->
+  <line x1="240" y1="120" x2="300" y2="120"
+        stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Schritt 2: Similarity Search -->
+  <rect x="300" y="40" width="240" height="160" rx="10" ry="10"
+        fill="#f5f5f5" stroke="#444444" stroke-width="1.2"/>
+  <text x="420" y="70" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="16" font-weight="bold" fill="#222222">
+    2. Similarity Search
+  </text>
+
+  <text x="320" y="95" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Nutzer-Query → Query-Embedding
+  </text>
+  <text x="320" y="112" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Cosinus-Ähnlichkeit mit gespeicherten
+  </text>
+  <text x="335" y="128" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+        Embeddings im Graph
+  </text>
+  <text x="320" y="148" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Rückgabe Top-N relevantester Knoten
+  </text>
+
+  <!-- Formel -->
+  <text x="320" y="170" font-family="Arial, sans-serif" font-size="10" fill="#666666">
+    cos(θ) = (A · B) / (‖A‖ × ‖B‖)
+  </text>
+
+  <!-- Pfeil 2 -> 3 -->
+  <line x1="540" y1="120" x2="600" y2="120"
+        stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Schritt 3: Antwortgenerierung -->
+  <rect x="600" y="40" width="240" height="160" rx="10" ry="10"
+        fill="#f5f5f5" stroke="#444444" stroke-width="1.2"/>
+  <text x="720" y="70" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="16" font-weight="bold" fill="#222222">
+    3. Antwortgenerierung
+  </text>
+
+  <text x="615" y="95" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Kontexte werden an LLM übergeben
+  </text>
+  <text x="615" y="112" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • LLM generiert Antwort auf Basis der
+  </text>
+  <text x="630" y="128" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+        bereitgestellten Kontexte
+  </text>
+  <text x="615" y="148" font-family="Arial, sans-serif" font-size="12" fill="#333333">
+    • Human-in-the-Loop Validierung
+  </text>
+
+  <!-- Pfeil-Definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 z" fill="#444444"/>
+    </marker>
+  </defs>
+
+</svg>

@@ -1,0 +1,37 @@
+# Python virtual env
+.venv/
+env/
+venv/
+
+# Byte-compiled
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.idea/
+
+# Sphinx build
+/build/
+source/_build/
+docs/_build/
+
+# OS
+.DS_Store
+
+# Neo4j data (Docker volume)
+docker/neo4j/data/
+
+# Caches
+.cache/
+*.log
+nohup.out
+
+# Huggingface / Models
+/root/.cache/huggingface/
+root/.cache/huggingface/
+**/sentence_transformers/
+
+# Docker
+docker_model-cache/

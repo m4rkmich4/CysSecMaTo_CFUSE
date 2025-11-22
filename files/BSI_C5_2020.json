@@ -1,0 +1,484 @@
+{
+  "catalog": {
+    "uuid": "d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f90",
+    "metadata": {
+      "title": "BSI C5 Compliance Control Catalog (C5:2020)",
+      "published": "2020-09-30T00:00:00Z",
+      "last-modified": "2020-09-30T00:00:00Z",
+      "version": "2020",
+      "oscal-version": "1.0.0",
+      "links": [
+        {
+          "href": "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cloud-Computing/C5/Kriterienkatalog-C5",
+          "rel": "reference"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "a1b2c3d4-e5f6-7890-ab12-cd34ef567890",
+          "type": "organization",
+          "name": "Federal Office for Information Security (BSI)",
+          "email-addresses": ["info@bsi.bund.de"],
+          "remarks": "German cybersecurity authority"
+        }
+      ],
+      "roles": [
+        {
+          "id": "creator",
+          "title": "Catalog Creator",
+          "description": "Originator of this C5 catalog"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "creator",
+          "party-uuids": ["a1b2c3d4-e5f6-7890-ab12-cd34ef567890"]
+        }
+      ]
+    },
+    "groups": [
+      {
+        "id": "OrgInfoSec",
+        "class": "family",
+        "title": "Organization of Information Security",
+        "controls": [
+          {
+            "id": "C5-1",
+            "class": "stand_alone",
+            "title": "Information Security Management Framework",
+            "props": [
+              { "name": "chapter", "value": "1" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Planning, implementation, maintenance and continuous improvement of a framework regarding information security within the organization."
+              },
+              {
+                "name": "guidance",
+                "prose": "Establish an ISMS aligned with ISO/IEC 27001, integrate risk management and define governance structures."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "SecPolWI",
+        "class": "family",
+        "title": "Security Policies and Work Instructions",
+        "controls": [
+          {
+            "id": "C5-2",
+            "class": "stand_alone",
+            "title": "Policy Documentation and Approval",
+            "props": [
+              { "name": "chapter", "value": "2" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Providing policies and instructions with respect to the security claim and to support the business requirements."
+              },
+              {
+                "name": "guidance",
+                "prose": "Document policies uniformly, version and approve them by top management, and communicate to all stakeholders."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Personnel",
+        "class": "family",
+        "title": "Personnel",
+        "controls": [
+          {
+            "id": "C5-3",
+            "class": "stand_alone",
+            "title": "Security Awareness and Responsibilities",
+            "props": [
+              { "name": "chapter", "value": "3" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Ensure that employees, service providers and suppliers understand their tasks, are aware of their responsibilities regarding information security, and that assets are protected when tasks change or end."
+              },
+              {
+                "name": "guidance",
+                "prose": "Provide role‑based screening, training and clear assignment of duties; enforce confidentiality agreements."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "AssetMgmt",
+        "class": "family",
+        "title": "Asset Management",
+        "controls": [
+          {
+            "id": "C5-4",
+            "class": "stand_alone",
+            "title": "Asset Inventory and Ownership",
+            "props": [
+              { "name": "chapter", "value": "4" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Identifying the organization's own assets and responsible persons as well as ensuring an appropriate level of protection."
+              },
+              {
+                "name": "guidance",
+                "prose": "Maintain an accurate register of hardware, software, data and assign clear ownership and classification."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PhysicalSec",
+        "class": "family",
+        "title": "Physical Security",
+        "controls": [
+          {
+            "id": "C5-5",
+            "class": "stand_alone",
+            "title": "Physical Access Controls",
+            "props": [
+              { "name": "chapter", "value": "5" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Preventing unauthorized physical access and protection against theft, damage, loss and operational failures."
+              },
+              {
+                "name": "guidance",
+                "prose": "Implement perimeters, entry controls, CCTV and environmental safeguards."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Operations",
+        "class": "family",
+        "title": "Operations",
+        "controls": [
+          {
+            "id": "C5-6",
+            "class": "stand_alone",
+            "title": "Operational Procedures and Protections",
+            "props": [
+              { "name": "chapter", "value": "6" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Assuring proper regular operations including capacity planning, malware protection, logging and monitoring events, as well as handling vulnerabilities, malfunctions and errors."
+              },
+              {
+                "name": "guidance",
+                "prose": "Define standard operating procedures, implement patching and monitor system health continuously."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "IdAccessMgmt",
+        "class": "family",
+        "title": "Identity and Access Management",
+        "controls": [
+          {
+            "id": "C5-7",
+            "class": "stand_alone",
+            "title": "Authentication and Authorization Controls",
+            "props": [
+              { "name": "chapter", "value": "7" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Securing the authorization and authentication of cloud provider and customer users to prevent unauthorized access."
+              },
+              {
+                "name": "guidance",
+                "prose": "Enforce strong MFA, least‑privilege role assignments and periodic access reviews."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CryptoKeyMgmt",
+        "class": "family",
+        "title": "Cryptography and Key Management",
+        "controls": [
+          {
+            "id": "C5-8",
+            "class": "stand_alone",
+            "title": "Cryptographic Controls",
+            "props": [
+              { "name": "chapter", "value": "8" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Using appropriate and effective cryptography to safeguard information security."
+              },
+              {
+                "name": "guidance",
+                "prose": "Select algorithms per current standards, manage keys securely and rotate regularly."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CommSec",
+        "class": "family",
+        "title": "Communication Security",
+        "controls": [
+          {
+            "id": "C5-9",
+            "class": "stand_alone",
+            "title": "Network and Data-in-Transit Protection",
+            "props": [
+              { "name": "chapter", "value": "9" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Protecting information in networks and the corresponding information-processing systems."
+              },
+              {
+                "name": "guidance",
+                "prose": "Use TLS/SSL, VPNs and network segmentation to secure data in transit."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PortabilityInterop",
+        "class": "family",
+        "title": "Portability and Interoperability",
+        "controls": [
+          {
+            "id": "C5-10",
+            "class": "stand_alone",
+            "title": "Service Portability",
+            "props": [
+              { "name": "chapter", "value": "10" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Providing the ability to securely operate the service on different IT platforms and to terminate the service securely."
+              },
+              {
+                "name": "guidance",
+                "prose": "Support open APIs and data export formats; ensure secure decommissioning."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ProcDevMaint",
+        "class": "family",
+        "title": "Procurement, Development and Maintenance of Information Systems",
+        "controls": [
+          {
+            "id": "C5-11",
+            "class": "stand_alone",
+            "title": "Secure Development Lifecycle",
+            "props": [
+              { "name": "chapter", "value": "11" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Complying with security objectives during new developments and procurement of information systems as well as changes."
+              },
+              {
+                "name": "guidance",
+                "prose": "Integrate security requirements in procurement contracts; follow secure coding and change control."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ProviderControl",
+        "class": "family",
+        "title": "Control and Monitoring of Service Providers and Suppliers",
+        "controls": [
+          {
+            "id": "C5-12",
+            "class": "stand_alone",
+            "title": "Subcontractor Controls",
+            "props": [
+              { "name": "chapter", "value": "12" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Protecting information accessed by subcontractors and monitoring agreed service and security requirements."
+              },
+              {
+                "name": "guidance",
+                "prose": "Define inclusive or carve‑out audit methods; include subcontractor controls in system description."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "IncidentMgmt",
+        "class": "family",
+        "title": "Security Incident Management",
+        "controls": [
+          {
+            "id": "C5-13",
+            "class": "stand_alone",
+            "title": "Incident Monitoring and Response",
+            "props": [
+              { "name": "chapter", "value": "13" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Assuring a consistent and comprehensive approach to monitoring, recording, assessment, communication and escalation of security incidents."
+              },
+              {
+                "name": "guidance",
+                "prose": "Establish CERT, define roles, prioritization and incident classification schemes."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "BCM",
+        "class": "family",
+        "title": "Business Continuity Management",
+        "controls": [
+          {
+            "id": "C5-14",
+            "class": "stand_alone",
+            "title": "Continuity Planning and Governance",
+            "props": [
+              { "name": "chapter", "value": "14" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Strategic establishment and governance of BCM; planning, implementing and testing continuity concepts to ensure continuous operations."
+              },
+              {
+                "name": "guidance",
+                "prose": "Conduct regular disaster recovery tests and integrate with incident response."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "AuditVerification",
+        "class": "family",
+        "title": "Security Check and Verification",
+        "controls": [
+          {
+            "id": "C5-15",
+            "class": "stand_alone",
+            "title": "Audit and Verification Activities",
+            "props": [
+              { "name": "chapter", "value": "15" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Checking and verifying that information security safeguards are implemented and carried out in accordance with organization‑wide policies and instructions."
+              },
+              {
+                "name": "guidance",
+                "prose": "Perform independent audits (ISAE 3402, IDW PS 951) and follow up findings promptly."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ComplianceDataProt",
+        "class": "family",
+        "title": "Compliance and Data Protection",
+        "controls": [
+          {
+            "id": "C5-16",
+            "class": "stand_alone",
+            "title": "Legal and Regulatory Compliance",
+            "props": [
+              { "name": "chapter", "value": "16" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Preventing violations of statutory or contractual duties with respect to information security."
+              },
+              {
+                "name": "guidance",
+                "prose": "Map controls to BSI IT‑Grundschutz and GDPR requirements; document evidence."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "MobileDeviceMgmt",
+        "class": "family",
+        "title": "Mobile Device Management",
+        "controls": [
+          {
+            "id": "C5-17",
+            "class": "stand_alone",
+            "title": "Mobile Access Security",
+            "props": [
+              { "name": "chapter", "value": "17" },
+              { "name": "version", "value": "2020" }
+            ],
+            "parts": [
+              {
+                "name": "description",
+                "prose": "Guaranteeing secure access to IT systems via mobile devices under the cloud provider’s responsibility."
+              },
+              {
+                "name": "guidance",
+                "prose": "Enforce device encryption, MDM solutions and secure configuration profiles."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
