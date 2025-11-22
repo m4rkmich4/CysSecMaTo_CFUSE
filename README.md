@@ -11,7 +11,6 @@ Das System kombiniert:
 - eine lokale LLM-Anbindung über Ollama
 - das Modell `mistral:7b`
 - Python-Module für Import, Embeddings, Retrieval und Mapping
-- eine umfangreiche technische Dokumentation (Sphinx)
 
 C-FUSE ist vollständig reproduzierbar auf macOS, Windows und Linux.
 
