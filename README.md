@@ -29,7 +29,8 @@ cd CysSecMaTo_CFUSE
 
 ## 2. Python-Umgebung einrichten (Python 3.11 erforderlich)
 
-### macOS / Linux
+### macOS / Linux  
+Ausführen im Projektverzeichnis (`CysSecMaTo_CFUSE/`):
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
@@ -37,7 +38,8 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Windows (PowerShell)
+### Windows (PowerShell)  
+Ausführen im Projektverzeichnis (`CysSecMaTo_CFUSE\`):
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -48,6 +50,7 @@ pip install -r requirements.txt
 ---
 
 ## 3. Neo4j starten (Docker)
+Ausführen im Ordner `CysSecMaTo_CFUSE/docker/`:
 ```bash
 cd docker
 docker compose up -d
@@ -59,7 +62,7 @@ Zugriff:
 - Neo4j Browser: http://localhost:7474  
 - Bolt: `bolt://localhost:7687`  
 
-Standard-Login (laut `docker-compose.yml`):
+Standard-Login:
 
 ```
 User: neo4j
@@ -74,9 +77,8 @@ Passwort: CfUsE_2025
 Download-Seite:  
 https://ollama.com/download
 
-Für macOS, Windows und Linux verfügbar.
-
-### Modell `mistral:7b` herunterladen
+### Modell `mistral:7b` herunterladen  
+Ausführen im Terminal / PowerShell:
 ```bash
 ollama pull mistral:7b
 ```
@@ -88,43 +90,35 @@ curl http://localhost:11434/api/tags
 
 ---
 
-## 5. C-FUSE starten
+# C-FUSE starten
 
-### macOS / Linux
+## macOS / Linux  
+Ausführen im Projektverzeichnis (`CysSecMaTo_CFUSE/`):
 ```bash
 source .venv/bin/activate
 python app.py
 ```
 
-### Windows
+## Windows  
+Ausführen im Projektverzeichnis (`CysSecMaTo_CFUSE\`):
 ```powershell
 .\.venv\Scripts\Activate.ps1
 python app.py
 ```
 
-Die Qt-Oberfläche öffnet sich automatisch.
+Die Qt-Oberfläche startet automatisch.
 
 ---
 
 # Dokumentation
 
-Die generierte technische Dokumentation befindet sich unter:
+Die fertige Dokumentation liegt unter:
 
 ```
-build/html/index.html
+CysSecMaTo_CFUSE/build/html/index.html
 ```
 
-### Dokumentation neu generieren
-
-macOS / Linux:
-```bash
-make html
-```
-
-Windows:
-```powershell
-.\make.bat html
-```
+Einfach im Browser öffnen.
 
 ---
 
@@ -141,7 +135,7 @@ CysSecMaTo_CFUSE/
 ├── logic/              # Embeddings, LLM, Mapping, RAG
 ├── retrieval/          # Fake-RAG-Pipeline
 ├── ui/                 # Qt Views
-├── source/             # Sphinx-Dokumentation
+├── source/             # Sphinx-Dokumentation (Quellen)
 ├── build/html/         # Kompilierte HTML-Dokumentation
 ├── requirements.txt
 └── README.md
@@ -151,18 +145,26 @@ CysSecMaTo_CFUSE/
 
 # Hinweise für Reviewer / Gutachter
 
-Für vollständige Reproduktion:
+Zur vollständigen Ausführung:
 
 1. Repository klonen  
 2. Python-Umgebung mit **Python 3.11** erstellen  
-3. Abhängigkeiten via `requirements.txt` installieren  
+3. Abhängigkeiten aus `requirements.txt` installieren  
 4. Neo4j über Docker starten  
-5. Ollama installieren und Modell `mistral:7b` bereitstellen  
-6. Anwendung starten:  
-   ```bash
-   python app.py
-   ```
+5. Ollama installieren und `mistral:7b` bereitstellen  
+6. Anwendung starten:
 
-Damit lässt sich die komplette C-FUSE-Umgebung vollständig lokal ausführen.
+### macOS / Linux
+```bash
+source .venv/bin/activate
+python3 app.py
+```
+
+### Windows
+```powershell
+.\.venv\Scripts\Activate.ps1
+python app.py
+```
+
 
 ---
