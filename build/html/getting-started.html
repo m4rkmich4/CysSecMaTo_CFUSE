@@ -47,10 +47,11 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#einfuhrung">Einführung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repository-herunterladen">Repository herunterladen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#systemvoraussetzungen">Systemvoraussetzungen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#projektstart">Projektstart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#projektstruktur-uberblick">Projektstruktur (Überblick)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#projektstruktur-kurzuberblick">Projektstruktur (Kurzüberblick)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nachste-schritte">Nächste Schritte</a></li>
 </ul>
 </li>
@@ -394,14 +395,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-1-0-beta-2025-11-01">Version 1.0 beta (2025-11-01)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-9-2025-09-15">Version 0.9 (2025-09-15)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-8-2025-06-30">Version 0.8 (2025-06-30)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-7-2025-04-10">Version 0.7 (2025-04-10)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#zukunftige-meilensteine">Zukünftige Meilensteine</a></li>
-</ul>
-</li>
 </ul>
 
         </div>
@@ -432,95 +425,132 @@
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <section id="einfuhrung">
 <h2>Einführung<a class="headerlink" href="#einfuhrung" title="Link to this heading"></a></h2>
-<p><strong>C-FUSE (Cybersecurity Framework Unification &amp; Standard Evaluation)</strong> ist ein Python-basiertes System zur automatisierten Analyse, Harmonisierung und Bewertung von Cybersecurity-Standards.</p>
-<p>Es kombiniert graphbasierte Datenhaltung (Neo4j), KI-gestützte Ähnlichkeitsbewertung (z. B. über Embeddings oder LLMs) und ein modulares Frontend zur Visualisierung und Steuerung.</p>
-<p>Ziel des Projekts ist der Nachweis eines Proof-of-Concepts für die automatisierte semantische Zuordnung von Controls zwischen unterschiedlichen Standards wie <strong>ISO 27002</strong>, <strong>BSI C5</strong> oder <strong>NIST 800-53</strong>.</p>
-<p>—</p>
+<p>C-FUSE ist ein lokal ausführbares Analyse- und Mapping-System für Cybersecurity-Standards.
+Es kombiniert eine Neo4j-Graphdatenbank, KI-gestützte Ähnlichkeitsbewertungen und ein
+modulares Qt-Frontend zur Visualisierung und Steuerung der Analyseprozesse.</p>
+<p>Dieses Kapitel zeigt, wie das Projekt installiert, konfiguriert und gestartet wird.</p>
+</section>
+<section id="repository-herunterladen">
+<h2>Repository herunterladen<a class="headerlink" href="#repository-herunterladen" title="Link to this heading"></a></h2>
+<p>Das Projekt ist öffentlich verfügbar unter:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/m4rkmich4/CysSecMaTo_CFUSE.git">https://github.com/m4rkmich4/CysSecMaTo_CFUSE.git</a></p>
+</div></blockquote>
+<p>Klonen Sie das Repository in ein lokales Verzeichnis Ihrer Wahl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/m4rkmich4/CysSecMaTo_CFUSE.git
+<span class="nb">cd</span><span class="w"> </span>CysSecMaTo_CFUSE
+</pre></div>
+</div>
 </section>
 <section id="systemvoraussetzungen">
 <h2>Systemvoraussetzungen<a class="headerlink" href="#systemvoraussetzungen" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><strong>Python:</strong> 3.11 oder neuer</p></li>
-<li><p><strong>Pip-Pakete:</strong> siehe <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
+<li><p><strong>Python:</strong> Version 3.11 oder neuer</p></li>
+<li><p><strong>Abhängigkeiten:</strong> siehe <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
+<li><p><strong>Neo4j:</strong> Version 5.x (lokaler Docker-Container empfohlen)</p></li>
 <li><p><strong>Betriebssystem:</strong> macOS, Linux oder Windows</p></li>
-<li><p><strong>Datenbank:</strong> Neo4j (Version 5.x empfohlen)</p></li>
-<li><p><strong>Optional:</strong> Lokales LLM über Ollama oder ähnlichen Backend-Dienst</p></li>
+<li><p><strong>Optional:</strong> Lokales LLM über Ollama, wenn KI-Funktionen genutzt werden</p></li>
 </ul>
-<p>—</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>Repository herunterladen:</p></li>
+<li><p><strong>Projektverzeichnis betreten</strong></p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Platzhalter – Projektverzeichnis hier einfügen</span>
-<span class="nb">cd</span><span class="w"> </span>platzhalter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Virtuelle Umgebung anlegen und aktivieren:</p></li>
+<li><p><strong>Virtuelle Umgebung erstellen</strong></p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">        </span><span class="c1"># macOS / Linux</span>
-.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">           </span><span class="c1"># Windows</span>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</pre></div>
+</div>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">python -m venv .venv</span>
+<span class="go">.\.venv\Scripts\activate</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Abhängigkeiten installieren:</p></li>
+<li><p><strong>Abhängigkeiten installieren</strong></p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>(Optional) Neo4j konfigurieren:</p></li>
+<li><p><strong>Neo4j konfigurieren</strong></p></li>
 </ol>
-<ul class="simple">
-<li><p>Die Verbindung wird über <code class="docutils literal notranslate"><span class="pre">db/neo4j_connector.py</span></code> gesteuert.</p></li>
-<li><p>Stelle sicher, dass Benutzername, Passwort und Port korrekt gesetzt sind.</p></li>
-</ul>
-<p>—</p>
+<p>Die Verbindung wird zentral in:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">db/neo4j_connector.py</span></code></p>
+</div></blockquote>
+<p>definiert.</p>
+<p>Die standardmäßig verwendeten Zugangsdaten für die lokale Entwicklungsumgebung
+sind im Projekt fest hinterlegt:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>URI:      bolt://localhost:7687
+Benutzer: neo4j
+Passwort: CfUsE_2025
+</pre></div>
+</div>
+<p>Diese Werte müssen sowohl im Neo4j-Container als auch in einer lokal installierten Instanz
+übereinstimmen.</p>
+<p><strong>Verbindung prüfen:</strong></p>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>ps
+docker<span class="w"> </span>logs<span class="w"> </span>neo4j
+</pre></div>
+</div>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">docker ps</span>
+<span class="go">docker logs neo4j</span>
+</pre></div>
+</div>
 </section>
 <section id="projektstart">
 <h2>Projektstart<a class="headerlink" href="#projektstart" title="Link to this heading"></a></h2>
-<p>Das Hauptskript ist <code class="docutils literal notranslate"><span class="pre">app.py</span></code>.
-Starte das System lokal über die Kommandozeile:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>app.py
+<p>Starten Sie das Hauptprogramm immer über die Datei <code class="docutils literal notranslate"><span class="pre">app.py</span></code>.</p>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python3<span class="w"> </span>app.py
 </pre></div>
 </div>
-<p>Beim Start wird:</p>
-<ul class="simple">
-<li><p>die Haupt-UI geladen (Qt-basiert),</p></li>
-<li><p>die Datenbankverbindung hergestellt,</p></li>
-<li><p>verfügbare Views wie <strong>Control Embedding</strong>, <strong>Context Retrieval</strong> und <strong>Mapping</strong> initialisiert.</p></li>
-</ul>
-<p>—</p>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE</span>
+<span class="go">.\.venv\Scripts\activate</span>
+<span class="go">python app.py</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>Der erste Start kann <strong>spürbar länger dauern</strong>, da:
+* die Qt-Oberfläche geladen wird,
+* die Datenbankverbindung aufgebaut wird,
+* Views wie Control-Embedding, Context-Retrieval, Mapping und Import initialisiert werden.</p>
+</div>
 </section>
-<section id="projektstruktur-uberblick">
-<h2>Projektstruktur (Überblick)<a class="headerlink" href="#projektstruktur-uberblick" title="Link to this heading"></a></h2>
+<section id="projektstruktur-kurzuberblick">
+<h2>Projektstruktur (Kurzüberblick)<a class="headerlink" href="#projektstruktur-kurzuberblick" title="Link to this heading"></a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.
 ├── app.py                  # Einstiegspunkt
-├── assets/                 # Styles, Markdown-Hilfen
-├── config/                 # Prompt-Definitionen (DSPy, RAG)
-├── db/                     # Neo4j-Import, Modelle, Queries
-├── logic/                  # KI-Logik, Embeddings, Mapping
-├── retrieval/              # Fake-Retriever &amp; Test-RAG
-├── ui/                     # Qt-Frontend-Views
+├── assets/                 # Styles &amp; Markdown
+├── config/                 # Prompt-/LLM-Konfigurationen
+├── db/                     # Neo4j-Modelle, Queries, Import
+├── logic/                  # Embeddings, Mapping, KI
+├── retrieval/              # Fake-RAG &amp; Tests
+├── ui/                     # Qt-Frontend
 ├── tests/                  # Unittests
-└── files/                  # Beispiel-JSON/OSCAL-Dateien
+└── files/                  # Beispiel-OSCAL &amp; JSON
 </pre></div>
 </div>
-<p>—</p>
 </section>
 <section id="nachste-schritte">
 <h2>Nächste Schritte<a class="headerlink" href="#nachste-schritte" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Lies die <strong>Code-Referenz</strong> unter <a class="reference internal" href="code/index.html"><span class="doc">Code-Referenz</span></a> für detaillierte Modulbeschreibungen.</p></li>
-<li><p>Siehe <strong>Changelog</strong> für die Versionshistorie.</p></li>
-<li><p>Baue die Dokumentation lokal mit:</p></li>
+<li><p>Zur <strong>Modul-Übersicht</strong>: <a class="reference internal" href="code/index.html"><span class="doc">Code-Referenz</span></a></p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
-</pre></div>
-</div>
 </section>
 </section>
 

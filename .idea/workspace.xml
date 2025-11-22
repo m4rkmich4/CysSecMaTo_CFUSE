@@ -4,7 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ade03cb-c2c7-4f54-9826-e79936682090" name="Changes" comment="initial commit" />
+    <list default="true" id="4ade03cb-c2c7-4f54-9826-e79936682090" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/changelog.doctree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/getting-started.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/getting-started.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/index.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/assets/markdown_utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/assets/markdown_utils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/config/prompts_dspy.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/config/prompts_dspy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/config/prompts_rag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/config/prompts_rag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/hitl_queries.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/hitl_queries.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/import_manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/import_manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/models.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/models.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/neo4j_connector.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/neo4j_connector.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/neo4j_importer.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/neo4j_importer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/queries_embeddings.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/queries_embeddings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/queries_mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/queries_mapping.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/queries_rag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/queries_rag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/DSPy_version.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/DSPy_version.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/control_embedding.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/control_embedding.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/control_mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/control_mapping.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/hitl_processes.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/hitl_processes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/llm_interface.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/llm_interface.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/rag_processor.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/rag_processor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/retrieval/fake_retriever.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/retrieval/fake_retriever.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/retrieval/utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/retrieval/utils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/context_retrieval.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/context_retrieval.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_embedding_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_embedding_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_1n_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_1n_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_mn_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_mn_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/human_validation_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/human_validation_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/import_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/import_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/main_window.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/main_window.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/rag_mapping_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/rag_mapping_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/standard_comparison.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/standard_comparison.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/changelog.rst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/getting-started.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/getting-started.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/changelog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/assets.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/assets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/config.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/db.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/db.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/logic.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/logic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/retrieval.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/retrieval.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/code/ui.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/ui.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/genindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/getting-started.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/getting-started.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/objects.inv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/py-modindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,20 +78,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "m4rkmich4"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;m4rkmich4&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/m4rkmich4/CySecMaTo_CFUSE.git",
-    "accountId": "f111faa6-cc85-4688-929e-ca28b732e48c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/m4rkmich4/CysSecMaTo_CFUSE.git&quot;,
+    &quot;accountId&quot;: &quot;f111faa6-cc85-4688-929e-ca28b732e48c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -42,28 +99,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.app.executor": "Run",
-    "Python.main_window.executor": "Run",
-    "Python.neo4j_test.executor": "Run",
-    "Python.prompts_dspy.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test_validate_catalog.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "last_opened_file_path": "/Users/michaelmark/PycharmProjects/CySecMaTo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_window.executor&quot;: &quot;Run&quot;,
+    &quot;Python.neo4j_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prompts_dspy.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_validate_catalog.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/michaelmark/PycharmProjects/CySecMaTo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/files" />
@@ -160,7 +218,8 @@
       <workItem from="1763797030331" duration="4047000" />
       <workItem from="1763801103274" duration="391000" />
       <workItem from="1763801592625" duration="51000" />
-      <workItem from="1763801645900" duration="1959000" />
+      <workItem from="1763801645900" duration="3908000" />
+      <workItem from="1763808601167" duration="2748000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />

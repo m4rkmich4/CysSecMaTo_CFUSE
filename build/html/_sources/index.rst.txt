@@ -7,6 +7,12 @@ Dieses Projekt dokumentiert den Aufbau, die Funktionsweise und den Quellcode des
 Es kombiniert graphbasierte Verarbeitung (Neo4j), lokale KI-Komponenten und modulare Python-Logik,
 um Cybersecurity-Standards effizient zu analysieren und zu mappen.
 
+.. warning::
+
+   Dieses System ist ein Forschungsprototyp.
+   Es befindet sich nicht in einem produktreifen Zustand und darf **nicht in produktiven Umgebungen eingesetzt werden**.
+   Die Nutzung erfolgt ausschließlich zu wissenschaftlichen und experimentellen Zwecken.
+
 ---
 
 Überblick
@@ -25,7 +31,6 @@ Die Dokumentation ist in zwei Hauptbereiche gegliedert:
 
    getting-started
    code/index
-   changelog
 
 ---
 
