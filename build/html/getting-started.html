@@ -50,6 +50,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#repository-herunterladen">Repository herunterladen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#systemvoraussetzungen">Systemvoraussetzungen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neo4j-mit-docker-compose-starten">4. Neo4j mit Docker Compose starten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zugriff-uber-den-browser-neo4j-browser-neo4j-workspace">Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#projektstart">Projektstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#projektstruktur-kurzuberblick">Projektstruktur (Kurzüberblick)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nachste-schritte">Nächste Schritte</a></li>
@@ -464,12 +468,14 @@ modulares Qt-Frontend zur Visualisierung und Steuerung der Analyseprozesse.</p>
 <li><p><strong>Virtuelle Umgebung erstellen</strong></p></li>
 </ol>
 <p>macOS / Linux:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </pre></div>
 </div>
 <p>Windows (CMD):</p>
-<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">python -m venv .venv</span>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE</span>
+<span class="go">python -m venv .venv</span>
 <span class="go">.\.venv\Scripts\activate</span>
 </pre></div>
 </div>
@@ -479,34 +485,49 @@ modulares Qt-Frontend zur Visualisierung und Steuerung der Analyseprozesse.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p><strong>Neo4j konfigurieren</strong></p></li>
-</ol>
-<p>Die Verbindung wird zentral in:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">db/neo4j_connector.py</span></code></p>
-</div></blockquote>
-<p>definiert.</p>
-<p>Die standardmäßig verwendeten Zugangsdaten für die lokale Entwicklungsumgebung
-sind im Projekt fest hinterlegt:</p>
+</section>
+<section id="neo4j-mit-docker-compose-starten">
+<h2>4. Neo4j mit Docker Compose starten<a class="headerlink" href="#neo4j-mit-docker-compose-starten" title="Link to this heading"></a></h2>
+<p>Für C-FUSE wird Neo4j über eine vorbereitete Docker-Compose-Datei im Unterordner
+<code class="docutils literal notranslate"><span class="pre">docker/</span></code> gestartet. Diese setzt automatisch die passenden Zugangsdaten, Ports
+und Persistenzoptionen für den Datenbankcontainer.</p>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE/docker
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE\docker</span>
+<span class="go">docker compose up -d</span>
+</pre></div>
+</div>
+<p>Die von C-FUSE erwarteten Standard-Zugangsdaten sind:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>URI:      bolt://localhost:7687
 Benutzer: neo4j
 Passwort: CfUsE_2025
 </pre></div>
 </div>
-<p>Diese Werte müssen sowohl im Neo4j-Container als auch in einer lokal installierten Instanz
-übereinstimmen.</p>
-<p><strong>Verbindung prüfen:</strong></p>
-<p>macOS / Linux:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>ps
-docker<span class="w"> </span>logs<span class="w"> </span>neo4j
+<p>Diese Werte sind sowohl in der <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> als auch im Connector
+<code class="docutils literal notranslate"><span class="pre">db/neo4j_connector.py</span></code> definiert und müssen nur angepasst werden,
+wenn von der Standardkonfiguration abgewichen wird.</p>
+<section id="zugriff-uber-den-browser-neo4j-browser-neo4j-workspace">
+<h3>Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)<a class="headerlink" href="#zugriff-uber-den-browser-neo4j-browser-neo4j-workspace" title="Link to this heading"></a></h3>
+<p>Nach dem Start mit Docker Compose kann die Neo4j-Oberfläche direkt im Browser geöffnet werden:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>http://localhost:7474
 </pre></div>
 </div>
-<p>Windows (CMD):</p>
-<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">docker ps</span>
-<span class="go">docker logs neo4j</span>
+<p>Dort können Sie:</p>
+<ul class="simple">
+<li><p>den aktuellen Graphen ansehen,</p></li>
+<li><p>Abfragen testen,</p></li>
+<li><p>Knoten und Relationen inspizieren.</p></li>
+</ul>
+<p>Melden Sie sich mit den voreingestellten Zugangsdaten an:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Benutzer: neo4j
+Passwort: CfUsE_2025
 </pre></div>
 </div>
+</section>
 </section>
 <section id="projektstart">
 <h2>Projektstart<a class="headerlink" href="#projektstart" title="Link to this heading"></a></h2>

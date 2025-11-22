@@ -52,6 +52,7 @@ macOS / Linux:
 
 .. code-block:: bash
 
+   cd /Pfad/zum/Projekt/CysSecMaTo_CFUSE
    python3 -m venv .venv
    source .venv/bin/activate
 
@@ -59,6 +60,7 @@ Windows (CMD):
 
 .. code-block:: doscon
 
+   cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE
    python -m venv .venv
    .\.venv\Scripts\activate
 
@@ -70,16 +72,30 @@ Windows (CMD):
    pip install -r requirements.txt
 
 
-4. **Neo4j konfigurieren**
 
-Die Verbindung wird zentral in:
+4. Neo4j mit Docker Compose starten
+-----------------------------------
 
-   ``db/neo4j_connector.py``
+Für C-FUSE wird Neo4j über eine vorbereitete Docker-Compose-Datei im Unterordner
+``docker/`` gestartet. Diese setzt automatisch die passenden Zugangsdaten, Ports
+und Persistenzoptionen für den Datenbankcontainer.
 
-definiert.
+macOS / Linux:
 
-Die standardmäßig verwendeten Zugangsdaten für die lokale Entwicklungsumgebung
-sind im Projekt fest hinterlegt:
+.. code-block:: bash
+
+   cd /Pfad/zum/Projekt/CysSecMaTo_CFUSE/docker
+   docker compose up -d
+
+Windows (CMD):
+
+.. code-block:: doscon
+
+   cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE\docker
+   docker compose up -d
+
+
+Die von C-FUSE erwarteten Standard-Zugangsdaten sind:
 
 .. code-block:: text
 
@@ -87,24 +103,33 @@ sind im Projekt fest hinterlegt:
    Benutzer: neo4j
    Passwort: CfUsE_2025
 
-Diese Werte müssen sowohl im Neo4j-Container als auch in einer lokal installierten Instanz
-übereinstimmen.
+Diese Werte sind sowohl in der ``docker-compose.yml`` als auch im Connector
+``db/neo4j_connector.py`` definiert und müssen nur angepasst werden,
+wenn von der Standardkonfiguration abgewichen wird.
 
-**Verbindung prüfen:**
 
-macOS / Linux:
+Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: bash
+Nach dem Start mit Docker Compose kann die Neo4j-Oberfläche direkt im Browser geöffnet werden:
 
-   docker ps
-   docker logs neo4j
+.. code-block:: text
 
-Windows (CMD):
+   http://localhost:7474
 
-.. code-block:: doscon
+Dort können Sie:
 
-   docker ps
-   docker logs neo4j
+* den aktuellen Graphen ansehen,
+* Abfragen testen,
+* Knoten und Relationen inspizieren.
+
+Melden Sie sich mit den voreingestellten Zugangsdaten an:
+
+.. code-block:: text
+
+   Benutzer: neo4j
+   Passwort: CfUsE_2025
+
 
 
 Projektstart
@@ -137,6 +162,7 @@ Windows (CMD):
    * Views wie Control-Embedding, Context-Retrieval, Mapping und Import initialisiert werden.
 
 
+
 Projektstruktur (Kurzüberblick)
 -------------------------------
 
@@ -152,6 +178,7 @@ Projektstruktur (Kurzüberblick)
    ├── ui/                     # Qt-Frontend
    ├── tests/                  # Unittests
    └── files/                  # Beispiel-OSCAL & JSON
+
 
 
 Nächste Schritte

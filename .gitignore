@@ -13,8 +13,7 @@ __pycache__/
 .idea/
 
 # Sphinx build
-source/_build/
-docs/_build/
+source/
 
 # OS
 .DS_Store

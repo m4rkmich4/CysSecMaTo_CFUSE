@@ -4,64 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ade03cb-c2c7-4f54-9826-e79936682090" name="Changes" comment="initial commit">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+    <list default="true" id="4ade03cb-c2c7-4f54-9826-e79936682090" name="Changes" comment="Sphinx changes">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/changelog.doctree" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/getting-started.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/getting-started.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/index.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/assets/markdown_utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/assets/markdown_utils.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/config/prompts_dspy.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/config/prompts_dspy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/config/prompts_rag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/config/prompts_rag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/hitl_queries.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/hitl_queries.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/import_manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/import_manager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/models.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/models.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/neo4j_connector.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/neo4j_connector.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/neo4j_importer.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/neo4j_importer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/queries_embeddings.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/queries_embeddings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/queries_mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/queries_mapping.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/db/queries_rag.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/db/queries_rag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/DSPy_version.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/DSPy_version.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/control_embedding.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/control_embedding.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/control_mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/control_mapping.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/hitl_processes.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/hitl_processes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/llm_interface.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/llm_interface.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/logic/rag_processor.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/logic/rag_processor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/retrieval/fake_retriever.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/retrieval/fake_retriever.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/retrieval/utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/retrieval/utils.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/context_retrieval.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/context_retrieval.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_embedding_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_embedding_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_1n_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_1n_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_mn_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_mn_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/control_mapping_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/human_validation_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/human_validation_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/import_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/import_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/main_window.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/main_window.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/rag_mapping_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/rag_mapping_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_modules/ui/standard_comparison.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/ui/standard_comparison.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/changelog.rst.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/getting-started.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/getting-started.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/index.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/changelog.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/assets.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/assets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/config.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/db.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/db.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/logic.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/logic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/retrieval.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/retrieval.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/code/ui.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/code/ui.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/genindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/getting-started.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/getting-started.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/objects.inv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/py-modindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +164,7 @@
       <workItem from="1763801103274" duration="391000" />
       <workItem from="1763801592625" duration="51000" />
       <workItem from="1763801645900" duration="3908000" />
-      <workItem from="1763808601167" duration="2748000" />
+      <workItem from="1763808601167" duration="4777000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -237,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763800808925</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Sphinx changes">
+      <option name="closed" value="true" />
+      <created>1763812610830</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763812610830</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +224,8 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="Sphinx changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sphinx changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CySecMaTo$app.coverage" NAME="app Coverage Results" MODIFIED="1761992999103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
