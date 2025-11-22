@@ -1,0 +1,1153 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ui.control_mapping_1n_view &mdash; C-FUSE (Cybersecurity Framework Unification &amp; Standard Evaluation) 1.0 beta Dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=372c4133"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=9bf55d28"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../../genindex.html" />
+    <link rel="search" title="Suche" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Inhalte:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#einfuhrung">Einführung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#systemvoraussetzungen">Systemvoraussetzungen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#projektstart">Projektstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#projektstruktur-uberblick">Projektstruktur (Überblick)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#nachste-schritte">Nächste Schritte</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../code/index.html">Code-Referenz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../code/app.html">Anwendungseintritt (app.py)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/app.html#app.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/db.html">DB (Neo4j)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_connector.get_driver"><code class="docutils literal notranslate"><span class="pre">get_driver()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.check_catalog_exists"><code class="docutils literal notranslate"><span class="pre">check_catalog_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.import_catalog"><code class="docutils literal notranslate"><span class="pre">import_catalog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.import_control"><code class="docutils literal notranslate"><span class="pre">import_control()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.import_group"><code class="docutils literal notranslate"><span class="pre">import_group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.import_manager.import_if_changed"><code class="docutils literal notranslate"><span class="pre">import_if_changed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Catalog"><code class="docutils literal notranslate"><span class="pre">Catalog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.groups"><code class="docutils literal notranslate"><span class="pre">Catalog.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.metadata"><code class="docutils literal notranslate"><span class="pre">Catalog.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.model_config"><code class="docutils literal notranslate"><span class="pre">Catalog.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.uuid"><code class="docutils literal notranslate"><span class="pre">Catalog.uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.class_"><code class="docutils literal notranslate"><span class="pre">Control.class_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.controls"><code class="docutils literal notranslate"><span class="pre">Control.controls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.id"><code class="docutils literal notranslate"><span class="pre">Control.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.model_config"><code class="docutils literal notranslate"><span class="pre">Control.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.parts"><code class="docutils literal notranslate"><span class="pre">Control.parts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.props"><code class="docutils literal notranslate"><span class="pre">Control.props</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.title"><code class="docutils literal notranslate"><span class="pre">Control.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.class_"><code class="docutils literal notranslate"><span class="pre">Group.class_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.controls"><code class="docutils literal notranslate"><span class="pre">Group.controls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.id"><code class="docutils literal notranslate"><span class="pre">Group.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.model_config"><code class="docutils literal notranslate"><span class="pre">Group.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.props"><code class="docutils literal notranslate"><span class="pre">Group.props</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.title"><code class="docutils literal notranslate"><span class="pre">Group.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Link"><code class="docutils literal notranslate"><span class="pre">Link</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Link.href"><code class="docutils literal notranslate"><span class="pre">Link.href</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Link.model_config"><code class="docutils literal notranslate"><span class="pre">Link.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Link.rel"><code class="docutils literal notranslate"><span class="pre">Link.rel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Metadata"><code class="docutils literal notranslate"><span class="pre">Metadata</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.last_modified"><code class="docutils literal notranslate"><span class="pre">Metadata.last_modified</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.links"><code class="docutils literal notranslate"><span class="pre">Metadata.links</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.model_config"><code class="docutils literal notranslate"><span class="pre">Metadata.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.oscal_version"><code class="docutils literal notranslate"><span class="pre">Metadata.oscal_version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.parties"><code class="docutils literal notranslate"><span class="pre">Metadata.parties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.published"><code class="docutils literal notranslate"><span class="pre">Metadata.published</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.responsible_parties"><code class="docutils literal notranslate"><span class="pre">Metadata.responsible_parties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.title"><code class="docutils literal notranslate"><span class="pre">Metadata.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.version"><code class="docutils literal notranslate"><span class="pre">Metadata.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Part"><code class="docutils literal notranslate"><span class="pre">Part</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Part.model_config"><code class="docutils literal notranslate"><span class="pre">Part.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Part.name"><code class="docutils literal notranslate"><span class="pre">Part.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Part.prose"><code class="docutils literal notranslate"><span class="pre">Part.prose</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Party"><code class="docutils literal notranslate"><span class="pre">Party</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.email_addresses"><code class="docutils literal notranslate"><span class="pre">Party.email_addresses</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.model_config"><code class="docutils literal notranslate"><span class="pre">Party.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.name"><code class="docutils literal notranslate"><span class="pre">Party.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.remarks"><code class="docutils literal notranslate"><span class="pre">Party.remarks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.type"><code class="docutils literal notranslate"><span class="pre">Party.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.uuid"><code class="docutils literal notranslate"><span class="pre">Party.uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Property"><code class="docutils literal notranslate"><span class="pre">Property</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Property.model_config"><code class="docutils literal notranslate"><span class="pre">Property.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Property.name"><code class="docutils literal notranslate"><span class="pre">Property.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Property.value"><code class="docutils literal notranslate"><span class="pre">Property.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty.model_config"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty.party_uuids"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.party_uuids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty.role_id"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.role_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.load_catalog_from_dict"><code class="docutils literal notranslate"><span class="pre">load_catalog_from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.hitl_queries.delete_mapping_relationship"><code class="docutils literal notranslate"><span class="pre">delete_mapping_relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.hitl_queries.get_mapping_detail"><code class="docutils literal notranslate"><span class="pre">get_mapping_detail()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.hitl_queries.get_mappings_for_validation"><code class="docutils literal notranslate"><span class="pre">get_mappings_for_validation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.bulk_update_embeddings_for_parts"><code class="docutils literal notranslate"><span class="pre">bulk_update_embeddings_for_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.get_all_catalogs"><code class="docutils literal notranslate"><span class="pre">get_all_catalogs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.get_controls_with_description_parts"><code class="docutils literal notranslate"><span class="pre">get_controls_with_description_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.get_groups_for_catalog"><code class="docutils literal notranslate"><span class="pre">get_groups_for_catalog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.update_embedding_for_part"><code class="docutils literal notranslate"><span class="pre">update_embedding_for_part()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.bulk_merge_similarity_relations"><code class="docutils literal notranslate"><span class="pre">bulk_merge_similarity_relations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.calculate_and_store_many_to_many_similarities"><code class="docutils literal notranslate"><span class="pre">calculate_and_store_many_to_many_similarities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.calculate_similarities_for_display"><code class="docutils literal notranslate"><span class="pre">calculate_similarities_for_display()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.get_embedding_vector_for_part"><code class="docutils literal notranslate"><span class="pre">get_embedding_vector_for_part()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.get_top_n_many_to_many_similarity_results"><code class="docutils literal notranslate"><span class="pre">get_top_n_many_to_many_similarity_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_rag.add_mapping_relationship"><code class="docutils literal notranslate"><span class="pre">add_mapping_relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_rag.get_similar_control_context"><code class="docutils literal notranslate"><span class="pre">get_similar_control_context()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/logic.html">Kernlogik</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.create_embeddings_for_parts"><code class="docutils literal notranslate"><span class="pre">create_embeddings_for_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.get_active_model_components"><code class="docutils literal notranslate"><span class="pre">get_active_model_components()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.get_control_embedding_status"><code class="docutils literal notranslate"><span class="pre">get_control_embedding_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.get_current_active_model_name"><code class="docutils literal notranslate"><span class="pre">get_current_active_model_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.initialize_embedding_system"><code class="docutils literal notranslate"><span class="pre">initialize_embedding_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.calculate_all_similarities"><code class="docutils literal notranslate"><span class="pre">calculate_all_similarities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.execute_many_to_many_similarity_process"><code class="docutils literal notranslate"><span class="pre">execute_many_to_many_similarity_process()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.prepare_locked_control_data"><code class="docutils literal notranslate"><span class="pre">prepare_locked_control_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.store_similarity_relations"><code class="docutils literal notranslate"><span class="pre">store_similarity_relations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.rag_processor.fetch_similar_controls_for_rag"><code class="docutils literal notranslate"><span class="pre">fetch_similar_controls_for_rag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.rag_processor.generate_llm_comparison"><code class="docutils literal notranslate"><span class="pre">generate_llm_comparison()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.rag_processor.save_confirmed_mapping"><code class="docutils literal notranslate"><span class="pre">save_confirmed_mapping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.llm_interface.call_local_llm"><code class="docutils literal notranslate"><span class="pre">call_local_llm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.hitl_processes.human_edit_and_confirm"><code class="docutils literal notranslate"><span class="pre">human_edit_and_confirm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.hitl_processes.human_validate_without_changes"><code class="docutils literal notranslate"><span class="pre">human_validate_without_changes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards"><code class="docutils literal notranslate"><span class="pre">CompareStandards</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards.answer"><code class="docutils literal notranslate"><span class="pre">CompareStandards.answer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards.model_config"><code class="docutils literal notranslate"><span class="pre">CompareStandards.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards.question"><code class="docutils literal notranslate"><span class="pre">CompareStandards.question</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandardsModule"><code class="docutils literal notranslate"><span class="pre">CompareStandardsModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandardsModule.forward"><code class="docutils literal notranslate"><span class="pre">CompareStandardsModule.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.get_compare_module"><code class="docutils literal notranslate"><span class="pre">get_compare_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.init_dspy"><code class="docutils literal notranslate"><span class="pre">init_dspy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.run_comparison"><code class="docutils literal notranslate"><span class="pre">run_comparison()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/ui.html">UI (Qt)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.main_window.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.sidebar.Sidebar"><code class="docutils literal notranslate"><span class="pre">Sidebar</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.sidebar.Sidebar.set_active"><code class="docutils literal notranslate"><span class="pre">Sidebar.set_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.sidebar.Sidebar.view_changed"><code class="docutils literal notranslate"><span class="pre">Sidebar.view_changed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.on_embedding_finished"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.on_embedding_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.on_retrieval_finished"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.on_retrieval_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.set_buttons_enabled"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.set_buttons_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.start_embedding_generation"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.start_embedding_generation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.start_retrieval"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.start_retrieval()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.EmbeddingWorker"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.EmbeddingWorker.finished"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.EmbeddingWorker.run"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.LlmWorker"><code class="docutils literal notranslate"><span class="pre">LlmWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.LlmWorker.finished"><code class="docutils literal notranslate"><span class="pre">LlmWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.LlmWorker.run"><code class="docutils literal notranslate"><span class="pre">LlmWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.load_controls"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.load_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.on_embedding_done"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.on_embedding_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.populate_catalogs"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.populate_catalogs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.run_embedding_generation"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.run_embedding_generation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.update_active_model_label"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.update_active_model_label()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.update_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.update_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker.finished"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker.progress"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id0"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id1"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker.run"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_view.ControlMappingView"><code class="docutils literal notranslate"><span class="pre">ControlMappingView</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.load_source_controls"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.load_source_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.lock_selection"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.lock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_done"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_single_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_error"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_single_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_source_selection_changed"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_source_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.start_mapping_process"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.start_mapping_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.unlock_selection"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.unlock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_source_group_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_start_button_state"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_start_button_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_target_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_target_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals.finished"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals.error"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals.progress"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id2"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id3"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id4"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingTask"><code class="docutils literal notranslate"><span class="pre">SingleMappingTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingTask.run"><code class="docutils literal notranslate"><span class="pre">SingleMappingTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.finished"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.error"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.progress"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id5"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id6"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id7"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilarityTask"><code class="docutils literal notranslate"><span class="pre">BulkSimilarityTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilarityTask.run"><code class="docutils literal notranslate"><span class="pre">BulkSimilarityTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.on_bulk_done"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.on_bulk_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.on_bulk_error"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.on_bulk_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.start_mapping_process"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.start_mapping_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_source_group_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_start_button_state"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_start_button_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_target_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_target_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog.action"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog.reject_reason"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.reject_reason()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog.values"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.FuncTask"><code class="docutils literal notranslate"><span class="pre">FuncTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.FuncTask.run"><code class="docutils literal notranslate"><span class="pre">FuncTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.HumanValidationView"><code class="docutils literal notranslate"><span class="pre">HumanValidationView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.HumanValidationView.reload_data"><code class="docutils literal notranslate"><span class="pre">HumanValidationView.reload_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals"><code class="docutils literal notranslate"><span class="pre">WorkerSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals.error"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals.finished"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals.progress"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView"><code class="docutils literal notranslate"><span class="pre">ImportView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.append_status_message"><code class="docutils literal notranslate"><span class="pre">ImportView.append_status_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.on_import_error"><code class="docutils literal notranslate"><span class="pre">ImportView.on_import_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.on_import_finished"><code class="docutils literal notranslate"><span class="pre">ImportView.on_import_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.select_file"><code class="docutils literal notranslate"><span class="pre">ImportView.select_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.set_buttons_enabled"><code class="docutils literal notranslate"><span class="pre">ImportView.set_buttons_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.start_import_thread"><code class="docutils literal notranslate"><span class="pre">ImportView.start_import_thread()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker"><code class="docutils literal notranslate"><span class="pre">ImportWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.error"><code class="docutils literal notranslate"><span class="pre">ImportWorker.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.finished"><code class="docutils literal notranslate"><span class="pre">ImportWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.progress_update"><code class="docutils literal notranslate"><span class="pre">ImportWorker.progress_update</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.run"><code class="docutils literal notranslate"><span class="pre">ImportWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.error"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.finished"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.progress"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsTask"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsTask.run"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals.error"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals.finished"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals.progress"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonTask"><code class="docutils literal notranslate"><span class="pre">LLMComparisonTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonTask.run"><code class="docutils literal notranslate"><span class="pre">LLMComparisonTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView"><code class="docutils literal notranslate"><span class="pre">RAGMappingView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.append_status"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.closeEvent"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.display_llm_result"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.display_llm_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.fetch_and_display_similar_controls"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.fetch_and_display_similar_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.handle_llm_error"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.handle_llm_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.load_source_controls"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.load_source_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.lock_selection"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.lock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_fetch_similar_done"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_fetch_similar_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_fetch_similar_error"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_fetch_similar_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_source_selection_changed"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_source_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_target_selection_changed"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_target_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.request_llm_comparison"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.request_llm_comparison()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.save_mapping"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.save_mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.unlock_selection"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.unlock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.update_source_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.standard_comparison.CybersecurityComparer"><code class="docutils literal notranslate"><span class="pre">CybersecurityComparer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.standard_comparison.CybersecurityComparer.perform_comparison"><code class="docutils literal notranslate"><span class="pre">CybersecurityComparer.perform_comparison()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/retrieval.html">Retrieval / Fake-RAG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever"><code class="docutils literal notranslate"><span class="pre">FakeRetriever</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_description_by_title"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_description_by_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_document_by_title"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_document_by_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_documents"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_documents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_titles"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_titles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.recompute_embeddings"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.recompute_embeddings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/retrieval.html#retrieval.utils.load_documents"><code class="docutils literal notranslate"><span class="pre">load_documents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/retrieval.html#retrieval.utils.save_documents"><code class="docutils literal notranslate"><span class="pre">save_documents()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/assets.html">Assets (Styles &amp; Markdown)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/assets.html#assets.markdown_utils.beautify_markdown"><code class="docutils literal notranslate"><span class="pre">beautify_markdown()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/config.html">Konfiguration / Prompts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/config.html#config.prompts_dspy.get_comparison_prompt"><code class="docutils literal notranslate"><span class="pre">get_comparison_prompt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/config.html#config.prompts_rag.build_rag_prompt"><code class="docutils literal notranslate"><span class="pre">build_rag_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-1-0-beta-2025-11-01">Version 1.0 beta (2025-11-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-0-9-2025-09-15">Version 0.9 (2025-09-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-0-8-2025-06-30">Version 0.8 (2025-06-30)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-0-7-2025-04-10">Version 0.7 (2025-04-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#zukunftige-meilensteine">Zukünftige Meilensteine</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modul-Quellcode</a></li>
+      <li class="breadcrumb-item active">ui.control_mapping_1n_view</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Quellcode für ui.control_mapping_1n_view</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Filename: ui/control_mapping_1n_view.py</span>
+<span class="c1"># Standalone 1-N Mapping View (purely for single-source to many-targets mapping)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Qt view for performing 1-to-N control mappings.</span>
+
+<span class="sd">This module defines a dedicated Qt-based view that supports the following flow:</span>
+
+<span class="sd">1. The user selects a source catalog and (optionally) a group.</span>
+<span class="sd">2. Controls from the selected source are loaded into a table.</span>
+<span class="sd">3. A single source control is &quot;locked&quot; for comparison.</span>
+<span class="sd">4. The user selects a target catalog and (optionally) a group.</span>
+<span class="sd">5. A background task computes 1-N similarity scores against all eligible</span>
+<span class="sd">   controls in the target selection.</span>
+<span class="sd">6. Results are displayed in a table and can be persisted as similarity</span>
+<span class="sd">   relations in the Neo4j graph.</span>
+
+<span class="sd">The view is intentionally kept separate from other mapping UIs in order to</span>
+<span class="sd">focus on the 1-to-N scenario (one source control to many potential targets).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySide6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QWidget</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QComboBox</span><span class="p">,</span>
+    <span class="n">QTableWidget</span><span class="p">,</span> <span class="n">QTableWidgetItem</span><span class="p">,</span> <span class="n">QHeaderView</span><span class="p">,</span> <span class="n">QTextEdit</span><span class="p">,</span> <span class="n">QMessageBox</span><span class="p">,</span>
+    <span class="n">QSplitter</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySide6.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QRunnable</span><span class="p">,</span> <span class="n">QThreadPool</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">QObject</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">db.queries_embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_all_catalogs</span><span class="p">,</span> <span class="n">get_groups_for_catalog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logic.control_mapping</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">prepare_locked_control_data</span><span class="p">,</span>
+    <span class="n">calculate_all_similarities</span><span class="p">,</span>
+    <span class="n">store_similarity_relations</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logic.control_embedding</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_active_model_name</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="c1"># --- Background Task -----------------------------------------------------</span>
+
+<div class="viewcode-block" id="SingleMappingSignals">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals">[Doku]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SingleMappingSignals</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Signal container for the 1-N mapping background task.</span>
+
+<span class="sd">    This QObject encapsulates the Qt signals used by :class:`SingleMappingTask`</span>
+<span class="sd">    to communicate with the GUI thread.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        finished (Signal): Emitted when the mapping task completes</span>
+<span class="sd">            successfully. Carries a list of result dictionaries.</span>
+<span class="sd">        error (Signal): Emitted when an error occurs in the background</span>
+<span class="sd">            task. Carries an error message string.</span>
+<span class="sd">        progress (Signal): Emitted to report intermediate status messages</span>
+<span class="sd">            during the 1-N computation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">error</span>    <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">progress</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SingleMappingTask">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingTask">[Doku]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SingleMappingTask</span><span class="p">(</span><span class="n">QRunnable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;QRunnable that performs 1-to-N similarity calculation in the background.</span>
+
+<span class="sd">    The task takes a single locked source control and computes similarities</span>
+<span class="sd">    against all eligible target controls from the selected catalog (and</span>
+<span class="sd">    optional group). Results are returned to the GUI via Qt signals.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        locked_data: Dictionary describing the locked source control</span>
+<span class="sd">            (typically created by :func:`prepare_locked_control_data`).</span>
+<span class="sd">        catalog_uuid: UUID of the target catalog whose controls should be</span>
+<span class="sd">            considered as mapping candidates.</span>
+<span class="sd">        group_id: Optional group identifier for restricting the target</span>
+<span class="sd">            selection. If ``None``, all groups (or top-level controls)</span>
+<span class="sd">            may be considered depending on the underlying logic.</span>
+<span class="sd">        display_threshold: Minimum similarity score above which results</span>
+<span class="sd">            should be kept for display. Filtering is delegated to</span>
+<span class="sd">            :func:`calculate_all_similarities`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">locked_data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="n">catalog_uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">group_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">display_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span> <span class="o">=</span> <span class="n">SingleMappingSignals</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_data</span>       <span class="o">=</span> <span class="n">locked_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">catalog_uuid</span>      <span class="o">=</span> <span class="n">catalog_uuid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_id</span>          <span class="o">=</span> <span class="n">group_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_threshold</span> <span class="o">=</span> <span class="n">display_threshold</span>
+
+<div class="viewcode-block" id="SingleMappingTask.run">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingTask.run">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute the 1-N similarity calculation.</span>
+
+<span class="sd">        This method is executed in a worker thread managed by the global</span>
+<span class="sd">        :class:`QThreadPool`. It delegates the actual computation to</span>
+<span class="sd">        :func:`calculate_all_similarities` and emits signals for progress,</span>
+<span class="sd">        success and error handling.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s2">&quot;Starting 1-N similarity calculation…&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">calculate_all_similarities</span><span class="p">(</span>
+                <span class="n">locked_control_data</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_data</span><span class="p">,</span>
+                <span class="n">target_catalog_uuid</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">catalog_uuid</span><span class="p">,</span>
+                <span class="n">target_group_id</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_id</span><span class="p">,</span>
+                <span class="n">display_threshold</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_threshold</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;1-N finished (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> ≥ </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">display_threshold</span><span class="si">}</span><span class="s2">).&quot;</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error in SingleMappingTask:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+</div>
+
+
+
+<span class="c1"># --- Main View -----------------------------------------------------------</span>
+
+<div class="viewcode-block" id="ControlMapping1NView">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView">[Doku]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ControlMapping1NView</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Qt widget implementing the 1-to-N control mapping workflow.</span>
+
+<span class="sd">    The widget provides a two-pane layout:</span>
+
+<span class="sd">    * Left pane: selection of a source catalog, optional group, and a table</span>
+<span class="sd">      of available source controls. A single control can be &quot;locked&quot; as the</span>
+<span class="sd">      basis for all 1-N comparisons.</span>
+<span class="sd">    * Right pane: selection of a target catalog and optional group.</span>
+
+<span class="sd">    Below the main splitter, the widget offers:</span>
+
+<span class="sd">    * Buttons to start the 1-N similarity computation and save the resulting</span>
+<span class="sd">      relations.</span>
+<span class="sd">    * A result table showing target controls with similarity scores.</span>
+<span class="sd">    * A status text area for progress and error messages.</span>
+
+<span class="sd">    All long-running operations (similarity computation and database writes)</span>
+<span class="sd">    are encapsulated in background tasks or utility functions; the view</span>
+<span class="sd">    focuses on orchestration and user interaction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the 1-N mapping view and set up the UI layout.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="s2">&quot;ControlMapping1NView&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumWidth</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threadpool</span>           <span class="o">=</span> <span class="n">QThreadPool</span><span class="o">.</span><span class="n">globalInstance</span><span class="p">()</span>
+
+        <span class="c1"># In-memory state for the current session</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">catalogs</span>             <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># type: List[Dict[str,Any]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span>  <span class="o">=</span> <span class="kc">None</span> <span class="c1"># type: Optional[Dict[str,Any]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_data</span>         <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># type: List[Dict[str,Any]]</span>
+
+        <span class="c1"># --- UI Elements ---</span>
+        <span class="c1"># Source side (step 1: choose and lock control)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span>   <span class="o">=</span> <span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_source_button</span>      <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reload_button</span>           <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;🔁&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reload_button</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s2">&quot;Reload catalog/group list&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span> <span class="o">=</span> <span class="n">QTableWidget</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setHorizontalHeaderLabels</span><span class="p">([</span><span class="s2">&quot;Control-ID&quot;</span><span class="p">,</span><span class="s2">&quot;Title&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeToContents</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="n">QHeaderView</span><span class="o">.</span><span class="n">Stretch</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setSelectionBehavior</span><span class="p">(</span><span class="n">QTableWidget</span><span class="o">.</span><span class="n">SelectRows</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setSelectionMode</span><span class="p">(</span><span class="n">QTableWidget</span><span class="o">.</span><span class="n">SingleSelection</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setEditTriggers</span><span class="p">(</span><span class="n">QTableWidget</span><span class="o">.</span><span class="n">NoEditTriggers</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span>          <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Lock&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span>        <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Unlock&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_info_label</span>    <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Locked: -&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span> <span class="o">=</span> <span class="n">QTextEdit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Target side (step 2: select catalog/group for mapping)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span>   <span class="o">=</span> <span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span>    <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Start&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Save button for persisting mapping relations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Save&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Result table showing 1-N mapping candidates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span> <span class="o">=</span> <span class="n">QTableWidget</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">setHorizontalHeaderLabels</span><span class="p">([</span>
+            <span class="s2">&quot;Source&quot;</span><span class="p">,</span><span class="s2">&quot;Source-ID&quot;</span><span class="p">,</span><span class="s2">&quot;Target-ID&quot;</span><span class="p">,</span><span class="s2">&quot;Target Title&quot;</span><span class="p">,</span><span class="s2">&quot;Score&quot;</span><span class="p">,</span><span class="s2">&quot;Category&quot;</span>
+        <span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span>
+            <span class="n">QHeaderView</span><span class="o">.</span><span class="n">Stretch</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">setEditTriggers</span><span class="p">(</span><span class="n">QTableWidget</span><span class="o">.</span><span class="n">NoEditTriggers</span><span class="p">)</span>
+
+        <span class="c1"># Status output area for progress messages and logs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_output</span> <span class="o">=</span> <span class="n">QTextEdit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+
+        <span class="c1"># --- Layout ---</span>
+        <span class="n">main_lay</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">splitter</span> <span class="o">=</span> <span class="n">QSplitter</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Horizontal</span><span class="p">)</span>
+
+        <span class="c1"># left panel (source)</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+        <span class="n">ll</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">ll</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;1. Source&quot;</span><span class="p">))</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Catalog:&quot;</span><span class="p">))</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Group:&quot;</span><span class="p">))</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">load_source_button</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reload_button</span><span class="p">)</span>
+        <span class="n">ll</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="n">ll</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="p">)</span>
+        <span class="n">hl</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="p">)</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="p">)</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">addStretch</span><span class="p">()</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">locked_info_label</span><span class="p">)</span>
+        <span class="n">ll</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">hl</span><span class="p">)</span>
+        <span class="n">ll</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="p">)</span>
+        <span class="n">splitter</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+
+        <span class="c1"># right panel (target)</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+        <span class="n">rl</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">rl</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;2. Target&quot;</span><span class="p">))</span>
+        <span class="n">row2</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">row2</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Catalog:&quot;</span><span class="p">))</span>
+        <span class="n">row2</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">row2</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Group:&quot;</span><span class="p">))</span>
+        <span class="n">row2</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rl</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">row2</span><span class="p">)</span>
+        <span class="n">rl</span><span class="o">.</span><span class="n">addStretch</span><span class="p">()</span>
+        <span class="n">splitter</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+
+        <span class="n">main_lay</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">splitter</span><span class="p">)</span>
+
+        <span class="c1"># Control buttons row (start mapping + save)</span>
+        <span class="n">btns</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">btns</span><span class="o">.</span><span class="n">addStretch</span><span class="p">()</span>
+        <span class="n">btns</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="p">)</span>
+        <span class="n">btns</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="p">)</span>
+        <span class="n">btns</span><span class="o">.</span><span class="n">addStretch</span><span class="p">()</span>
+        <span class="n">main_lay</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">btns</span><span class="p">)</span>
+
+        <span class="c1"># Results + status area</span>
+        <span class="n">main_lay</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Results&quot;</span><span class="p">))</span>
+        <span class="n">main_lay</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">main_lay</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Status&quot;</span><span class="p">))</span>
+        <span class="n">main_lay</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="p">)</span>
+
+        <span class="c1"># --- Signals ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reload_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reload_catalog_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_source_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">load_source_controls</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">currentIndexChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_source_group_selector</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">itemSelectionChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_source_selection_changed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lock_selection</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unlock_selection</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">currentIndexChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_target_group_selector</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="o">.</span><span class="n">currentIndexChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_start_button_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_process</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_relations</span><span class="p">)</span>
+
+        <span class="c1"># Initial population of catalog selectors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_catalog_selectors</span><span class="p">()</span>
+
+    <span class="c1"># --- Methods identical to your previous 1-N code ---</span>
+
+<div class="viewcode-block" id="ControlMapping1NView.populate_catalog_selectors">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.populate_catalog_selectors">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">populate_catalog_selectors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load all catalogs and fill source/target catalog selectors.</span>
+
+<span class="sd">        This method retrieves all catalogs via :func:`get_all_catalogs` and</span>
+<span class="sd">        populates both the source and target selectors. The current</span>
+<span class="sd">        selections are preserved where possible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">catalogs</span> <span class="o">=</span> <span class="n">get_all_catalogs</span><span class="p">()</span>
+            <span class="n">s_cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()</span>
+            <span class="n">t_cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s2">&quot;&lt;Select Catalog&gt;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s2">&quot;&lt;Select Catalog&gt;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">catalogs</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;uuid&quot;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;uuid&quot;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">s_cur</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">findData</span><span class="p">(</span><span class="n">s_cur</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">t_cur</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">findData</span><span class="p">(</span><span class="n">t_cur</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Always re-enable signals and update dependent selectors.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_source_group_selector</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_target_group_selector</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.update_source_group_selector">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_source_group_selector">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_source_group_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the group selector for the currently selected source catalog.</span>
+
+<span class="sd">        If no catalog is selected, only a placeholder entry is shown. When</span>
+<span class="sd">        a catalog is chosen, all groups for that catalog are loaded via</span>
+<span class="sd">        :func:`get_groups_for_catalog`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cat</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s2">&quot;&lt;All Groups&gt;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s2">&quot;&lt;All Groups&gt;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">get_groups_for_catalog</span><span class="p">(</span><span class="n">cat</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+        <span class="c1"># No selection yet -&gt; locking is disabled until a row is selected.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.update_target_group_selector">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_target_group_selector">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_target_group_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the group selector for the currently selected target catalog.</span>
+
+<span class="sd">        If no catalog is selected, only a placeholder entry is provided.</span>
+<span class="sd">        Otherwise, all groups from the selected target catalog are loaded.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cat</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s2">&quot;&lt;All Groups&gt;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s2">&quot;&lt;All Groups&gt;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">get_groups_for_catalog</span><span class="p">(</span><span class="n">cat</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_start_button_state</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.load_source_controls">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.load_source_controls">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_source_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load source controls for the selected catalog/group into the table.</span>
+
+<span class="sd">        The controls are retrieved using</span>
+<span class="sd">        ``db.queries_embeddings.get_controls_with_description_parts`` via</span>
+<span class="sd">        a dynamic import and displayed in the left-hand source table. Each</span>
+<span class="sd">        row keeps the full record as ``Qt.UserRole`` data on the first</span>
+<span class="sd">        column, which is later used when locking a control.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()</span>
+        <span class="n">grp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cat</span><span class="p">:</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Please select source catalog.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading Controls for </span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2"> …&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s2">&quot;db.queries_embeddings&quot;</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;get_controls_with_description_parts&quot;</span><span class="p">])</span> \
+               <span class="o">.</span><span class="n">get_controls_with_description_parts</span><span class="p">(</span>
+                    <span class="n">catalog_uuid</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
+                    <span class="n">group_id</span><span class="o">=</span><span class="n">grp</span><span class="p">,</span>
+                    <span class="n">show_all_controls</span><span class="o">=</span><span class="p">(</span><span class="n">grp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+               <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="n">it</span> <span class="o">=</span> <span class="n">QTableWidgetItem</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;control_id&quot;</span><span class="p">])</span>
+            <span class="n">it</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setItem</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">it</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">setItem</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">QTableWidgetItem</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;control_title&quot;</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">resizeColumnsToContents</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.on_source_selection_changed">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_source_selection_changed">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_source_selection_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;React to changes in the selection of the source control table.</span>
+
+<span class="sd">        This method simply enables or disables the *Lock* button depending</span>
+<span class="sd">        on whether a row is currently selected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.lock_selection">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.lock_selection">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lock_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lock the currently selected source control for 1-N mapping.</span>
+
+<span class="sd">        The selected row from the source table is used to build a</span>
+<span class="sd">        ``locked_control_data`` structure via</span>
+<span class="sd">        :func:`prepare_locked_control_data`. Once locked, the source</span>
+<span class="sd">        catalog/group selection and table are disabled to avoid changing</span>
+<span class="sd">        the source context mid-computation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">selectionModel</span><span class="p">()</span><span class="o">.</span><span class="n">selectedRows</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span>
+        <span class="n">ld</span> <span class="o">=</span> <span class="n">prepare_locked_control_data</span><span class="p">(</span>
+            <span class="n">part_element_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;part_element_id&quot;</span><span class="p">],</span>
+            <span class="n">control_id</span>      <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;control_id&quot;</span><span class="p">],</span>
+            <span class="n">control_title</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;control_title&quot;</span><span class="p">],</span>
+            <span class="n">control_prose</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span> <span class="o">=</span> <span class="n">ld</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_info_label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Locked: &lt;b&gt;</span><span class="si">{</span><span class="n">ld</span><span class="p">[</span><span class="s1">&#39;control_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/b&gt;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">setPlainText</span><span class="p">(</span><span class="n">ld</span><span class="p">[</span><span class="s2">&quot;prose&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Disable source-related widgets while a control is locked.</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_source_button</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span>
+        <span class="p">):</span>
+            <span class="n">w</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Mapping can only be started if a target catalog is selected.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">()))</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.unlock_selection">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.unlock_selection">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unlock_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unlock the current source control and re-enable source selection.</span>
+
+<span class="sd">        This clears the locked state and re-enables source selectors and</span>
+<span class="sd">        the source table. The user can then select another source control</span>
+<span class="sd">        for 1-N mapping.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_info_label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Locked: -&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locked_prose_display</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_catalog_selector</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_group_selector</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_source_button</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span>
+        <span class="p">):</span>
+            <span class="n">w</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.start_mapping_process">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.start_mapping_process">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_mapping_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the 1-N similarity computation as a background task.</span>
+
+<span class="sd">        The method resets the results table and disables relevant buttons.</span>
+<span class="sd">        If no source control is currently locked, an error message is</span>
+<span class="sd">        shown. Otherwise, a :class:`SingleMappingTask` is created and</span>
+<span class="sd">        submitted to the global :class:`QThreadPool`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Disable controls while the background task is running.</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_source_button</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span>
+        <span class="p">):</span>
+            <span class="n">w</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="p">:</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Please lock a source control for 1-N comparison.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">task</span> <span class="o">=</span> <span class="n">SingleMappingTask</span><span class="p">(</span>
+            <span class="n">locked_data</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="p">,</span>
+            <span class="n">catalog_uuid</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">(),</span>
+            <span class="n">group_id</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_group_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">(),</span>
+            <span class="n">display_threshold</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_single_done</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_single_error</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threadpool</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">task</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.on_single_done">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_done">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_single_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">]]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle successful completion of the 1-N mapping task.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            results: List of dictionaries describing the similarity</span>
+<span class="sd">                results returned by :func:`calculate_all_similarities`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1-N finished: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_data</span> <span class="o">=</span> <span class="n">results</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_populate_results_table</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.on_single_error">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_error">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_single_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle errors emitted by the 1-N mapping background task.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            msg: Human-readable error message describing the failure</span>
+<span class="sd">                that occurred in the worker thread.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">QMessageBox</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_populate_results_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Populate the results table using the current results data.</span>
+
+<span class="sd">        The table shows information about the locked source control,</span>
+<span class="sd">        each target control candidate, its similarity score and an</span>
+<span class="sd">        optional similarity category label.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_data</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;control_id&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_control_prose&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span> <span class="k">else</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_control_prose&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_control_id&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_control_title&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;similarity_score&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;similarity_category&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vals</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">setItem</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">QTableWidgetItem</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">resizeColumnsToContents</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">QHeaderView</span><span class="o">.</span><span class="n">Stretch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_table</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">QHeaderView</span><span class="o">.</span><span class="n">Stretch</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_save_relations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Persist selected 1-N similarity relations to the database.</span>
+
+<span class="sd">        The method filters current results by a minimum similarity score</span>
+<span class="sd">        (here: 0.3) and prepares a list of relationship records. The user is</span>
+<span class="sd">        asked for confirmation, and on approval, the records are written</span>
+<span class="sd">        via :func:`store_similarity_relations`.</span>
+
+<span class="sd">        If no results meet the threshold, an informational message is</span>
+<span class="sd">        shown and nothing is saved.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_data</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">to_save</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="n">get_current_active_model_name</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;default&quot;</span>
+
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Cannot save 1-N relations: no control locked.&quot;</span><span class="p">)</span>
+                <span class="n">QMessageBox</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Warning&quot;</span><span class="p">,</span> <span class="s2">&quot;No source control is locked for 1-N saving.&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="n">source_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;control_id&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">source_id</span> <span class="ow">or</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;similarity_score&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">to_save</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;source_control_id&quot;</span><span class="p">:</span> <span class="n">source_id</span><span class="p">,</span>
+                <span class="s2">&quot;target_control_id&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;target_control_id&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;similarity_score&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;similarity_score&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;similarity_category&quot;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;similarity_category&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;model_name&quot;</span><span class="p">:</span> <span class="n">model_name</span>
+            <span class="p">})</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">to_save</span><span class="p">:</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="s2">&quot;No results ≥0.3 to save.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">question</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Save&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Save </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">to_save</span><span class="p">)</span><span class="si">}</span><span class="s2"> relationships?&quot;</span><span class="p">,</span>
+                <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Yes</span> <span class="o">|</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">No</span>
+        <span class="p">)</span> <span class="o">!=</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Yes</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">to_save</span><span class="p">)</span><span class="si">}</span><span class="s2"> …&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">store_similarity_relations</span><span class="p">(</span><span class="n">to_save</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+            <span class="n">merged</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;relationships_merged&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ </span><span class="si">{</span><span class="n">merged</span><span class="si">}</span><span class="s2"> saved.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Failed to save relationships:</span><span class="se">\n</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_table</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unlock_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ControlMapping1NView.update_start_button_state">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_start_button_state">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_start_button_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable or disable the *Start* button based on current state.</span>
+
+<span class="sd">        The 1-N mapping can only be started if a target catalog is</span>
+<span class="sd">        selected *and* a source control is currently locked.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_catalog_selector</span><span class="o">.</span><span class="n">currentData</span><span class="p">())</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">locked_control_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_mapping_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">ok</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.append_status">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.append_status">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a status message to the status output area.</span>
+
+<span class="sd">        The text view automatically scrolls to the bottom so that the</span>
+<span class="sd">        most recent messages are always visible.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            msg: Text message to append to the status widget.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">status_output</span><span class="o">.</span><span class="n">verticalScrollBar</span><span class="p">()</span><span class="o">.</span><span class="n">maximum</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.reload_catalog_data">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.reload_catalog_data">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reload_catalog_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reload catalog data and refresh the selectors.</span>
+
+<span class="sd">        This is a convenience wrapper that logs the operation in the</span>
+<span class="sd">        status area and then calls :meth:`populate_catalog_selectors`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="s2">&quot;🔄 Reloading …&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_catalog_selectors</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append_status</span><span class="p">(</span><span class="s2">&quot;✅ Reloaded&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ControlMapping1NView.closeEvent">
+<a class="viewcode-back" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.closeEvent">[Doku]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle the widget close event.</span>
+
+<span class="sd">        The method logs a debug message and then delegates to the</span>
+<span class="sd">        base implementation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Closing ControlMapping1NView&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">closeEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Michael Mark.</p>
+  </div>
+
+  Erstellt mit <a href="https://www.sphinx-doc.org/">Sphinx</a> mit einem
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    bereitgestellt von <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

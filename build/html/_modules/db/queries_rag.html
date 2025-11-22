@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>db.queries_rag &mdash; C-FUSE (Cybersecurity Framework Unification &amp; Standard Evaluation) 1.0 beta Dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=372c4133"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=9bf55d28"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../../genindex.html" />
+    <link rel="search" title="Suche" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Inhalte:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#einfuhrung">Einführung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#systemvoraussetzungen">Systemvoraussetzungen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#projektstart">Projektstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#projektstruktur-uberblick">Projektstruktur (Überblick)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#nachste-schritte">Nächste Schritte</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../code/index.html">Code-Referenz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../code/app.html">Anwendungseintritt (app.py)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/app.html#app.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/db.html">DB (Neo4j)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_connector.get_driver"><code class="docutils literal notranslate"><span class="pre">get_driver()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.check_catalog_exists"><code class="docutils literal notranslate"><span class="pre">check_catalog_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.import_catalog"><code class="docutils literal notranslate"><span class="pre">import_catalog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.import_control"><code class="docutils literal notranslate"><span class="pre">import_control()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.neo4j_importer.import_group"><code class="docutils literal notranslate"><span class="pre">import_group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.import_manager.import_if_changed"><code class="docutils literal notranslate"><span class="pre">import_if_changed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Catalog"><code class="docutils literal notranslate"><span class="pre">Catalog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.groups"><code class="docutils literal notranslate"><span class="pre">Catalog.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.metadata"><code class="docutils literal notranslate"><span class="pre">Catalog.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.model_config"><code class="docutils literal notranslate"><span class="pre">Catalog.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Catalog.uuid"><code class="docutils literal notranslate"><span class="pre">Catalog.uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.class_"><code class="docutils literal notranslate"><span class="pre">Control.class_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.controls"><code class="docutils literal notranslate"><span class="pre">Control.controls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.id"><code class="docutils literal notranslate"><span class="pre">Control.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.model_config"><code class="docutils literal notranslate"><span class="pre">Control.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.parts"><code class="docutils literal notranslate"><span class="pre">Control.parts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.props"><code class="docutils literal notranslate"><span class="pre">Control.props</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Control.title"><code class="docutils literal notranslate"><span class="pre">Control.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.class_"><code class="docutils literal notranslate"><span class="pre">Group.class_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.controls"><code class="docutils literal notranslate"><span class="pre">Group.controls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.id"><code class="docutils literal notranslate"><span class="pre">Group.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.model_config"><code class="docutils literal notranslate"><span class="pre">Group.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.props"><code class="docutils literal notranslate"><span class="pre">Group.props</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Group.title"><code class="docutils literal notranslate"><span class="pre">Group.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Link"><code class="docutils literal notranslate"><span class="pre">Link</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Link.href"><code class="docutils literal notranslate"><span class="pre">Link.href</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Link.model_config"><code class="docutils literal notranslate"><span class="pre">Link.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Link.rel"><code class="docutils literal notranslate"><span class="pre">Link.rel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Metadata"><code class="docutils literal notranslate"><span class="pre">Metadata</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.last_modified"><code class="docutils literal notranslate"><span class="pre">Metadata.last_modified</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.links"><code class="docutils literal notranslate"><span class="pre">Metadata.links</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.model_config"><code class="docutils literal notranslate"><span class="pre">Metadata.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.oscal_version"><code class="docutils literal notranslate"><span class="pre">Metadata.oscal_version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.parties"><code class="docutils literal notranslate"><span class="pre">Metadata.parties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.published"><code class="docutils literal notranslate"><span class="pre">Metadata.published</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.responsible_parties"><code class="docutils literal notranslate"><span class="pre">Metadata.responsible_parties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.title"><code class="docutils literal notranslate"><span class="pre">Metadata.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Metadata.version"><code class="docutils literal notranslate"><span class="pre">Metadata.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Part"><code class="docutils literal notranslate"><span class="pre">Part</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Part.model_config"><code class="docutils literal notranslate"><span class="pre">Part.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Part.name"><code class="docutils literal notranslate"><span class="pre">Part.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Part.prose"><code class="docutils literal notranslate"><span class="pre">Part.prose</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Party"><code class="docutils literal notranslate"><span class="pre">Party</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.email_addresses"><code class="docutils literal notranslate"><span class="pre">Party.email_addresses</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.model_config"><code class="docutils literal notranslate"><span class="pre">Party.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.name"><code class="docutils literal notranslate"><span class="pre">Party.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.remarks"><code class="docutils literal notranslate"><span class="pre">Party.remarks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.type"><code class="docutils literal notranslate"><span class="pre">Party.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Party.uuid"><code class="docutils literal notranslate"><span class="pre">Party.uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.Property"><code class="docutils literal notranslate"><span class="pre">Property</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Property.model_config"><code class="docutils literal notranslate"><span class="pre">Property.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Property.name"><code class="docutils literal notranslate"><span class="pre">Property.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.Property.value"><code class="docutils literal notranslate"><span class="pre">Property.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty.model_config"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty.party_uuids"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.party_uuids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/db.html#db.models.ResponsibleParty.role_id"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.role_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.models.load_catalog_from_dict"><code class="docutils literal notranslate"><span class="pre">load_catalog_from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.hitl_queries.delete_mapping_relationship"><code class="docutils literal notranslate"><span class="pre">delete_mapping_relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.hitl_queries.get_mapping_detail"><code class="docutils literal notranslate"><span class="pre">get_mapping_detail()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.hitl_queries.get_mappings_for_validation"><code class="docutils literal notranslate"><span class="pre">get_mappings_for_validation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.bulk_update_embeddings_for_parts"><code class="docutils literal notranslate"><span class="pre">bulk_update_embeddings_for_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.get_all_catalogs"><code class="docutils literal notranslate"><span class="pre">get_all_catalogs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.get_controls_with_description_parts"><code class="docutils literal notranslate"><span class="pre">get_controls_with_description_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.get_groups_for_catalog"><code class="docutils literal notranslate"><span class="pre">get_groups_for_catalog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_embeddings.update_embedding_for_part"><code class="docutils literal notranslate"><span class="pre">update_embedding_for_part()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.bulk_merge_similarity_relations"><code class="docutils literal notranslate"><span class="pre">bulk_merge_similarity_relations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.calculate_and_store_many_to_many_similarities"><code class="docutils literal notranslate"><span class="pre">calculate_and_store_many_to_many_similarities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.calculate_similarities_for_display"><code class="docutils literal notranslate"><span class="pre">calculate_similarities_for_display()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.get_embedding_vector_for_part"><code class="docutils literal notranslate"><span class="pre">get_embedding_vector_for_part()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_mapping.get_top_n_many_to_many_similarity_results"><code class="docutils literal notranslate"><span class="pre">get_top_n_many_to_many_similarity_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_rag.add_mapping_relationship"><code class="docutils literal notranslate"><span class="pre">add_mapping_relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/db.html#db.queries_rag.get_similar_control_context"><code class="docutils literal notranslate"><span class="pre">get_similar_control_context()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/logic.html">Kernlogik</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.create_embeddings_for_parts"><code class="docutils literal notranslate"><span class="pre">create_embeddings_for_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.get_active_model_components"><code class="docutils literal notranslate"><span class="pre">get_active_model_components()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.get_control_embedding_status"><code class="docutils literal notranslate"><span class="pre">get_control_embedding_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.get_current_active_model_name"><code class="docutils literal notranslate"><span class="pre">get_current_active_model_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_embedding.initialize_embedding_system"><code class="docutils literal notranslate"><span class="pre">initialize_embedding_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.calculate_all_similarities"><code class="docutils literal notranslate"><span class="pre">calculate_all_similarities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.execute_many_to_many_similarity_process"><code class="docutils literal notranslate"><span class="pre">execute_many_to_many_similarity_process()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.prepare_locked_control_data"><code class="docutils literal notranslate"><span class="pre">prepare_locked_control_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.control_mapping.store_similarity_relations"><code class="docutils literal notranslate"><span class="pre">store_similarity_relations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.rag_processor.fetch_similar_controls_for_rag"><code class="docutils literal notranslate"><span class="pre">fetch_similar_controls_for_rag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.rag_processor.generate_llm_comparison"><code class="docutils literal notranslate"><span class="pre">generate_llm_comparison()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.rag_processor.save_confirmed_mapping"><code class="docutils literal notranslate"><span class="pre">save_confirmed_mapping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.llm_interface.call_local_llm"><code class="docutils literal notranslate"><span class="pre">call_local_llm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.hitl_processes.human_edit_and_confirm"><code class="docutils literal notranslate"><span class="pre">human_edit_and_confirm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.hitl_processes.human_validate_without_changes"><code class="docutils literal notranslate"><span class="pre">human_validate_without_changes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards"><code class="docutils literal notranslate"><span class="pre">CompareStandards</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards.answer"><code class="docutils literal notranslate"><span class="pre">CompareStandards.answer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards.model_config"><code class="docutils literal notranslate"><span class="pre">CompareStandards.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandards.question"><code class="docutils literal notranslate"><span class="pre">CompareStandards.question</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandardsModule"><code class="docutils literal notranslate"><span class="pre">CompareStandardsModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.CompareStandardsModule.forward"><code class="docutils literal notranslate"><span class="pre">CompareStandardsModule.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.get_compare_module"><code class="docutils literal notranslate"><span class="pre">get_compare_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.init_dspy"><code class="docutils literal notranslate"><span class="pre">init_dspy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/logic.html#logic.DSPy_version.run_comparison"><code class="docutils literal notranslate"><span class="pre">run_comparison()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/ui.html">UI (Qt)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.main_window.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.sidebar.Sidebar"><code class="docutils literal notranslate"><span class="pre">Sidebar</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.sidebar.Sidebar.set_active"><code class="docutils literal notranslate"><span class="pre">Sidebar.set_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.sidebar.Sidebar.view_changed"><code class="docutils literal notranslate"><span class="pre">Sidebar.view_changed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.on_embedding_finished"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.on_embedding_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.on_retrieval_finished"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.on_retrieval_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.set_buttons_enabled"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.set_buttons_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.start_embedding_generation"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.start_embedding_generation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.ContextRetrievalView.start_retrieval"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.start_retrieval()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.EmbeddingWorker"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.EmbeddingWorker.finished"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.EmbeddingWorker.run"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.LlmWorker"><code class="docutils literal notranslate"><span class="pre">LlmWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.LlmWorker.finished"><code class="docutils literal notranslate"><span class="pre">LlmWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.context_retrieval.LlmWorker.run"><code class="docutils literal notranslate"><span class="pre">LlmWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.load_controls"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.load_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.on_embedding_done"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.on_embedding_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.populate_catalogs"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.populate_catalogs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.run_embedding_generation"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.run_embedding_generation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.update_active_model_label"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.update_active_model_label()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.ControlEmbeddingView.update_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.update_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker.finished"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker.progress"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id0"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id1"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_embedding_view.EmbeddingWorker.run"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_view.ControlMappingView"><code class="docutils literal notranslate"><span class="pre">ControlMappingView</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.load_source_controls"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.load_source_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.lock_selection"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.lock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_done"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_single_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_error"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_single_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_source_selection_changed"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_source_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.start_mapping_process"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.start_mapping_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.unlock_selection"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.unlock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_source_group_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_start_button_state"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_start_button_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_target_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_target_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals.finished"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals.error"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingSignals.progress"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id2"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id3"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id4"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingTask"><code class="docutils literal notranslate"><span class="pre">SingleMappingTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_1n_view.SingleMappingTask.run"><code class="docutils literal notranslate"><span class="pre">SingleMappingTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.finished"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.error"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.progress"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id5"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id6"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#id7"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilarityTask"><code class="docutils literal notranslate"><span class="pre">BulkSimilarityTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.BulkSimilarityTask.run"><code class="docutils literal notranslate"><span class="pre">BulkSimilarityTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.on_bulk_done"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.on_bulk_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.on_bulk_error"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.on_bulk_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.start_mapping_process"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.start_mapping_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_source_group_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_start_button_state"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_start_button_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_target_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_target_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog.action"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog.reject_reason"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.reject_reason()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.EditMappingDialog.values"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.FuncTask"><code class="docutils literal notranslate"><span class="pre">FuncTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.FuncTask.run"><code class="docutils literal notranslate"><span class="pre">FuncTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.HumanValidationView"><code class="docutils literal notranslate"><span class="pre">HumanValidationView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.HumanValidationView.reload_data"><code class="docutils literal notranslate"><span class="pre">HumanValidationView.reload_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals"><code class="docutils literal notranslate"><span class="pre">WorkerSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals.error"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals.finished"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.human_validation_view.WorkerSignals.progress"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView"><code class="docutils literal notranslate"><span class="pre">ImportView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.append_status_message"><code class="docutils literal notranslate"><span class="pre">ImportView.append_status_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.on_import_error"><code class="docutils literal notranslate"><span class="pre">ImportView.on_import_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.on_import_finished"><code class="docutils literal notranslate"><span class="pre">ImportView.on_import_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.select_file"><code class="docutils literal notranslate"><span class="pre">ImportView.select_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.set_buttons_enabled"><code class="docutils literal notranslate"><span class="pre">ImportView.set_buttons_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportView.start_import_thread"><code class="docutils literal notranslate"><span class="pre">ImportView.start_import_thread()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker"><code class="docutils literal notranslate"><span class="pre">ImportWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.error"><code class="docutils literal notranslate"><span class="pre">ImportWorker.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.finished"><code class="docutils literal notranslate"><span class="pre">ImportWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.progress_update"><code class="docutils literal notranslate"><span class="pre">ImportWorker.progress_update</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.import_view.ImportWorker.run"><code class="docutils literal notranslate"><span class="pre">ImportWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.error"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.finished"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.progress"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsTask"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.FetchSimilarControlsTask.run"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals.error"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals.finished"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonSignals.progress"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonTask"><code class="docutils literal notranslate"><span class="pre">LLMComparisonTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.LLMComparisonTask.run"><code class="docutils literal notranslate"><span class="pre">LLMComparisonTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView"><code class="docutils literal notranslate"><span class="pre">RAGMappingView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.append_status"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.closeEvent"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.display_llm_result"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.display_llm_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.fetch_and_display_similar_controls"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.fetch_and_display_similar_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.handle_llm_error"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.handle_llm_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.load_source_controls"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.load_source_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.lock_selection"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.lock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_fetch_similar_done"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_fetch_similar_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_fetch_similar_error"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_fetch_similar_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_source_selection_changed"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_source_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.on_target_selection_changed"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_target_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.request_llm_comparison"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.request_llm_comparison()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.save_mapping"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.save_mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.unlock_selection"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.unlock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.rag_mapping_view.RAGMappingView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.update_source_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/ui.html#ui.standard_comparison.CybersecurityComparer"><code class="docutils literal notranslate"><span class="pre">CybersecurityComparer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/ui.html#ui.standard_comparison.CybersecurityComparer.perform_comparison"><code class="docutils literal notranslate"><span class="pre">CybersecurityComparer.perform_comparison()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/retrieval.html">Retrieval / Fake-RAG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever"><code class="docutils literal notranslate"><span class="pre">FakeRetriever</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_description_by_title"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_description_by_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_document_by_title"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_document_by_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_documents"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_documents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.get_titles"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_titles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../code/retrieval.html#retrieval.fake_retriever.FakeRetriever.recompute_embeddings"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.recompute_embeddings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/retrieval.html#retrieval.utils.load_documents"><code class="docutils literal notranslate"><span class="pre">load_documents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/retrieval.html#retrieval.utils.save_documents"><code class="docutils literal notranslate"><span class="pre">save_documents()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/assets.html">Assets (Styles &amp; Markdown)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/assets.html#assets.markdown_utils.beautify_markdown"><code class="docutils literal notranslate"><span class="pre">beautify_markdown()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../code/config.html">Konfiguration / Prompts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../code/config.html#config.prompts_dspy.get_comparison_prompt"><code class="docutils literal notranslate"><span class="pre">get_comparison_prompt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../code/config.html#config.prompts_rag.build_rag_prompt"><code class="docutils literal notranslate"><span class="pre">build_rag_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-1-0-beta-2025-11-01">Version 1.0 beta (2025-11-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-0-9-2025-09-15">Version 0.9 (2025-09-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-0-8-2025-06-30">Version 0.8 (2025-06-30)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#version-0-7-2025-04-10">Version 0.7 (2025-04-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#zukunftige-meilensteine">Zukünftige Meilensteine</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modul-Quellcode</a></li>
+      <li class="breadcrumb-item active">db.queries_rag</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Quellcode für db.queries_rag</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Filename: db/queries_rag.py</span>
+<span class="c1"># Location: /Users/michaelmark/PycharmProjects/CySecMaTo/db/queries_rag.py</span>
+<span class="c1"># FINAL VERSION for RAG DB functions</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="c1"># Relative imports for the DB layer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.neo4j_connector</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neo4j.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neo4jError</span><span class="p">,</span> <span class="n">ServiceUnavailable</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># By default, we fetch medium and high similarities for the context</span>
+<span class="n">DEFAULT_RAG_CATEGORIES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;high_similarity&quot;</span><span class="p">,</span> <span class="s2">&quot;medium_similarity&quot;</span><span class="p">]</span>
+<span class="n">DEFAULT_RAG_LIMIT</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Fetch Top 5 hits by default</span>
+
+
+<div class="viewcode-block" id="get_similar_control_context">
+<a class="viewcode-back" href="../../code/db.html#db.queries_rag.get_similar_control_context">[Doku]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_similar_control_context</span><span class="p">(</span>
+    <span class="n">source_control_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">allowed_categories</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">DEFAULT_RAG_LIMIT</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve context documents for the most similar controls.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            source_control_id (str): Control ID used as the source for similarity.</span>
+<span class="sd">            allowed_categories (list[str] | None): Similarity categories to include</span>
+<span class="sd">                (e.g., ``[&quot;high_similarity&quot;, &quot;medium_similarity&quot;]``). If ``None``,</span>
+<span class="sd">                a sensible default is used.</span>
+<span class="sd">            limit (int | None): Maximum number of similar controls to return.</span>
+<span class="sd">                If ``None`` or ``&lt;= 0``, no explicit LIMIT is applied.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[dict]: Each item contains fields such as:</span>
+<span class="sd">                - ``target_id`` (str)</span>
+<span class="sd">                - ``target_title`` (str | None)</span>
+<span class="sd">                - ``target_prose`` (str | None)</span>
+<span class="sd">                - ``score`` (float)</span>
+<span class="sd">                - ``category`` (str)</span>
+<span class="sd">                - ``has_confirmed_mapping`` (bool)</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            The query filters by similarity category, prefers higher scores first,</span>
+<span class="sd">            retrieves the description (``Part{name: &quot;description&quot;}``), and also checks</span>
+<span class="sd">            whether an explicit mapping (``IS_MAPPED_TO``) exists between the</span>
+<span class="sd">            source control and the candidate.</span>
+
+<span class="sd">        Example (Cypher):</span>
+
+<span class="sd">        .. code-block:: text</span>
+
+<span class="sd">           MATCH (source:Control {id: $sourceId})-[r:HAS_SIMILARITY]-&gt;(target:Control)</span>
+<span class="sd">           WHERE r.similarity_category IN $allowedCategories</span>
+<span class="sd">           WITH source, target, r</span>
+<span class="sd">           ORDER BY r.similarity_score DESC</span>
+<span class="sd">           LIMIT $limit</span>
+<span class="sd">           MATCH (target)-[:HAS_PART]-&gt;(p:Part {name: &#39;description&#39;})</span>
+<span class="sd">           WHERE p.prose IS NOT NULL</span>
+<span class="sd">           OPTIONAL MATCH (source)-[m:IS_MAPPED_TO]-&gt;(target)</span>
+<span class="sd">           RETURN target.id AS target_id,</span>
+<span class="sd">                  target.title AS target_title,</span>
+<span class="sd">                  p.prose AS target_prose,</span>
+<span class="sd">                  r.similarity_score AS score,</span>
+<span class="sd">                  r.similarity_category AS category,</span>
+<span class="sd">                  m IS NOT NULL AS has_confirmed_mapping</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">get_driver</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">driver</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Neo4j driver not available for get_similar_control_context.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">categories_to_use</span> <span class="o">=</span> <span class="n">allowed_categories</span> <span class="k">if</span> <span class="n">allowed_categories</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">DEFAULT_RAG_CATEGORIES</span>
+    <span class="n">limit_clause</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;LIMIT </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">limit</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Fetching RAG context for source_control=&#39;</span><span class="si">{</span><span class="n">source_control_id</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Categories=</span><span class="si">{</span><span class="n">categories_to_use</span><span class="si">}</span><span class="s2">, Limit=</span><span class="si">{</span><span class="n">limit</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;None&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Adjusted Cypher Query with OPTIONAL MATCH</span>
+    <span class="n">cypher_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    MATCH (source:Control </span><span class="se">{{</span><span class="s2">id: $sourceId</span><span class="se">}}</span><span class="s2">)</span>
+<span class="s2">          -[r:HAS_SIMILARITY]-&gt;</span>
+<span class="s2">          (target:Control)</span>
+<span class="s2">    WHERE r.similarity_category IN $allowedCategories // Filter by similarity category</span>
+<span class="s2">    WITH source, target, r // Include source for OPTIONAL MATCH</span>
+<span class="s2">    ORDER BY r.similarity_score DESC // Sort by highest score first</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">limit_clause</span><span class="si">}</span><span class="s2"> // Apply optional limit</span>
+
+<span class="s2">    // Get the description of the target</span>
+<span class="s2">    MATCH (target)-[:HAS_PART]-&gt;(p:Part </span><span class="se">{{</span><span class="s2">name: &#39;description&#39;</span><span class="se">}}</span><span class="s2">)</span>
+<span class="s2">    WHERE p.prose IS NOT NULL // Ensure text is present</span>
+
+<span class="s2">    // Check for existing mapping (IS_MAPPED_TO)</span>
+<span class="s2">    OPTIONAL MATCH (source)-[m:IS_MAPPED_TO]-&gt;(target) // Search for the mapping edge</span>
+
+<span class="s2">    // Return all data, including info on whether &#39;m&#39; was found</span>
+<span class="s2">    RETURN</span>
+<span class="s2">        target.id AS target_id,</span>
+<span class="s2">        target.title AS target_title,</span>
+<span class="s2">        p.prose AS target_prose,</span>
+<span class="s2">        r.similarity_score AS score, // Score of the similarity</span>
+<span class="s2">        r.similarity_category AS category, // Category of the similarity</span>
+<span class="s2">        m IS NOT NULL AS has_confirmed_mapping // true, if IS_MAPPED_TO exists</span>
+<span class="s2">    // ORDER BY score DESC // Sorting already done before the limit</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sourceId&quot;</span><span class="p">:</span> <span class="n">source_control_id</span><span class="p">,</span> <span class="s2">&quot;allowedCategories&quot;</span><span class="p">:</span> <span class="n">categories_to_use</span><span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">driver</span><span class="o">.</span><span class="n">session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Executing query to retrieve RAG context (with mapping check): </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cypher_query</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">record</span><span class="p">)</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="si">}</span><span class="s2"> context Controls found for RAG (including mapping status).&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">records</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">Neo4jError</span><span class="p">,</span> <span class="n">ServiceUnavailable</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neo4j error retrieving RAG context for &#39;</span><span class="si">{</span><span class="n">source_control_id</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># In case of error, return an empty list so UI is not blocked</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;General error retrieving RAG context for &#39;</span><span class="si">{</span><span class="n">source_control_id</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
+
+
+<div class="viewcode-block" id="add_mapping_relationship">
+<a class="viewcode-back" href="../../code/db.html#db.queries_rag.add_mapping_relationship">[Doku]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_mapping_relationship</span><span class="p">(</span>
+    <span class="n">source_control_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">target_control_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">properties</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Create or update an ``IS_MAPPED_TO`` relationship between two controls.</span>
+
+<span class="sd">       Args:</span>
+<span class="sd">           source_control_id (str): ID of the source control node (``Control{id}``).</span>
+<span class="sd">           target_control_id (str): ID of the target control node (``Control{id}``).</span>
+<span class="sd">           properties (dict[str, Any]): Properties to set/merge into the relationship.</span>
+<span class="sd">               On create, they are assigned wholesale; on match, they are merged</span>
+<span class="sd">               (``+=``) so only provided keys are updated/added.</span>
+
+<span class="sd">       Returns:</span>
+<span class="sd">           bool: ``True`` if the MERGE executed successfully (created or matched),</span>
+<span class="sd">           otherwise ``False``.</span>
+
+<span class="sd">       Example (Cypher):</span>
+
+<span class="sd">       .. code-block:: text</span>
+
+<span class="sd">          MATCH (source:Control {id: $sourceId})</span>
+<span class="sd">          MATCH (target:Control {id: $targetId})</span>
+<span class="sd">          MERGE (source)-[r:IS_MAPPED_TO]-&gt;(target)</span>
+<span class="sd">          ON CREATE SET</span>
+<span class="sd">              r = $props,</span>
+<span class="sd">              r.created_timestamp = timestamp(),</span>
+<span class="sd">              r.last_updated_timestamp = timestamp()</span>
+<span class="sd">          ON MATCH SET</span>
+<span class="sd">              r += $props,</span>
+<span class="sd">              r.last_updated_timestamp = timestamp()</span>
+<span class="sd">          RETURN count(r) AS affected_count</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">get_driver</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">driver</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Neo4j driver not available for add_mapping_relationship.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Saving/Updating mapping: </span><span class="si">{</span><span class="n">source_control_id</span><span class="si">}</span><span class="s2"> -[:IS_MAPPED_TO]-&gt; &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_control_id</span><span class="si">}</span><span class="s2"> with Properties: </span><span class="si">{</span><span class="n">properties</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">cypher_query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    MATCH (source:Control {id: $sourceId})</span>
+<span class="s2">    MATCH (target:Control {id: $targetId})</span>
+<span class="s2">    MERGE (source)-[r:IS_MAPPED_TO]-&gt;(target)</span>
+<span class="s2">    ON CREATE SET</span>
+<span class="s2">        r = $props,</span>
+<span class="s2">        r.created_timestamp = timestamp(),</span>
+<span class="s2">        r.last_updated_timestamp = timestamp()</span>
+<span class="s2">    ON MATCH SET</span>
+<span class="s2">        r += $props, // += only updates provided keys or adds new ones</span>
+<span class="s2">        r.last_updated_timestamp = timestamp()</span>
+<span class="s2">    RETURN count(r) AS affected_count</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sourceId&quot;</span><span class="p">:</span> <span class="n">source_control_id</span><span class="p">,</span>
+        <span class="s2">&quot;targetId&quot;</span><span class="p">:</span> <span class="n">target_control_id</span><span class="p">,</span>
+        <span class="s2">&quot;props&quot;</span><span class="p">:</span> <span class="n">properties</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">driver</span><span class="o">.</span><span class="n">session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Executing query to save mapping relationship: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cypher_query</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">summary</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">single</span><span class="p">()</span>
+            <span class="n">affected_count</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;affected_count&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">summary</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">affected_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Mapping relationship successfully created/updated.&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;MERGE for mapping relationship (</span><span class="si">{</span><span class="n">source_control_id</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">target_control_id</span><span class="si">}</span><span class="s2">) &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;returned count </span><span class="si">{</span><span class="n">affected_count</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span>
+                <span class="c1"># Merge war erfolgreich, auch wenn ON MATCH nichts geändert hat.</span>
+                <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">Neo4jError</span><span class="p">,</span> <span class="n">ServiceUnavailable</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neo4j error saving mapping relationship: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;General error saving mapping relationship: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Michael Mark.</p>
+  </div>
+
+  Erstellt mit <a href="https://www.sphinx-doc.org/">Sphinx</a> mit einem
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    bereitgestellt von <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+DB (Neo4j)
+==========
+
+.. automodule:: db.neo4j_connector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.neo4j_importer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.import_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.hitl_queries
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.queries_embeddings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.queries_mapping
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: db.queries_rag
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,17 @@
+Retrieval / Fake-RAG
+====================
+
+.. automodule:: retrieval.fake_documents
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: retrieval.fake_retriever
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: retrieval.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

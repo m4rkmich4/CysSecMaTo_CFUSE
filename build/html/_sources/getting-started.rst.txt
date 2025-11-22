@@ -1,0 +1,102 @@
+Getting Started
+===============
+
+Einführung
+-----------
+
+**C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)** ist ein Python-basiertes System zur automatisierten Analyse, Harmonisierung und Bewertung von Cybersecurity-Standards.
+
+Es kombiniert graphbasierte Datenhaltung (Neo4j), KI-gestützte Ähnlichkeitsbewertung (z. B. über Embeddings oder LLMs) und ein modulares Frontend zur Visualisierung und Steuerung.
+
+Ziel des Projekts ist der Nachweis eines Proof-of-Concepts für die automatisierte semantische Zuordnung von Controls zwischen unterschiedlichen Standards wie **ISO 27002**, **BSI C5** oder **NIST 800-53**.
+
+---
+
+Systemvoraussetzungen
+----------------------
+
+* **Python:** 3.11 oder neuer
+* **Pip-Pakete:** siehe ``requirements.txt``
+* **Betriebssystem:** macOS, Linux oder Windows
+* **Datenbank:** Neo4j (Version 5.x empfohlen)
+* **Optional:** Lokales LLM über Ollama oder ähnlichen Backend-Dienst
+
+---
+
+Installation
+------------
+
+1. Repository herunterladen:
+
+.. code-block:: bash
+
+   # Platzhalter – Projektverzeichnis hier einfügen
+   cd platzhalter
+
+2. Virtuelle Umgebung anlegen und aktivieren:
+
+.. code-block:: bash
+
+   python -m venv .venv
+   source .venv/bin/activate        # macOS / Linux
+   .venv\Scripts\activate           # Windows
+
+3. Abhängigkeiten installieren:
+
+.. code-block:: bash
+
+   pip install -r requirements.txt
+
+4. (Optional) Neo4j konfigurieren:
+
+- Die Verbindung wird über ``db/neo4j_connector.py`` gesteuert.
+- Stelle sicher, dass Benutzername, Passwort und Port korrekt gesetzt sind.
+
+---
+
+Projektstart
+------------
+
+Das Hauptskript ist ``app.py``.
+Starte das System lokal über die Kommandozeile:
+
+.. code-block:: bash
+
+   python app.py
+
+Beim Start wird:
+
+* die Haupt-UI geladen (Qt-basiert),
+* die Datenbankverbindung hergestellt,
+* verfügbare Views wie **Control Embedding**, **Context Retrieval** und **Mapping** initialisiert.
+
+---
+
+Projektstruktur (Überblick)
+----------------------------
+
+.. code-block:: text
+
+   .
+   ├── app.py                  # Einstiegspunkt
+   ├── assets/                 # Styles, Markdown-Hilfen
+   ├── config/                 # Prompt-Definitionen (DSPy, RAG)
+   ├── db/                     # Neo4j-Import, Modelle, Queries
+   ├── logic/                  # KI-Logik, Embeddings, Mapping
+   ├── retrieval/              # Fake-Retriever & Test-RAG
+   ├── ui/                     # Qt-Frontend-Views
+   ├── tests/                  # Unittests
+   └── files/                  # Beispiel-JSON/OSCAL-Dateien
+
+---
+
+Nächste Schritte
+----------------
+
+* Lies die **Code-Referenz** unter :doc:`code/index` für detaillierte Modulbeschreibungen.
+* Siehe **Changelog** für die Versionshistorie.
+* Baue die Dokumentation lokal mit:
+
+.. code-block:: bash
+
+   make html

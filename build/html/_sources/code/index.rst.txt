@@ -1,0 +1,28 @@
+Code-Referenz
+=============
+
+Dieser Abschnitt enthält die vollständige, automatisch generierte Dokumentation des C-FUSE-Quellcodes.
+
+Die Struktur folgt den Hauptpaketen des Projekts, die jeweils klar abgegrenzt Aufgaben übernehmen:
+- **app.py** – Haupteinstiegspunkt, startet das gesamte System und lädt die Qt-Oberfläche
+- **db/** – Datenbankanbindung, Import und Queries (Neo4j)
+- **logic/** – KI- und Mapping-Logik (Embeddings, LLMs, Few-Shot-Ansätze)
+- **ui/** – Qt-Frontend-Ansichten (Vergleich, Retrieval, Mapping, Embedding)
+- **retrieval/** – Fake-RAG und Kontextretrieval
+- **assets/** – Styling und Markdown-Utilities
+- **config/** – Prompt-Definitionen (DSPy, RAG)
+- **tests/** – Unittests und Validierungen
+
+---
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Modulebenen
+
+   app
+   db
+   logic
+   ui
+   retrieval
+   assets
+   config

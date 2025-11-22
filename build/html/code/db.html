@@ -1,0 +1,1402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DB (Neo4j) &mdash; C-FUSE (Cybersecurity Framework Unification &amp; Standard Evaluation) 1.0 beta Dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=372c4133"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=9bf55d28"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Kernlogik" href="logic.html" />
+    <link rel="prev" title="Anwendungseintritt (app.py)" href="app.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Inhalte:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#einfuhrung">Einführung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#systemvoraussetzungen">Systemvoraussetzungen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#projektstart">Projektstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#projektstruktur-uberblick">Projektstruktur (Überblick)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#nachste-schritte">Nächste Schritte</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Code-Referenz</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">Anwendungseintritt (app.py)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.html#app.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DB (Neo4j)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#db.neo4j_connector.get_driver"><code class="docutils literal notranslate"><span class="pre">get_driver()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.neo4j_importer.check_catalog_exists"><code class="docutils literal notranslate"><span class="pre">check_catalog_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.neo4j_importer.import_catalog"><code class="docutils literal notranslate"><span class="pre">import_catalog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.neo4j_importer.import_control"><code class="docutils literal notranslate"><span class="pre">import_control()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.neo4j_importer.import_group"><code class="docutils literal notranslate"><span class="pre">import_group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.import_manager.import_if_changed"><code class="docutils literal notranslate"><span class="pre">import_if_changed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Catalog"><code class="docutils literal notranslate"><span class="pre">Catalog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Catalog.groups"><code class="docutils literal notranslate"><span class="pre">Catalog.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Catalog.metadata"><code class="docutils literal notranslate"><span class="pre">Catalog.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Catalog.model_config"><code class="docutils literal notranslate"><span class="pre">Catalog.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Catalog.uuid"><code class="docutils literal notranslate"><span class="pre">Catalog.uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.class_"><code class="docutils literal notranslate"><span class="pre">Control.class_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.controls"><code class="docutils literal notranslate"><span class="pre">Control.controls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.id"><code class="docutils literal notranslate"><span class="pre">Control.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.model_config"><code class="docutils literal notranslate"><span class="pre">Control.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.parts"><code class="docutils literal notranslate"><span class="pre">Control.parts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.props"><code class="docutils literal notranslate"><span class="pre">Control.props</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Control.title"><code class="docutils literal notranslate"><span class="pre">Control.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Group.class_"><code class="docutils literal notranslate"><span class="pre">Group.class_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Group.controls"><code class="docutils literal notranslate"><span class="pre">Group.controls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Group.id"><code class="docutils literal notranslate"><span class="pre">Group.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Group.model_config"><code class="docutils literal notranslate"><span class="pre">Group.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Group.props"><code class="docutils literal notranslate"><span class="pre">Group.props</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Group.title"><code class="docutils literal notranslate"><span class="pre">Group.title</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Link"><code class="docutils literal notranslate"><span class="pre">Link</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Link.href"><code class="docutils literal notranslate"><span class="pre">Link.href</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Link.model_config"><code class="docutils literal notranslate"><span class="pre">Link.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Link.rel"><code class="docutils literal notranslate"><span class="pre">Link.rel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Metadata"><code class="docutils literal notranslate"><span class="pre">Metadata</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.last_modified"><code class="docutils literal notranslate"><span class="pre">Metadata.last_modified</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.links"><code class="docutils literal notranslate"><span class="pre">Metadata.links</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.model_config"><code class="docutils literal notranslate"><span class="pre">Metadata.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.oscal_version"><code class="docutils literal notranslate"><span class="pre">Metadata.oscal_version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.parties"><code class="docutils literal notranslate"><span class="pre">Metadata.parties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.published"><code class="docutils literal notranslate"><span class="pre">Metadata.published</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.responsible_parties"><code class="docutils literal notranslate"><span class="pre">Metadata.responsible_parties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.title"><code class="docutils literal notranslate"><span class="pre">Metadata.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Metadata.version"><code class="docutils literal notranslate"><span class="pre">Metadata.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Part"><code class="docutils literal notranslate"><span class="pre">Part</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Part.model_config"><code class="docutils literal notranslate"><span class="pre">Part.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Part.name"><code class="docutils literal notranslate"><span class="pre">Part.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Part.prose"><code class="docutils literal notranslate"><span class="pre">Part.prose</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Party"><code class="docutils literal notranslate"><span class="pre">Party</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Party.email_addresses"><code class="docutils literal notranslate"><span class="pre">Party.email_addresses</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Party.model_config"><code class="docutils literal notranslate"><span class="pre">Party.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Party.name"><code class="docutils literal notranslate"><span class="pre">Party.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Party.remarks"><code class="docutils literal notranslate"><span class="pre">Party.remarks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Party.type"><code class="docutils literal notranslate"><span class="pre">Party.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Party.uuid"><code class="docutils literal notranslate"><span class="pre">Party.uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.Property"><code class="docutils literal notranslate"><span class="pre">Property</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Property.model_config"><code class="docutils literal notranslate"><span class="pre">Property.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Property.name"><code class="docutils literal notranslate"><span class="pre">Property.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.Property.value"><code class="docutils literal notranslate"><span class="pre">Property.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.ResponsibleParty"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.ResponsibleParty.model_config"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.ResponsibleParty.party_uuids"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.party_uuids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db.models.ResponsibleParty.role_id"><code class="docutils literal notranslate"><span class="pre">ResponsibleParty.role_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#db.models.load_catalog_from_dict"><code class="docutils literal notranslate"><span class="pre">load_catalog_from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.hitl_queries.delete_mapping_relationship"><code class="docutils literal notranslate"><span class="pre">delete_mapping_relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.hitl_queries.get_mapping_detail"><code class="docutils literal notranslate"><span class="pre">get_mapping_detail()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.hitl_queries.get_mappings_for_validation"><code class="docutils literal notranslate"><span class="pre">get_mappings_for_validation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_embeddings.bulk_update_embeddings_for_parts"><code class="docutils literal notranslate"><span class="pre">bulk_update_embeddings_for_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_embeddings.get_all_catalogs"><code class="docutils literal notranslate"><span class="pre">get_all_catalogs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_embeddings.get_controls_with_description_parts"><code class="docutils literal notranslate"><span class="pre">get_controls_with_description_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_embeddings.get_groups_for_catalog"><code class="docutils literal notranslate"><span class="pre">get_groups_for_catalog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_embeddings.update_embedding_for_part"><code class="docutils literal notranslate"><span class="pre">update_embedding_for_part()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_mapping.bulk_merge_similarity_relations"><code class="docutils literal notranslate"><span class="pre">bulk_merge_similarity_relations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_mapping.calculate_and_store_many_to_many_similarities"><code class="docutils literal notranslate"><span class="pre">calculate_and_store_many_to_many_similarities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_mapping.calculate_similarities_for_display"><code class="docutils literal notranslate"><span class="pre">calculate_similarities_for_display()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_mapping.get_embedding_vector_for_part"><code class="docutils literal notranslate"><span class="pre">get_embedding_vector_for_part()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_mapping.get_top_n_many_to_many_similarity_results"><code class="docutils literal notranslate"><span class="pre">get_top_n_many_to_many_similarity_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_rag.add_mapping_relationship"><code class="docutils literal notranslate"><span class="pre">add_mapping_relationship()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db.queries_rag.get_similar_control_context"><code class="docutils literal notranslate"><span class="pre">get_similar_control_context()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logic.html">Kernlogik</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_embedding.create_embeddings_for_parts"><code class="docutils literal notranslate"><span class="pre">create_embeddings_for_parts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_embedding.get_active_model_components"><code class="docutils literal notranslate"><span class="pre">get_active_model_components()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_embedding.get_control_embedding_status"><code class="docutils literal notranslate"><span class="pre">get_control_embedding_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_embedding.get_current_active_model_name"><code class="docutils literal notranslate"><span class="pre">get_current_active_model_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_embedding.initialize_embedding_system"><code class="docutils literal notranslate"><span class="pre">initialize_embedding_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_mapping.calculate_all_similarities"><code class="docutils literal notranslate"><span class="pre">calculate_all_similarities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_mapping.execute_many_to_many_similarity_process"><code class="docutils literal notranslate"><span class="pre">execute_many_to_many_similarity_process()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_mapping.prepare_locked_control_data"><code class="docutils literal notranslate"><span class="pre">prepare_locked_control_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.control_mapping.store_similarity_relations"><code class="docutils literal notranslate"><span class="pre">store_similarity_relations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.rag_processor.fetch_similar_controls_for_rag"><code class="docutils literal notranslate"><span class="pre">fetch_similar_controls_for_rag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.rag_processor.generate_llm_comparison"><code class="docutils literal notranslate"><span class="pre">generate_llm_comparison()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.rag_processor.save_confirmed_mapping"><code class="docutils literal notranslate"><span class="pre">save_confirmed_mapping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.llm_interface.call_local_llm"><code class="docutils literal notranslate"><span class="pre">call_local_llm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.hitl_processes.human_edit_and_confirm"><code class="docutils literal notranslate"><span class="pre">human_edit_and_confirm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.hitl_processes.human_validate_without_changes"><code class="docutils literal notranslate"><span class="pre">human_validate_without_changes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.DSPy_version.CompareStandards"><code class="docutils literal notranslate"><span class="pre">CompareStandards</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="logic.html#logic.DSPy_version.CompareStandards.answer"><code class="docutils literal notranslate"><span class="pre">CompareStandards.answer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logic.html#logic.DSPy_version.CompareStandards.model_config"><code class="docutils literal notranslate"><span class="pre">CompareStandards.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logic.html#logic.DSPy_version.CompareStandards.question"><code class="docutils literal notranslate"><span class="pre">CompareStandards.question</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.DSPy_version.CompareStandardsModule"><code class="docutils literal notranslate"><span class="pre">CompareStandardsModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="logic.html#logic.DSPy_version.CompareStandardsModule.forward"><code class="docutils literal notranslate"><span class="pre">CompareStandardsModule.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.DSPy_version.get_compare_module"><code class="docutils literal notranslate"><span class="pre">get_compare_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.DSPy_version.init_dspy"><code class="docutils literal notranslate"><span class="pre">init_dspy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logic.html#logic.DSPy_version.run_comparison"><code class="docutils literal notranslate"><span class="pre">run_comparison()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html">UI (Qt)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.main_window.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.sidebar.Sidebar"><code class="docutils literal notranslate"><span class="pre">Sidebar</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.sidebar.Sidebar.set_active"><code class="docutils literal notranslate"><span class="pre">Sidebar.set_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.sidebar.Sidebar.view_changed"><code class="docutils literal notranslate"><span class="pre">Sidebar.view_changed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.context_retrieval.ContextRetrievalView"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.ContextRetrievalView.on_embedding_finished"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.on_embedding_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.ContextRetrievalView.on_retrieval_finished"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.on_retrieval_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.ContextRetrievalView.set_buttons_enabled"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.set_buttons_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.ContextRetrievalView.start_embedding_generation"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.start_embedding_generation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.ContextRetrievalView.start_retrieval"><code class="docutils literal notranslate"><span class="pre">ContextRetrievalView.start_retrieval()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.context_retrieval.EmbeddingWorker"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.EmbeddingWorker.finished"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.EmbeddingWorker.run"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.context_retrieval.LlmWorker"><code class="docutils literal notranslate"><span class="pre">LlmWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.LlmWorker.finished"><code class="docutils literal notranslate"><span class="pre">LlmWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.context_retrieval.LlmWorker.run"><code class="docutils literal notranslate"><span class="pre">LlmWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.load_controls"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.load_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.on_embedding_done"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.on_embedding_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.populate_catalogs"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.populate_catalogs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.run_embedding_generation"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.run_embedding_generation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.update_active_model_label"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.update_active_model_label()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.ControlEmbeddingView.update_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlEmbeddingView.update_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_embedding_view.EmbeddingWorker"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.EmbeddingWorker.finished"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.EmbeddingWorker.progress"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id0"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id1"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_embedding_view.EmbeddingWorker.run"><code class="docutils literal notranslate"><span class="pre">EmbeddingWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_view.ControlMappingView"><code class="docutils literal notranslate"><span class="pre">ControlMappingView</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.load_source_controls"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.load_source_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.lock_selection"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.lock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_done"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_single_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_single_error"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_single_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.on_source_selection_changed"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.on_source_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.start_mapping_process"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.start_mapping_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.unlock_selection"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.unlock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_source_group_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_start_button_state"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_start_button_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.ControlMapping1NView.update_target_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMapping1NView.update_target_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.SingleMappingSignals"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.SingleMappingSignals.finished"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.SingleMappingSignals.error"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.SingleMappingSignals.progress"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id2"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id3"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id4"><code class="docutils literal notranslate"><span class="pre">SingleMappingSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.SingleMappingTask"><code class="docutils literal notranslate"><span class="pre">SingleMappingTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_1n_view.SingleMappingTask.run"><code class="docutils literal notranslate"><span class="pre">SingleMappingTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.finished"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.error"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.BulkSimilaritySignals.progress"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id5"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id6"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#id7"><code class="docutils literal notranslate"><span class="pre">BulkSimilaritySignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.BulkSimilarityTask"><code class="docutils literal notranslate"><span class="pre">BulkSimilarityTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.BulkSimilarityTask.run"><code class="docutils literal notranslate"><span class="pre">BulkSimilarityTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.append_status"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.closeEvent"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.on_bulk_done"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.on_bulk_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.on_bulk_error"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.on_bulk_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.start_mapping_process"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.start_mapping_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_source_group_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_start_button_state"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_start_button_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.control_mapping_mn_view.ControlMappingMNView.update_target_group_selector"><code class="docutils literal notranslate"><span class="pre">ControlMappingMNView.update_target_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.human_validation_view.EditMappingDialog"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.EditMappingDialog.action"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.EditMappingDialog.reject_reason"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.reject_reason()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.EditMappingDialog.values"><code class="docutils literal notranslate"><span class="pre">EditMappingDialog.values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.human_validation_view.FuncTask"><code class="docutils literal notranslate"><span class="pre">FuncTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.FuncTask.run"><code class="docutils literal notranslate"><span class="pre">FuncTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.human_validation_view.HumanValidationView"><code class="docutils literal notranslate"><span class="pre">HumanValidationView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.HumanValidationView.reload_data"><code class="docutils literal notranslate"><span class="pre">HumanValidationView.reload_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.human_validation_view.WorkerSignals"><code class="docutils literal notranslate"><span class="pre">WorkerSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.WorkerSignals.error"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.WorkerSignals.finished"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.human_validation_view.WorkerSignals.progress"><code class="docutils literal notranslate"><span class="pre">WorkerSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.import_view.ImportView"><code class="docutils literal notranslate"><span class="pre">ImportView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportView.append_status_message"><code class="docutils literal notranslate"><span class="pre">ImportView.append_status_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportView.on_import_error"><code class="docutils literal notranslate"><span class="pre">ImportView.on_import_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportView.on_import_finished"><code class="docutils literal notranslate"><span class="pre">ImportView.on_import_finished()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportView.select_file"><code class="docutils literal notranslate"><span class="pre">ImportView.select_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportView.set_buttons_enabled"><code class="docutils literal notranslate"><span class="pre">ImportView.set_buttons_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportView.start_import_thread"><code class="docutils literal notranslate"><span class="pre">ImportView.start_import_thread()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.import_view.ImportWorker"><code class="docutils literal notranslate"><span class="pre">ImportWorker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportWorker.error"><code class="docutils literal notranslate"><span class="pre">ImportWorker.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportWorker.finished"><code class="docutils literal notranslate"><span class="pre">ImportWorker.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportWorker.progress_update"><code class="docutils literal notranslate"><span class="pre">ImportWorker.progress_update</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.import_view.ImportWorker.run"><code class="docutils literal notranslate"><span class="pre">ImportWorker.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.error"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.finished"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.FetchSimilarControlsSignals.progress"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.rag_mapping_view.FetchSimilarControlsTask"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.FetchSimilarControlsTask.run"><code class="docutils literal notranslate"><span class="pre">FetchSimilarControlsTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.rag_mapping_view.LLMComparisonSignals"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.LLMComparisonSignals.error"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.LLMComparisonSignals.finished"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.finished</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.LLMComparisonSignals.progress"><code class="docutils literal notranslate"><span class="pre">LLMComparisonSignals.progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.rag_mapping_view.LLMComparisonTask"><code class="docutils literal notranslate"><span class="pre">LLMComparisonTask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.LLMComparisonTask.run"><code class="docutils literal notranslate"><span class="pre">LLMComparisonTask.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView"><code class="docutils literal notranslate"><span class="pre">RAGMappingView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.append_status"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.append_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.closeEvent"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.closeEvent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.display_llm_result"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.display_llm_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.fetch_and_display_similar_controls"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.fetch_and_display_similar_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.handle_llm_error"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.handle_llm_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.load_source_controls"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.load_source_controls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.lock_selection"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.lock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.on_fetch_similar_done"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_fetch_similar_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.on_fetch_similar_error"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_fetch_similar_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.on_source_selection_changed"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_source_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.on_target_selection_changed"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.on_target_selection_changed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.populate_catalog_selectors"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.populate_catalog_selectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.reload_catalog_data"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.reload_catalog_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.request_llm_comparison"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.request_llm_comparison()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.save_mapping"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.save_mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.unlock_selection"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.unlock_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.rag_mapping_view.RAGMappingView.update_source_group_selector"><code class="docutils literal notranslate"><span class="pre">RAGMappingView.update_source_group_selector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#ui.standard_comparison.CybersecurityComparer"><code class="docutils literal notranslate"><span class="pre">CybersecurityComparer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html#ui.standard_comparison.CybersecurityComparer.perform_comparison"><code class="docutils literal notranslate"><span class="pre">CybersecurityComparer.perform_comparison()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="retrieval.html">Retrieval / Fake-RAG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="retrieval.html#retrieval.fake_retriever.FakeRetriever"><code class="docutils literal notranslate"><span class="pre">FakeRetriever</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="retrieval.html#retrieval.fake_retriever.FakeRetriever.get_description_by_title"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_description_by_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="retrieval.html#retrieval.fake_retriever.FakeRetriever.get_document_by_title"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_document_by_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="retrieval.html#retrieval.fake_retriever.FakeRetriever.get_documents"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_documents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="retrieval.html#retrieval.fake_retriever.FakeRetriever.get_titles"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.get_titles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="retrieval.html#retrieval.fake_retriever.FakeRetriever.recompute_embeddings"><code class="docutils literal notranslate"><span class="pre">FakeRetriever.recompute_embeddings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="retrieval.html#retrieval.utils.load_documents"><code class="docutils literal notranslate"><span class="pre">load_documents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="retrieval.html#retrieval.utils.save_documents"><code class="docutils literal notranslate"><span class="pre">save_documents()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets (Styles &amp; Markdown)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="assets.html#assets.markdown_utils.beautify_markdown"><code class="docutils literal notranslate"><span class="pre">beautify_markdown()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Konfiguration / Prompts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#config.prompts_dspy.get_comparison_prompt"><code class="docutils literal notranslate"><span class="pre">get_comparison_prompt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#config.prompts_rag.build_rag_prompt"><code class="docutils literal notranslate"><span class="pre">build_rag_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#version-1-0-beta-2025-11-01">Version 1.0 beta (2025-11-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#version-0-9-2025-09-15">Version 0.9 (2025-09-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#version-0-8-2025-06-30">Version 0.8 (2025-06-30)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#version-0-7-2025-04-10">Version 0.7 (2025-04-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#zukunftige-meilensteine">Zukünftige Meilensteine</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Code-Referenz</a></li>
+      <li class="breadcrumb-item active">DB (Neo4j)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/code/db.rst.txt" rel="nofollow"> Quelltext anzeigen</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-db.neo4j_connector">
+<span id="db-neo4j"></span><h1>DB (Neo4j)<a class="headerlink" href="#module-db.neo4j_connector" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="db.neo4j_connector.get_driver">
+<span class="sig-name descname"><span class="pre">get_driver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/neo4j_connector.html#get_driver"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.neo4j_connector.get_driver" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<p id="module-db.neo4j_importer">This module contains functions for importing OSCAL catalog data
+from a Python dictionary into a Neo4j database.
+(Rest of the docstring unchanged)</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="db.neo4j_importer.check_catalog_exists">
+<span class="sig-name descname"><span class="pre">check_catalog_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_uuid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/neo4j_importer.html#check_catalog_exists"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.neo4j_importer.check_catalog_exists" title="Link to this definition"></a></dt>
+<dd><p>Checks if a catalog with the given UUID already exists in Neo4j.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.neo4j_importer.import_catalog">
+<span class="sig-name descname"><span class="pre">import_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/neo4j_importer.html#import_catalog"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.neo4j_importer.import_catalog" title="Link to this definition"></a></dt>
+<dd><p>Imports a complete OSCAL catalog from a dictionary into Neo4j.
+(Docstring unchanged)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>catalog_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>progress_callback</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.neo4j_importer.import_control">
+<span class="sig-name descname"><span class="pre">import_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_control_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/neo4j_importer.html#import_control"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.neo4j_importer.import_control" title="Link to this definition"></a></dt>
+<dd><p>Imports an OSCAL control and its content into Neo4j.
+(Code unchanged)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tx</strong> (<em>neo4j.Transaction</em>)</p></li>
+<li><p><strong>control</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>parent_control_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>progress_callback</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.neo4j_importer.import_group">
+<span class="sig-name descname"><span class="pre">import_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/neo4j_importer.html#import_group"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.neo4j_importer.import_group" title="Link to this definition"></a></dt>
+<dd><p>Imports an OSCAL group specifically for its catalog into Neo4j.
+(Code unchanged)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tx</strong> (<em>neo4j.Transaction</em>)</p></li>
+<li><p><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>progress_callback</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-db.import_manager">
+<dt class="sig sig-object py" id="db.import_manager.import_if_changed">
+<span class="sig-name descname"><span class="pre">import_if_changed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/import_manager.html#import_if_changed"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.import_manager.import_if_changed" title="Link to this definition"></a></dt>
+<dd><p>Processes a single OSCAL catalog file for import.</p>
+<p>Reads the specified JSON file, validates its content against the
+Pydantic model (<cite>Catalog</cite> from <cite>db.models</cite>), then checks if a catalog
+with the extracted UUID already exists in the Neo4j database. If the
+UUID is new, it triggers the import via <cite>import_catalog</cite>. Progress
+is reported via the optional callback.</p>
+<p>Catches expected errors (file not found, invalid JSON, validation
+error, database error) and returns a user-friendly status or error
+message string suitable for display in a GUI. Detailed errors are
+printed to the console within except blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a>) – Path to the OSCAL catalog file (JSON) to import.</p></li>
+<li><p><strong>progress_callback</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>]</em><em>]</em>) – Optional function to receive progress messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>A status message indicating success, no action (already exists),
+or an error that occurred.</p>
+</dd>
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class" id="module-db.models">
+<dt class="sig sig-object py" id="db.models.Catalog">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Catalog"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Catalog" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>OSCAL Catalog (root element).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uuid</strong> – Unique catalog identifier</p></li>
+<li><p><strong>metadata</strong> – Metadata block</p></li>
+<li><p><strong>groups</strong> – Group structure containing all controls</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p></li>
+<li><p><strong>metadata</strong> (<a class="reference internal" href="#db.models.Metadata" title="db.models.Metadata"><em>Metadata</em></a>)</p></li>
+<li><p><strong>groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Group" title="db.models.Group"><em>Group</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Catalog.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Group" title="db.models.Group"><span class="pre">Group</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#db.models.Catalog.groups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Catalog.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#db.models.Metadata" title="db.models.Metadata"><span class="pre">Metadata</span></a></em><a class="headerlink" href="#db.models.Catalog.metadata" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Catalog.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Catalog.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Catalog.uuid">
+<span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><span class="pre">UUID</span></a></em><a class="headerlink" href="#db.models.Catalog.uuid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Control">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_='stand_alone'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Control"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Control" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a security control with metadata and optional sub-controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – Control ID (must be unique)</p></li>
+<li><p><strong>title</strong> – Human-readable control title</p></li>
+<li><p><strong>class</strong> – Classification (parent, child, stand_alone)</p></li>
+<li><p><strong>props</strong> – Arbitrary properties</p></li>
+<li><p><strong>parts</strong> – Structured text parts</p></li>
+<li><p><strong>controls</strong> – Sub-controls (nested recursively)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>class_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>props</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Property" title="db.models.Property"><em>Property</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>parts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Part" title="db.models.Part"><em>Part</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>controls</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Control" title="db.models.Control"><em>Control</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.class_">
+<span class="sig-name descname"><span class="pre">class_</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Control.class_" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.controls">
+<span class="sig-name descname"><span class="pre">controls</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Control" title="db.models.Control"><span class="pre">Control</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Control.controls" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Control.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Control.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.parts">
+<span class="sig-name descname"><span class="pre">parts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Part" title="db.models.Part"><span class="pre">Part</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Control.parts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.props">
+<span class="sig-name descname"><span class="pre">props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Property" title="db.models.Property"><span class="pre">Property</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Control.props" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Control.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Control.title" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Group">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Group"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Group" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Collection of thematically related controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – Unique group ID</p></li>
+<li><p><strong>class</strong> – Classification type (usually ‚family‘)</p></li>
+<li><p><strong>title</strong> – Group title (e.g., ‚Access Control‘)</p></li>
+<li><p><strong>props</strong> – Optional meta-properties of the group</p></li>
+<li><p><strong>controls</strong> – List of contained controls</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>class_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>props</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Property" title="db.models.Property"><em>Property</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>controls</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Control" title="db.models.Control"><em>Control</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Group.class_">
+<span class="sig-name descname"><span class="pre">class_</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Group.class_" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Group.controls">
+<span class="sig-name descname"><span class="pre">controls</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Control" title="db.models.Control"><span class="pre">Control</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#db.models.Group.controls" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Group.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Group.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Group.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Group.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Group.props">
+<span class="sig-name descname"><span class="pre">props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Property" title="db.models.Property"><span class="pre">Property</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Group.props" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Group.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Group.title" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Link">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">href</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Link"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Link" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a hyperlink in the metadata section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>href</strong> – Target URL (must start with http or https)</p></li>
+<li><p><strong>rel</strong> – Relationship type (e.g., ‚reference‘)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>href</strong> (<em>AnyHttpUrl</em>)</p></li>
+<li><p><strong>rel</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Link.href">
+<span class="sig-name descname"><span class="pre">href</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">AnyHttpUrl</span></em><a class="headerlink" href="#db.models.Link.href" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Link.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Link.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Link.rel">
+<span class="sig-name descname"><span class="pre">rel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Link.rel" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Metadata">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">published</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_modified</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oscal_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">links=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parties=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responsible_parties=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Metadata"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Metadata" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Top-level information about the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – Catalog title</p></li>
+<li><p><strong>published</strong> – Publication datetime</p></li>
+<li><p><strong>last_modified</strong> – Last modification datetime (ISO timestamp)</p></li>
+<li><p><strong>version</strong> – Catalog version</p></li>
+<li><p><strong>oscal_version</strong> – OSCAL specification version used</p></li>
+<li><p><strong>links</strong> – References to external or internal sources</p></li>
+<li><p><strong>parties</strong> – List of involved parties</p></li>
+<li><p><strong>responsible_parties</strong> – Assignment of roles to parties</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>published</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a>)</p></li>
+<li><p><strong>last_modified</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a>)</p></li>
+<li><p><strong>version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>oscal_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>links</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Link" title="db.models.Link"><em>Link</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>parties</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.Party" title="db.models.Party"><em>Party</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>responsible_parties</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference internal" href="#db.models.ResponsibleParty" title="db.models.ResponsibleParty"><em>ResponsibleParty</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.last_modified">
+<span class="sig-name descname"><span class="pre">last_modified</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#db.models.Metadata.last_modified" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.links">
+<span class="sig-name descname"><span class="pre">links</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Link" title="db.models.Link"><span class="pre">Link</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Metadata.links" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Metadata.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.oscal_version">
+<span class="sig-name descname"><span class="pre">oscal_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Metadata.oscal_version" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.parties">
+<span class="sig-name descname"><span class="pre">parties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.Party" title="db.models.Party"><span class="pre">Party</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Metadata.parties" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.published">
+<span class="sig-name descname"><span class="pre">published</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#db.models.Metadata.published" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.responsible_parties">
+<span class="sig-name descname"><span class="pre">responsible_parties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#db.models.ResponsibleParty" title="db.models.ResponsibleParty"><span class="pre">ResponsibleParty</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Metadata.responsible_parties" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Metadata.title" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Metadata.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Metadata.version" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Part">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prose</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Part"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Part" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Text segment within a control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Type (e.g., ‚description‘, ‚guidance‘)</p></li>
+<li><p><strong>prose</strong> – Associated narrative text</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>prose</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Part.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Part.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Part.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Part.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Part.prose">
+<span class="sig-name descname"><span class="pre">prose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Part.prose" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Party">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Party</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email_addresses=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remarks=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Party"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Party" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents an involved party (organization or person).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uuid</strong> – Unique UUID</p></li>
+<li><p><strong>type</strong> – Party type (‚organization‘ or ‚person‘)</p></li>
+<li><p><strong>name</strong> – Display name</p></li>
+<li><p><strong>email_addresses</strong> – List of associated email addresses</p></li>
+<li><p><strong>remarks</strong> – Optional free-text remarks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p></li>
+<li><p><strong>type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'organization'</em><em>, </em><em>'person'</em><em>]</em>)</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>email_addresses</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><em>EmailStr</em><em>]</em>)</p></li>
+<li><p><strong>remarks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Party.email_addresses">
+<span class="sig-name descname"><span class="pre">email_addresses</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">EmailStr</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#db.models.Party.email_addresses" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Party.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Party.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Party.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Party.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Party.remarks">
+<span class="sig-name descname"><span class="pre">remarks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#db.models.Party.remarks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Party.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'organization'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'person'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#db.models.Party.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Party.uuid">
+<span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><span class="pre">UUID</span></a></em><a class="headerlink" href="#db.models.Party.uuid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Property">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#Property"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.Property" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Arbitrary property (e.g., ‚criticality‘, ‚chapter‘).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Property key</p></li>
+<li><p><strong>value</strong> – Property value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Property.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.Property.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Property.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Property.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Property.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.Property.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.ResponsibleParty">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResponsibleParty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">party_uuids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#ResponsibleParty"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.ResponsibleParty" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Associates roles with one or more parties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variablen<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>role_id</strong> – Role identifier</p></li>
+<li><p><strong>party_uuids</strong> – List of referenced party UUIDs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>role_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>party_uuids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.ResponsibleParty.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#db.models.ResponsibleParty.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.ResponsibleParty.party_uuids">
+<span class="sig-name descname"><span class="pre">party_uuids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><span class="pre">UUID</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#db.models.ResponsibleParty.party_uuids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.ResponsibleParty.role_id">
+<span class="sig-name descname"><span class="pre">role_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#db.models.ResponsibleParty.role_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.models.load_catalog_from_dict">
+<span class="sig-name descname"><span class="pre">load_catalog_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/models.html#load_catalog_from_dict"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.models.load_catalog_from_dict" title="Link to this definition"></a></dt>
+<dd><p>Loads an OSCAL-formatted dictionary into a valid Catalog model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – JSON-like dictionary with ‚catalog‘ key</p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>Valid Catalog model</p>
+</dd>
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#db.models.Catalog" title="db.models.Catalog"><em>Catalog</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-db.hitl_queries">
+<dt class="sig sig-object py" id="db.hitl_queries.delete_mapping_relationship">
+<span class="sig-name descname"><span class="pre">delete_mapping_relationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/hitl_queries.html#delete_mapping_relationship"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.hitl_queries.delete_mapping_relationship" title="Link to this definition"></a></dt>
+<dd><p>Löscht eine :IS_MAPPED_TO-Kante.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>target_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.hitl_queries.get_mapping_detail">
+<span class="sig-name descname"><span class="pre">get_mapping_detail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/hitl_queries.html#get_mapping_detail"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.hitl_queries.get_mapping_detail" title="Link to this definition"></a></dt>
+<dd><p>Holt eine spezifische Mapping-Kante + aktuelle Properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>target_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.hitl_queries.get_mappings_for_validation">
+<span class="sig-name descname"><span class="pre">get_mappings_for_validation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_catalog_uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_catalog_uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/hitl_queries.html#get_mappings_for_validation"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.hitl_queries.get_mappings_for_validation" title="Link to this definition"></a></dt>
+<dd><p>Liefert bestehende :IS_MAPPED_TO-Kanten inkl. Control-Texte.
+Optional filterbar nach Source-/Target-Katalog und Status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>target_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>status_filter</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-db.queries_embeddings">
+<dt class="sig sig-object py" id="db.queries_embeddings.bulk_update_embeddings_for_parts">
+<span class="sig-name descname"><span class="pre">bulk_update_embeddings_for_parts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_data_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_embeddings.html#bulk_update_embeddings_for_parts"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_embeddings.bulk_update_embeddings_for_parts" title="Link to this definition"></a></dt>
+<dd><p>Saves a list of embedding data (vector and model name) for multiple
+Part nodes in a single transaction using UNWIND.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>embedding_data_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em>) – A list of dictionaries. Each dict should contain:
+‚part_element_id‘: str,
+‚embedding_vector‘: List[float],
+‚model_name‘: str</p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the result, e.g., {‚updated_parts_count‘: count}.
+Raises RuntimeError on errors.</p>
+</dd>
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_embeddings.get_all_catalogs">
+<span class="sig-name descname"><span class="pre">get_all_catalogs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_embeddings.html#get_all_catalogs"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_embeddings.get_all_catalogs" title="Link to this definition"></a></dt>
+<dd><p>Returns all available catalogs with UUID and title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_embeddings.get_controls_with_description_parts">
+<span class="sig-name descname"><span class="pre">get_controls_with_description_parts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_all_controls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_without_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_with_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_embeddings.html#get_controls_with_description_parts"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_embeddings.get_controls_with_description_parts" title="Link to this definition"></a></dt>
+<dd><p>Returns all Controls with Part (name = ‚description‘), optionally
+filtered by group or group membership.
+(Docstring and function as last provided by you)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>show_all_controls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>only_without_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>only_with_embedding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_embeddings.get_groups_for_catalog">
+<span class="sig-name descname"><span class="pre">get_groups_for_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_uuid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_embeddings.html#get_groups_for_catalog"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_embeddings.get_groups_for_catalog" title="Link to this definition"></a></dt>
+<dd><p>Returns all groups (id + title) for a catalog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_embeddings.update_embedding_for_part">
+<span class="sig-name descname"><span class="pre">update_embedding_for_part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">part_element_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_embeddings.html#update_embedding_for_part"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_embeddings.update_embedding_for_part" title="Link to this definition"></a></dt>
+<dd><p>Saves the embedding array and the model name for a single Part.
+(Function as last provided by you, with Runtime Error Propagation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>part_element_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>embedding_vector</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-db.queries_mapping">
+<dt class="sig sig-object py" id="db.queries_mapping.bulk_merge_similarity_relations">
+<span class="sig-name descname"><span class="pre">bulk_merge_similarity_relations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_to_save</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_mapping.html#bulk_merge_similarity_relations"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_mapping.bulk_merge_similarity_relations" title="Link to this definition"></a></dt>
+<dd><p>1-N: Saves filtered similarities as HAS_SIMILARITY relationships.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results_to_save</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_mapping.calculate_and_store_many_to_many_similarities">
+<span class="sig-name descname"><span class="pre">calculate_and_store_many_to_many_similarities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">similarity_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_mapping.html#calculate_and_store_many_to_many_similarities"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_mapping.calculate_and_store_many_to_many_similarities" title="Link to this definition"></a></dt>
+<dd><p>M-N without GDS projection: Directly compares all description Parts and
+saves HAS_SIMILARITY relationships above the threshold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>target_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>embedding_model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>source_group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>target_group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>similarity_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_mapping.calculate_similarities_for_display">
+<span class="sig-name descname"><span class="pre">calculate_similarities_for_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locked_part_element_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_mapping.html#calculate_similarities_for_display"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_mapping.calculate_similarities_for_display" title="Link to this definition"></a></dt>
+<dd><p>1-N: Calculates cosine similarities between the locked Part and target Parts,
+returns only results with score &gt;= display_threshold, but does not save anything.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locked_part_element_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>target_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>target_group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>display_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_mapping.get_embedding_vector_for_part">
+<span class="sig-name descname"><span class="pre">get_embedding_vector_for_part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">part_element_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_mapping.html#get_embedding_vector_for_part"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_mapping.get_embedding_vector_for_part" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the stored embedding vector for a Part node using its elementId.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>part_element_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_mapping.get_top_n_many_to_many_similarity_results">
+<span class="sig-name descname"><span class="pre">get_top_n_many_to_many_similarity_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_catalog_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_group_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_mapping.html#get_top_n_many_to_many_similarity_results"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_mapping.get_top_n_many_to_many_similarity_results" title="Link to this definition"></a></dt>
+<dd><p>Retrieves Top-N M-N results from HAS_SIMILARITY relationships.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>target_catalog_uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>source_group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>target_group_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-db.queries_rag">
+<dt class="sig sig-object py" id="db.queries_rag.add_mapping_relationship">
+<span class="sig-name descname"><span class="pre">add_mapping_relationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_control_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_control_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_rag.html#add_mapping_relationship"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_rag.add_mapping_relationship" title="Link to this definition"></a></dt>
+<dd><p>Create or update an <code class="docutils literal notranslate"><span class="pre">IS_MAPPED_TO</span></code> relationship between two controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_control_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – ID of the source control node (<code class="docutils literal notranslate"><span class="pre">Control{id}</span></code>).</p></li>
+<li><p><strong>target_control_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – ID of the target control node (<code class="docutils literal notranslate"><span class="pre">Control{id}</span></code>).</p></li>
+<li><p><strong>properties</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em>) – Properties to set/merge into the relationship.
+On create, they are assigned wholesale; on match, they are merged
+(<code class="docutils literal notranslate"><span class="pre">+=</span></code>) so only provided keys are updated/added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the MERGE executed successfully (created or matched),
+otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+<p>Example (Cypher):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MATCH (source:Control {id: $sourceId})
+MATCH (target:Control {id: $targetId})
+MERGE (source)-[r:IS_MAPPED_TO]-&gt;(target)
+ON CREATE SET
+    r = $props,
+    r.created_timestamp = timestamp(),
+    r.last_updated_timestamp = timestamp()
+ON MATCH SET
+    r += $props,
+    r.last_updated_timestamp = timestamp()
+RETURN count(r) AS affected_count
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.queries_rag.get_similar_control_context">
+<span class="sig-name descname"><span class="pre">get_similar_control_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_control_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/db/queries_rag.html#get_similar_control_context"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#db.queries_rag.get_similar_control_context" title="Link to this definition"></a></dt>
+<dd><p>Retrieve context documents for the most similar controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_control_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Control ID used as the source for similarity.</p></li>
+<li><p><strong>allowed_categories</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Similarity categories to include
+(e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;high_similarity&quot;,</span> <span class="pre">&quot;medium_similarity&quot;]</span></code>). If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+a sensible default is used.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of similar controls to return.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code>, no explicit LIMIT is applied.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Each item contains fields such as:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">target_id</span></code> (str)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_title</span></code> (str | None)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_prose</span></code> (str | None)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> (float)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">category</span></code> (str)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">has_confirmed_mapping</span></code> (bool)</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The query filters by similarity category, prefers higher scores first,
+retrieves the description (<code class="docutils literal notranslate"><span class="pre">Part{name:</span> <span class="pre">&quot;description&quot;}</span></code>), and also checks
+whether an explicit mapping (<code class="docutils literal notranslate"><span class="pre">IS_MAPPED_TO</span></code>) exists between the
+source control and the candidate.</p>
+<p>Example (Cypher):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MATCH (source:Control {id: $sourceId})-[r:HAS_SIMILARITY]-&gt;(target:Control)
+WHERE r.similarity_category IN $allowedCategories
+WITH source, target, r
+ORDER BY r.similarity_score DESC
+LIMIT $limit
+MATCH (target)-[:HAS_PART]-&gt;(p:Part {name: &#39;description&#39;})
+WHERE p.prose IS NOT NULL
+OPTIONAL MATCH (source)-[m:IS_MAPPED_TO]-&gt;(target)
+RETURN target.id AS target_id,
+       target.title AS target_title,
+       p.prose AS target_prose,
+       r.similarity_score AS score,
+       r.similarity_category AS category,
+       m IS NOT NULL AS has_confirmed_mapping
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app.html" class="btn btn-neutral float-left" title="Anwendungseintritt (app.py)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="logic.html" class="btn btn-neutral float-right" title="Kernlogik" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Michael Mark.</p>
+  </div>
+
+  Erstellt mit <a href="https://www.sphinx-doc.org/">Sphinx</a> mit einem
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    bereitgestellt von <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

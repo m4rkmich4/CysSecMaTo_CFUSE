@@ -13,7 +13,6 @@ __pycache__/
 .idea/
 
 # Sphinx build
-/build/
 source/_build/
 docs/_build/
 

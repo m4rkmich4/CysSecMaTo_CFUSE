@@ -1,0 +1,37 @@
+C-FUSE Dokumentation
+====================
+
+Willkommen zur Projektdokumentation von **C-FUSE (Cybersecurity Framework Unification & Standard Evaluation)**.
+
+Dieses Projekt dokumentiert den Aufbau, die Funktionsweise und den Quellcode des C-FUSE-Systems.
+Es kombiniert graphbasierte Verarbeitung (Neo4j), lokale KI-Komponenten und modulare Python-Logik,
+um Cybersecurity-Standards effizient zu analysieren und zu mappen.
+
+---
+
+Überblick
+----------
+
+Die Dokumentation ist in zwei Hauptbereiche gegliedert:
+
+1. **Benutzer- und Entwicklerhandbuch** – Installation, Start, grundlegende Abläufe.
+2. **Code-Referenz** – Alle Module und Klassen mit Docstrings direkt aus dem Quellcode generiert.
+
+---
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Inhalte:
+
+   getting-started
+   code/index
+   changelog
+
+---
+
+Indices und Tabellen
+---------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

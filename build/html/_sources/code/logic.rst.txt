@@ -1,0 +1,32 @@
+Kernlogik
+=========
+
+.. automodule:: logic.control_embedding
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: logic.control_mapping
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: logic.rag_processor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: logic.llm_interface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: logic.hitl_processes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: logic.DSPy_version
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,57 @@
+UI (Qt)
+=======
+
+.. automodule:: ui.main_window
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.sidebar
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.context_retrieval
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.control_embedding_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.control_mapping_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.control_mapping_1n_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.control_mapping_mn_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.human_validation_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.import_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.rag_mapping_view
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.standard_comparison
+   :members:
+   :undoc-members:
+   :show-inheritance:

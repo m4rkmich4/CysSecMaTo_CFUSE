@@ -1,0 +1,12 @@
+Konfiguration / Prompts
+=======================
+
+.. automodule:: config.prompts_dspy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: config.prompts_rag
+   :members:
+   :undoc-members:
+   :show-inheritance:
