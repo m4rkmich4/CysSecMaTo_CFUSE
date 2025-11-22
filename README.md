@@ -1,5 +1,5 @@
 # C-FUSE  
-**Cybersecurity Framework Understanding & Semantic Embedding**
+**Cybersecurity Framework Unification & Standard Evaluation**
 
 C-FUSE ist ein prototypisches, vollständig lokal ausführbares KI-System  
 zur Analyse, Bewertung und zum semantischen Mapping von Cybersecurity-Standards.
