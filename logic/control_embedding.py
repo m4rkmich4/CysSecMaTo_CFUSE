@@ -15,7 +15,7 @@ The functions are designed to be used from a GUI or CLI environment that
 passes an optional progress callback for user feedback. All heavy work is
 centralized here so that the rest of the application can remain thin.
 """
-
+import os
 import logging
 import numpy as np
 import requests  # For exception types
@@ -48,52 +48,40 @@ def initialize_embedding_system(
     model_name: str = "sentence-transformers/all-mpnet-base-v2",
     progress_callback: Optional[Callable[[str], None]] = None
 ) -> bool:
-    """Initialize or (re-)initialize the global embedding system.
+    """Initialize or (re-)initialize the global embedding system."""
 
-    This function loads a SentenceTransformer model and its tokenizer and
-    configures a global token limit that is later used for chunking long
-    texts. If the requested model is already loaded and valid, the cached
-    components are reused to avoid expensive reloads.
-
-    The function is intentionally side-effectful: it updates the global
-    variables ``_model``, ``_tokenizer``, ``_current_model_name`` and
-    ``_current_token_limit``. All later embedding operations depend on this
-    initialization step.
-
-    Args:
-        model_name: Fully qualified model name or local path that can be
-            resolved by ``SentenceTransformer`` / ``AutoTokenizer``.
-            Defaults to ``"sentence-transformers/all-mpnet-base-v2"``.
-        progress_callback: Optional callable that receives human-readable
-            status messages during initialization (e.g. for GUI updates).
-
-    Returns:
-        bool: ``True`` if model and tokenizer were successfully loaded and
-        a valid token limit has been configured, otherwise ``False``.
-
-    Raises:
-        None directly. All errors are caught and logged. The function
-        returns ``False`` in error scenarios so that the caller can
-        react accordingly (e.g. show an error dialog).
-    """
     global _model, _tokenizer, _current_model_name, _current_token_limit
+
+    # ------------------------------------------------------------
+    # NEW: Local dynamic model override
+    # If the caller passes the default HuggingFace name,
+    # automatically replace it with the local mpnet path.
+    # ------------------------------------------------------------
+    if model_name == "sentence-transformers/all-mpnet-base-v2":
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        model_name = os.path.join(BASE_DIR, "models", "all-mpnet-base-v2")
+    # ------------------------------------------------------------
 
     if progress_callback:
         progress_callback(f"Initializing embedding system for model: '{model_name}'...")
 
-    # Fast path: model is already initialized and matches the requested name.
+    # Fast path: model already loaded  
     if _current_model_name == model_name and _model is not None and _tokenizer is not None:
         if progress_callback:
-            progress_callback(f"✅ Model '{model_name}' is already initialized (Token Limit: {_current_token_limit}).")
-        return True  # CORRECTION: Semicolon removed
+            progress_callback(
+                f"✅ Model '{model_name}' is already initialized (Token Limit: {_current_token_limit})."
+            )
+        return True
 
-    logging.info(f"Model change or first-time initialization requested for '{model_name}'. Resetting internal cache.")
+    logging.info(
+        f"Model change or first-time initialization requested for '{model_name}'. Resetting internal cache."
+    )
     _model = None
-    _tokenizer = None  # CORRECTION: Semicolon removed
+    _tokenizer = None
     _current_model_name = None
-    _current_token_limit = None  # CORRECTION: Semicolon removed
+    _current_token_limit = None
     model_loaded = False
-    tokenizer_loaded = False  # CORRECTION: Semicolon removed
+    tokenizer_loaded = False
 
     try:
         if progress_callback:
@@ -103,38 +91,66 @@ def initialize_embedding_system(
         model_loaded = True
         if progress_callback:
             progress_callback("✅ Model successfully loaded.")
-        # Try to determine a useful token limit from the model or tokenizer.
+
+        # Token limit detection
         try:
-            if hasattr(_model, 'max_seq_length') and isinstance(_model.max_seq_length, int) and _model.max_seq_length > 0:
+            if (
+                hasattr(_model, 'max_seq_length') and
+                isinstance(_model.max_seq_length, int) and
+                _model.max_seq_length > 0
+            ):
                 _current_token_limit = _model.max_seq_length
                 if progress_callback:
                     progress_callback(f"ℹ️ Token limit of the model detected: {_current_token_limit}")
             else:
-                if _tokenizer and hasattr(_tokenizer, 'model_max_length') and isinstance(_tokenizer.model_max_length, int) and _tokenizer.model_max_length > 0:
+                if (
+                    _tokenizer and
+                    hasattr(_tokenizer, 'model_max_length') and
+                    isinstance(_tokenizer.model_max_length, int) and
+                    _tokenizer.model_max_length > 0
+                ):
                     _current_token_limit = _tokenizer.model_max_length
                     if progress_callback:
                         progress_callback(f"ℹ️ Token limit from tokenizer detected: {_current_token_limit}")
                 else:
                     _current_token_limit = 512
                     if progress_callback:
-                        progress_callback(f"⚠️ Could not determine token limit dynamically, using default: {_current_token_limit}")
-                    logging.warning(f"Could not determine 'max_seq_length' for model '{model_name}' or tokenizer. Falling back to {_current_token_limit}.")
+                        progress_callback(
+                            f"⚠️ Could not determine token limit dynamically, using default: {_current_token_limit}"
+                        )
+                    logging.warning(
+                        f"Could not determine 'max_seq_length' for model '{model_name}' or tokenizer. "
+                        f"Falling back to {_current_token_limit}."
+                    )
+
         except Exception as e_limit:
             _current_token_limit = 512
             if progress_callback:
-                progress_callback(f"⚠️ Error determining token limit ({e_limit}), using default: {_current_token_limit}")
-            logging.error(f"Error determining token limit for '{model_name}': {e_limit}. Fallback: {_current_token_limit}.")
+                progress_callback(
+                    f"⚠️ Error determining token limit ({e_limit}), using default: {_current_token_limit}"
+                )
+            logging.error(
+                f"Error determining token limit for '{model_name}': {e_limit}. "
+                f"Fallback: {_current_token_limit}."
+            )
+
     except (requests.exceptions.ConnectionError, HfHubHTTPError) as e_net:
-        error_msg = f"❌ Network error downloading model '{model_name}': {type(e_net).__name__}"
+        error_msg = (
+            f"❌ Network error downloading model '{model_name}': {type(e_net).__name__}"
+        )
         if progress_callback:
-            progress_callback(error_msg)  # CORRECTION: Semicolon removed
+            progress_callback(error_msg)
         logging.error(f"{error_msg} - {e_net}")
+
     except Exception as e_gen:
-        error_msg = f"❌ General error loading model '{model_name}': {type(e_gen).__name__}"
+        error_msg = (
+            f"❌ General error loading model '{model_name}': {type(e_gen).__name__}"
+        )
         if progress_callback:
-            progress_callback(error_msg)  # CORRECTION: Semicolon removed
+            progress_callback(error_msg)
         logging.error(f"{error_msg} - {e_gen}", exc_info=True)
 
+    # --- TOKENIZER LOADING ---
     if model_loaded:
         try:
             if progress_callback:
@@ -144,50 +160,73 @@ def initialize_embedding_system(
             tokenizer_loaded = True
             if progress_callback:
                 progress_callback("✅ Tokenizer successfully loaded.")
-            # If the token limit is still unset or at the default value,
-            # try to improve it by reading ``model_max_length`` from the tokenizer.
-            if (_current_token_limit == 512 or _current_token_limit is None) and \
-               hasattr(_tokenizer, 'model_max_length') and \
-               isinstance(_tokenizer.model_max_length, int) and _tokenizer.model_max_length > 0:
+
+            # Update token limit if needed
+            if (
+                (_current_token_limit == 512 or _current_token_limit is None) and
+                hasattr(_tokenizer, 'model_max_length') and
+                isinstance(_tokenizer.model_max_length, int) and
+                _tokenizer.model_max_length > 0
+            ):
                 _current_token_limit = _tokenizer.model_max_length
                 if progress_callback:
-                    progress_callback(f"ℹ️ Token limit updated from tokenizer: {_current_token_limit}")
-                logging.info(f"Token limit for '{model_name}' updated from tokenizer to {_current_token_limit}.")
+                    progress_callback(
+                        f"ℹ️ Token limit updated from tokenizer: {_current_token_limit}"
+                    )
+                logging.info(
+                    f"Token limit for '{model_name}' updated from tokenizer to {_current_token_limit}."
+                )
+
         except (requests.exceptions.ConnectionError, HfHubHTTPError) as e_net:
-            error_msg = f"❌ Network error downloading tokenizer '{model_name}': {type(e_net).__name__}"
+            error_msg = (
+                f"❌ Network error downloading tokenizer '{model_name}': {type(e_net).__name__}"
+            )
             if progress_callback:
-                progress_callback(error_msg)  # CORRECTION: Semicolon removed
+                progress_callback(error_msg)
             logging.error(f"{error_msg} - {e_net}")
             model_loaded = False
+
         except Exception as e_gen:
-            error_msg = f"❌ General error loading tokenizer '{model_name}': {type(e_gen).__name__}"
+            error_msg = (
+                f"❌ General error loading tokenizer '{model_name}': {type(e_gen).__name__}"
+            )
             if progress_callback:
-                progress_callback(error_msg)  # CORRECTION: Semicolon removed
+                progress_callback(error_msg)
             logging.error(f"{error_msg} - {e_gen}", exc_info=True)
             model_loaded = False
 
-    # Final safety net: ensure that the token limit is a positive integer.
+    # Safety check  
     if model_loaded and tokenizer_loaded and (_current_token_limit is None or _current_token_limit <= 0):
         _current_token_limit = 512
-        logging.warning(f"Token limit for '{model_name}' was invalid, setting final fallback to {_current_token_limit}.")
+        logging.warning(
+            f"Token limit for '{model_name}' was invalid, setting final fallback to {_current_token_limit}."
+        )
         if progress_callback:
-            progress_callback(f"⚠️ Token limit was invalid, final fallback: {_current_token_limit}")
+            progress_callback(
+                f"⚠️ Token limit was invalid, final fallback: {_current_token_limit}"
+            )
 
+    # Finalize  
     if model_loaded and tokenizer_loaded:
         _current_model_name = model_name
         if progress_callback:
-            progress_callback(f"✅ System ready with model '{_current_model_name}' (Limit: {_current_token_limit}).")
-        logging.info(f"Embedding system init: '{_current_model_name}' (Limit: {_current_token_limit})")
+            progress_callback(
+                f"✅ System ready with model '{_current_model_name}' (Limit: {_current_token_limit})."
+            )
+        logging.info(
+            f"Embedding system init: '{_current_model_name}' (Limit: {_current_token_limit})"
+        )
         return True
-    else:
-        _model = None
-        _tokenizer = None
-        _current_model_name = None
-        _current_token_limit = None
-        if progress_callback:
-            progress_callback("❌ Initialization failed.")
-        logging.error(f"Initialization for '{model_name}' failed.")
-        return False
+
+    _model = None
+    _tokenizer = None
+    _current_model_name = None
+    _current_token_limit = None
+    if progress_callback:
+        progress_callback("❌ Initialization failed.")
+    logging.error(f"Initialization for '{model_name}' failed.")
+    return False
+
 
 
 def get_active_model_components() -> tuple[Optional[SentenceTransformer], Optional[Any], Optional[int], Optional[str]]:
