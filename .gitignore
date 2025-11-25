@@ -21,6 +21,11 @@ source/
 # Neo4j data (Docker volume)
 docker/neo4j/data/
 
+#model data
+models/all-MiniLM-L6-v2
+models/all-mpnet-base-v2
+
+
 # Caches
 .cache/
 *.log
