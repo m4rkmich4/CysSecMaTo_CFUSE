@@ -50,8 +50,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting-started.html#repository-herunterladen">Repository herunterladen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started.html#systemvoraussetzungen">Systemvoraussetzungen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#neo4j-mit-docker-compose-starten">4. Neo4j mit Docker Compose starten</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../getting-started.html#zugriff-uber-den-browser-neo4j-browser-neo4j-workspace">Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#modelle-lokal-bereitstellen-git-git-lfs">4. Modelle lokal bereitstellen (Git + Git LFS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started.html#git-installieren-macos-linux-windows">Git installieren (macOS / Linux / Windows)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started.html#git-lfs-installieren">Git LFS installieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started.html#modelle-herunterladen">Modelle herunterladen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#neo4j-mit-docker-compose-starten">Neo4j mit Docker Compose starten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started.html#zugriff-uber-den-browser-neo4j-workspace">Zugriff über den Browser (Neo4j Workspace)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started.html#projektstart">Projektstart</a></li>
@@ -585,37 +591,15 @@ has been successfully initialized yet.</p>
 <dt class="sig sig-object py" id="logic.control_embedding.initialize_embedding_system">
 <span class="sig-name descname"><span class="pre">initialize_embedding_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sentence-transformers/all-mpnet-base-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/logic/control_embedding.html#initialize_embedding_system"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#logic.control_embedding.initialize_embedding_system" title="Link to this definition"></a></dt>
 <dd><p>Initialize or (re-)initialize the global embedding system.</p>
-<p>This function loads a SentenceTransformer model and its tokenizer and
-configures a global token limit that is later used for chunking long
-texts. If the requested model is already loaded and valid, the cached
-components are reused to avoid expensive reloads.</p>
-<p>The function is intentionally side-effectful: it updates the global
-variables <code class="docutils literal notranslate"><span class="pre">_model</span></code>, <code class="docutils literal notranslate"><span class="pre">_tokenizer</span></code>, <code class="docutils literal notranslate"><span class="pre">_current_model_name</span></code> and
-<code class="docutils literal notranslate"><span class="pre">_current_token_limit</span></code>. All later embedding operations depend on this
-initialization step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameter<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Fully qualified model name or local path that can be
-resolved by <code class="docutils literal notranslate"><span class="pre">SentenceTransformer</span></code> / <code class="docutils literal notranslate"><span class="pre">AutoTokenizer</span></code>.
-Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;sentence-transformers/all-mpnet-base-v2&quot;</span></code>.</p></li>
-<li><p><strong>progress_callback</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – Optional callable that receives human-readable
-status messages during initialization (e.g. for GUI updates).</p></li>
+<li><p><strong>model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>progress_callback</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if model and tokenizer were successfully loaded and
-a valid token limit has been configured, otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-</dd>
-<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
-</dd>
-<dt class="field-even">Verursacht<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>None directly. All errors are caught and logged. The function</strong> – </p></li>
-<li><p><strong>returns False in error scenarios so that the caller can</strong> – </p></li>
-<li><p><strong>react accordingly</strong><strong> (</strong><strong>e.g. show an error dialog</strong><strong>)</strong><strong>.</strong> – </p></li>
-</ul>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>

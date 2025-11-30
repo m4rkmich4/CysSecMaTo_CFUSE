@@ -29,30 +29,37 @@ Klonen Sie das Repository in ein lokales Verzeichnis Ihrer Wahl:
 Systemvoraussetzungen
 ----------------------
 
-* **Python:** Version 3.11 oder neuer
-* **Abhängigkeiten:** siehe ``requirements.txt``
-* **Neo4j:** Version 5.x (lokaler Docker-Container empfohlen)
-* **Betriebssystem:** macOS, Linux oder Windows
-* **Optional:** Lokales LLM über Ollama, wenn KI-Funktionen genutzt werden
+* Python 3.11 oder neuer
+* Abhängigkeiten gemäß ``requirements.txt``
+* Neo4j 5.x (über Docker Compose empfohlen)
+* macOS, Linux oder Windows
+* Optional: Lokales LLM über Ollama
 
 
 Installation
 ------------
 
-1. **Projektverzeichnis betreten**
-
-.. code-block:: bash
-
-   cd /Pfad/zum/Projekt/CysSecMaTo_CFUSE
-
-
-2. **Virtuelle Umgebung erstellen**
+1. Projektverzeichnis betreten
 
 macOS / Linux:
 
 .. code-block:: bash
 
    cd /Pfad/zum/Projekt/CysSecMaTo_CFUSE
+
+Windows (CMD):
+
+.. code-block:: doscon
+
+   cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE
+
+
+2. Virtuelle Umgebung erstellen und aktivieren
+
+macOS / Linux:
+
+.. code-block:: bash
+
    python3 -m venv .venv
    source .venv/bin/activate
 
@@ -60,25 +67,95 @@ Windows (CMD):
 
 .. code-block:: doscon
 
-   cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE
    python -m venv .venv
    .\.venv\Scripts\activate
 
 
-3. **Abhängigkeiten installieren**
+3. Abhängigkeiten installieren
 
 .. code-block:: bash
 
    pip install -r requirements.txt
 
 
+4. Modelle lokal bereitstellen (Git + Git LFS)
+----------------------------------------------
 
-4. Neo4j mit Docker Compose starten
------------------------------------
+Damit C-FUSE vollständig lokal läuft, müssen die in ``/models`` referenzierten
+Embedding-Modelle lokal verfügbar sein („all-MiniLM-L6-v2“ und „all-mpnet-base-v2“).
 
-Für C-FUSE wird Neo4j über eine vorbereitete Docker-Compose-Datei im Unterordner
-``docker/`` gestartet. Diese setzt automatisch die passenden Zugangsdaten, Ports
-und Persistenzoptionen für den Datenbankcontainer.
+Git LFS ist hierfür erforderlich.
+
+Git installieren (macOS / Linux / Windows)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+macOS Installer:
+https://git-scm.com/download/mac
+
+Linux (Debian/Ubuntu):
+
+.. code-block:: bash
+
+   sudo apt-get install git
+
+Windows Installer:
+https://git-scm.com/download/win
+
+
+Git LFS installieren
+~~~~~~~~~~~~~~~~~~~~
+
+macOS / Linux:
+
+.. code-block:: bash
+
+   git lfs install
+
+Windows (CMD):
+
+.. code-block:: doscon
+
+   git lfs install
+
+
+Modelle herunterladen
+~~~~~~~~~~~~~~~~~~~~~
+
+Navigieren Sie in den ``models``-Ordner:
+
+macOS / Linux:
+
+.. code-block:: bash
+
+   cd /Pfad/zum/Projekt/CysSecMaTo_CFUSE/models
+
+Windows (CMD):
+
+.. code-block:: doscon
+
+   cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE\models
+
+
+Laden Sie die benötigten Modelle (bereits im Repository verlinkt):
+
+.. code-block:: bash
+
+   git clone https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+   git clone https://huggingface.co/sentence-transformers/all-mpnet-base-v2
+
+Die Ordner müssen wie folgt aussehen:
+
+.. code-block:: text
+
+   models/
+   ├── all-MiniLM-L6-v2/
+   └── all-mpnet-base-v2/
+
+
+Neo4j mit Docker Compose starten
+---------------------------------
+
+Die Neo4j-Instanz wird über die Datei ``docker/docker-compose.yml`` gestartet.
 
 macOS / Linux:
 
@@ -95,7 +172,7 @@ Windows (CMD):
    docker compose up -d
 
 
-Die von C-FUSE erwarteten Standard-Zugangsdaten sind:
+Standard-Zugangsdaten:
 
 .. code-block:: text
 
@@ -103,39 +180,23 @@ Die von C-FUSE erwarteten Standard-Zugangsdaten sind:
    Benutzer: neo4j
    Passwort: CfUsE_2025
 
-Diese Werte sind sowohl in der ``docker-compose.yml`` als auch im Connector
-``db/neo4j_connector.py`` definiert und müssen nur angepasst werden,
-wenn von der Standardkonfiguration abgewichen wird.
 
+Zugriff über den Browser (Neo4j Workspace)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Nach dem Start mit Docker Compose kann die Neo4j-Oberfläche direkt im Browser geöffnet werden:
+Nach dem Start erreichbar unter:
 
 .. code-block:: text
 
    http://localhost:7474
 
-Dort können Sie:
-
-* den aktuellen Graphen ansehen,
-* Abfragen testen,
-* Knoten und Relationen inspizieren.
-
-Melden Sie sich mit den voreingestellten Zugangsdaten an:
-
-.. code-block:: text
-
-   Benutzer: neo4j
-   Passwort: CfUsE_2025
-
+Melden Sie sich mit den oben genannten Zugangsdaten an.
 
 
 Projektstart
 ------------
 
-Starten Sie das Hauptprogramm immer über die Datei ``app.py``.
+Starten Sie C-FUSE über ``app.py``.
 
 macOS / Linux:
 
@@ -156,11 +217,8 @@ Windows (CMD):
 
 .. note::
 
-   Der erste Start kann **spürbar länger dauern**, da:
-   * die Qt-Oberfläche geladen wird,
-   * die Datenbankverbindung aufgebaut wird,
-   * Views wie Control-Embedding, Context-Retrieval, Mapping und Import initialisiert werden.
-
+   Der erste Start kann etwas länger dauern, da die Qt-Oberfläche initialisiert
+   und die Datenbankverbindung aufgebaut wird.
 
 
 Projektstruktur (Kurzüberblick)
@@ -171,17 +229,16 @@ Projektstruktur (Kurzüberblick)
    .
    ├── app.py                  # Einstiegspunkt
    ├── assets/                 # Styles & Markdown
-   ├── config/                 # Prompt-/LLM-Konfigurationen
-   ├── db/                     # Neo4j-Modelle, Queries, Import
-   ├── logic/                  # Embeddings, Mapping, KI
-   ├── retrieval/              # Fake-RAG & Tests
+   ├── config/                 # Prompt- und KI-Konfigurationen
+   ├── db/                     # Neo4j-Connector, Queries & Import
+   ├── logic/                  # Embeddings, Mapping, KI-Module
+   ├── retrieval/              # Fake-RAG-Module
    ├── ui/                     # Qt-Frontend
    ├── tests/                  # Unittests
-   └── files/                  # Beispiel-OSCAL & JSON
-
+   └── files/                  # Beispiel- und OSCAL-Kataloge
 
 
 Nächste Schritte
 -----------------
 
-* Zur **Modul-Übersicht**: :doc:`code/index`
+* Zur Modulübersicht: :doc:`code/index`

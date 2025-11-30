@@ -50,8 +50,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#repository-herunterladen">Repository herunterladen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#systemvoraussetzungen">Systemvoraussetzungen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#neo4j-mit-docker-compose-starten">4. Neo4j mit Docker Compose starten</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#zugriff-uber-den-browser-neo4j-browser-neo4j-workspace">Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modelle-lokal-bereitstellen-git-git-lfs">4. Modelle lokal bereitstellen (Git + Git LFS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#git-installieren-macos-linux-windows">Git installieren (macOS / Linux / Windows)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-lfs-installieren">Git LFS installieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modelle-herunterladen">Modelle herunterladen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#neo4j-mit-docker-compose-starten">Neo4j mit Docker Compose starten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zugriff-uber-den-browser-neo4j-workspace">Zugriff über den Browser (Neo4j Workspace)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#projektstart">Projektstart</a></li>
@@ -449,48 +455,100 @@ modulares Qt-Frontend zur Visualisierung und Steuerung der Analyseprozesse.</p>
 <section id="systemvoraussetzungen">
 <h2>Systemvoraussetzungen<a class="headerlink" href="#systemvoraussetzungen" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><strong>Python:</strong> Version 3.11 oder neuer</p></li>
-<li><p><strong>Abhängigkeiten:</strong> siehe <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
-<li><p><strong>Neo4j:</strong> Version 5.x (lokaler Docker-Container empfohlen)</p></li>
-<li><p><strong>Betriebssystem:</strong> macOS, Linux oder Windows</p></li>
-<li><p><strong>Optional:</strong> Lokales LLM über Ollama, wenn KI-Funktionen genutzt werden</p></li>
+<li><p>Python 3.11 oder neuer</p></li>
+<li><p>Abhängigkeiten gemäß <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
+<li><p>Neo4j 5.x (über Docker Compose empfohlen)</p></li>
+<li><p>macOS, Linux oder Windows</p></li>
+<li><p>Optional: Lokales LLM über Ollama</p></li>
 </ul>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p><strong>Projektverzeichnis betreten</strong></p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p><strong>Virtuelle Umgebung erstellen</strong></p></li>
+<li><p>Projektverzeichnis betreten</p></li>
 </ol>
 <p>macOS / Linux:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE
-python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </pre></div>
 </div>
 <p>Windows (CMD):</p>
 <div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE</span>
-<span class="go">python -m venv .venv</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Virtuelle Umgebung erstellen und aktivieren</p></li>
+</ol>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</pre></div>
+</div>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">python -m venv .venv</span>
 <span class="go">.\.venv\Scripts\activate</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p><strong>Abhängigkeiten installieren</strong></p></li>
+<li><p>Abhängigkeiten installieren</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </section>
+<section id="modelle-lokal-bereitstellen-git-git-lfs">
+<h2>4. Modelle lokal bereitstellen (Git + Git LFS)<a class="headerlink" href="#modelle-lokal-bereitstellen-git-git-lfs" title="Link to this heading"></a></h2>
+<p>Damit C-FUSE vollständig lokal läuft, müssen die in <code class="docutils literal notranslate"><span class="pre">/models</span></code> referenzierten
+Embedding-Modelle lokal verfügbar sein („all-MiniLM-L6-v2“ und „all-mpnet-base-v2“).</p>
+<p>Git LFS ist hierfür erforderlich.</p>
+<section id="git-installieren-macos-linux-windows">
+<h3>Git installieren (macOS / Linux / Windows)<a class="headerlink" href="#git-installieren-macos-linux-windows" title="Link to this heading"></a></h3>
+<p>macOS Installer:
+<a class="reference external" href="https://git-scm.com/download/mac">https://git-scm.com/download/mac</a></p>
+<p>Linux (Debian/Ubuntu):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+<p>Windows Installer:
+<a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+</section>
+<section id="git-lfs-installieren">
+<h3>Git LFS installieren<a class="headerlink" href="#git-lfs-installieren" title="Link to this heading"></a></h3>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>lfs<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">git lfs install</span>
+</pre></div>
+</div>
+</section>
+<section id="modelle-herunterladen">
+<h3>Modelle herunterladen<a class="headerlink" href="#modelle-herunterladen" title="Link to this heading"></a></h3>
+<p>Navigieren Sie in den <code class="docutils literal notranslate"><span class="pre">models</span></code>-Ordner:</p>
+<p>macOS / Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE/models
+</pre></div>
+</div>
+<p>Windows (CMD):</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">cd C:\Pfad\zum\Projekt\CysSecMaTo_CFUSE\models</span>
+</pre></div>
+</div>
+<p>Laden Sie die benötigten Modelle (bereits im Repository verlinkt):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/sentence-transformers/all-mpnet-base-v2
+</pre></div>
+</div>
+<p>Die Ordner müssen wie folgt aussehen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>models/
+├── all-MiniLM-L6-v2/
+└── all-mpnet-base-v2/
+</pre></div>
+</div>
+</section>
+</section>
 <section id="neo4j-mit-docker-compose-starten">
-<h2>4. Neo4j mit Docker Compose starten<a class="headerlink" href="#neo4j-mit-docker-compose-starten" title="Link to this heading"></a></h2>
-<p>Für C-FUSE wird Neo4j über eine vorbereitete Docker-Compose-Datei im Unterordner
-<code class="docutils literal notranslate"><span class="pre">docker/</span></code> gestartet. Diese setzt automatisch die passenden Zugangsdaten, Ports
-und Persistenzoptionen für den Datenbankcontainer.</p>
+<h2>Neo4j mit Docker Compose starten<a class="headerlink" href="#neo4j-mit-docker-compose-starten" title="Link to this heading"></a></h2>
+<p>Die Neo4j-Instanz wird über die Datei <code class="docutils literal notranslate"><span class="pre">docker/docker-compose.yml</span></code> gestartet.</p>
 <p>macOS / Linux:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE/docker
 docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
@@ -501,37 +559,24 @@ docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> 
 <span class="go">docker compose up -d</span>
 </pre></div>
 </div>
-<p>Die von C-FUSE erwarteten Standard-Zugangsdaten sind:</p>
+<p>Standard-Zugangsdaten:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>URI:      bolt://localhost:7687
 Benutzer: neo4j
 Passwort: CfUsE_2025
 </pre></div>
 </div>
-<p>Diese Werte sind sowohl in der <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> als auch im Connector
-<code class="docutils literal notranslate"><span class="pre">db/neo4j_connector.py</span></code> definiert und müssen nur angepasst werden,
-wenn von der Standardkonfiguration abgewichen wird.</p>
-<section id="zugriff-uber-den-browser-neo4j-browser-neo4j-workspace">
-<h3>Zugriff über den Browser (Neo4j Browser / Neo4j Workspace)<a class="headerlink" href="#zugriff-uber-den-browser-neo4j-browser-neo4j-workspace" title="Link to this heading"></a></h3>
-<p>Nach dem Start mit Docker Compose kann die Neo4j-Oberfläche direkt im Browser geöffnet werden:</p>
+<section id="zugriff-uber-den-browser-neo4j-workspace">
+<h3>Zugriff über den Browser (Neo4j Workspace)<a class="headerlink" href="#zugriff-uber-den-browser-neo4j-workspace" title="Link to this heading"></a></h3>
+<p>Nach dem Start erreichbar unter:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>http://localhost:7474
 </pre></div>
 </div>
-<p>Dort können Sie:</p>
-<ul class="simple">
-<li><p>den aktuellen Graphen ansehen,</p></li>
-<li><p>Abfragen testen,</p></li>
-<li><p>Knoten und Relationen inspizieren.</p></li>
-</ul>
-<p>Melden Sie sich mit den voreingestellten Zugangsdaten an:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Benutzer: neo4j
-Passwort: CfUsE_2025
-</pre></div>
-</div>
+<p>Melden Sie sich mit den oben genannten Zugangsdaten an.</p>
 </section>
 </section>
 <section id="projektstart">
 <h2>Projektstart<a class="headerlink" href="#projektstart" title="Link to this heading"></a></h2>
-<p>Starten Sie das Hauptprogramm immer über die Datei <code class="docutils literal notranslate"><span class="pre">app.py</span></code>.</p>
+<p>Starten Sie C-FUSE über <code class="docutils literal notranslate"><span class="pre">app.py</span></code>.</p>
 <p>macOS / Linux:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Pfad/zum/Projekt/CysSecMaTo_CFUSE
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
@@ -546,10 +591,8 @@ python3<span class="w"> </span>app.py
 </div>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Der erste Start kann <strong>spürbar länger dauern</strong>, da:
-* die Qt-Oberfläche geladen wird,
-* die Datenbankverbindung aufgebaut wird,
-* Views wie Control-Embedding, Context-Retrieval, Mapping und Import initialisiert werden.</p>
+<p>Der erste Start kann etwas länger dauern, da die Qt-Oberfläche initialisiert
+und die Datenbankverbindung aufgebaut wird.</p>
 </div>
 </section>
 <section id="projektstruktur-kurzuberblick">
@@ -557,20 +600,20 @@ python3<span class="w"> </span>app.py
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.
 ├── app.py                  # Einstiegspunkt
 ├── assets/                 # Styles &amp; Markdown
-├── config/                 # Prompt-/LLM-Konfigurationen
-├── db/                     # Neo4j-Modelle, Queries, Import
-├── logic/                  # Embeddings, Mapping, KI
-├── retrieval/              # Fake-RAG &amp; Tests
+├── config/                 # Prompt- und KI-Konfigurationen
+├── db/                     # Neo4j-Connector, Queries &amp; Import
+├── logic/                  # Embeddings, Mapping, KI-Module
+├── retrieval/              # Fake-RAG-Module
 ├── ui/                     # Qt-Frontend
 ├── tests/                  # Unittests
-└── files/                  # Beispiel-OSCAL &amp; JSON
+└── files/                  # Beispiel- und OSCAL-Kataloge
 </pre></div>
 </div>
 </section>
 <section id="nachste-schritte">
 <h2>Nächste Schritte<a class="headerlink" href="#nachste-schritte" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Zur <strong>Modul-Übersicht</strong>: <a class="reference internal" href="code/index.html"><span class="doc">Code-Referenz</span></a></p></li>
+<li><p>Zur Modulübersicht: <a class="reference internal" href="code/index.html"><span class="doc">Code-Referenz</span></a></p></li>
 </ul>
 </section>
 </section>
