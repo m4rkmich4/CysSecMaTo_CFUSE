@@ -77,6 +77,12 @@ Windows (CMD):
 
    pip install -r requirements.txt
 
+3.1 Für Windows ONLY sonst läuft sentence-transformers nicht (!)
+
+.. code-block:: bash
+
+   pip install tf-keras
+
 
 4. Modelle lokal bereitstellen (Git + Git LFS)
 ----------------------------------------------
