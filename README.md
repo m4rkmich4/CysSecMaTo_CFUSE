@@ -45,12 +45,14 @@ pip install -r requirements.txt
 
 ### 2.2 Windows (PowerShell)  
 Ausführen im Projektverzeichnis (`CysSecMaTo_CFUSE\`):
+teras-Paket nicht vergessen sonst läuft sentence-transformers unter windows nicht.
 
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install --upgrade pip
 pip install -r requirements.txt
+pip install tf-keras
 ```
 
 ### 2.3 Windows (Eingabeaufforderung / CMD)  
